@@ -6,15 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>李鑫的博客</title>
+  <title>Java集合之ArrayList | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用Syste">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集合之ArrayList">
+<meta property="og:url" content="http://yoursite.com/2018/07/22/Java集合之ArrayList/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用Syste">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-b1c53dde94b8f463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-2d9758a1084602da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-360837c60601c470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-85cfeacce7ef80f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-5f7da5d48fc26605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-07e6e53fde35c052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-44d14edf308becd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-7680005d270d0b1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-f7cf68a795d5d619.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-07-22T10:18:12.297Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="Java集合之ArrayList">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用Syste">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-b1c53dde94b8f463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -180,16 +195,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Java集合之ArrayList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Java集合之ArrayList" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/22/Java集合之ArrayList/">Java集合之ArrayList</a>
+    <h1 class="article-title" itemprop="name">
+      Java集合之ArrayList
     </h1>
   
 
@@ -204,11 +217,39 @@
       
         <p>&#160; &#160; &#160; &#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用System.arraycopy()来移动部分受影响的元素，性能就变差了，这是基本劣势。</p>
 <p>&#160; &#160; &#160; &#160;所以List集合应景而生，ArrayList是一个相对来说比较简单的数据结构。最重要的一点就是它的自动扩容可以认为就是我们常说的“动态数组”。</p>
-        
-          <a class="article-more-a" href="/2018/07/22/Java集合之ArrayList/#more">more >></a>
-        
+<a id="more"></a>
+<h2 id="一、add函数"><a href="#一、add函数" class="headerlink" title="一、add函数"></a>一、add函数</h2><p>&#160; &#160; &#160; &#160;当我们在ArrayList中增加元素的时候，会使用add函数，它会将元素放到末尾。add函数在ArrayList中的实现下图所示。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-b1c53dde94b8f463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="add源码"><br>&#160; &#160; &#160; &#160;我们可以看到他的实现其实最核心的内容就是ensureCapacityInternal。这个函数其实就是自动扩容机制的核心。我们看一下它的具体实现。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-2d9758a1084602da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;也就是说，当增加数据的时候，如果ArrayList的大小已经不满足需求时，那么就将数组变为原长度的1.5倍，之后的操作就是把老的数组拷贝到新的数组里面。例如，默认的数组大小是10，也就是说我们调用add()方法添加10个元素之后，再进行一次add时，就会发生自动扩容，数组长度由10变成了15。</p>
+<h2 id="二、set和get函数"><a href="#二、set和get函数" class="headerlink" title="二、set和get函数"></a>二、set和get函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-360837c60601c470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="set函数"><br>&#160; &#160; &#160; &#160;Array的set函数，先进行了index检查，如果要设置的位置大于了数组长度将会抛出异常IndexOutOfBoundsException，然后在执行赋值。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-85cfeacce7ef80f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="get函数"><br>&#160; &#160; &#160; &#160;Array的get函数，先进行了index检查，如果要设置的位置大于了数组长度将会抛出异常IndexOutOfBoundsException，然后访问操作。</p>
+<h2 id="三、romove函数"><a href="#三、romove函数" class="headerlink" title="三、romove函数"></a>三、romove函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-5f7da5d48fc26605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="romove函数"><br>&#160; &#160; &#160; &#160;romove函数先会对要移除的位置和集合长度进行判空，如果要移除的位置大于了集合长度会抛出异常IndexOutOfBoundsException。否则将会进行计算(这个计算目的是计算是否是移除的集合的最后一位)如果不是最后一位会把后面的往前移然后把最后的置为null。如果是最后一位直接置null。</p>
+<h2 id="四、clear函数"><a href="#四、clear函数" class="headerlink" title="四、clear函数"></a>四、clear函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-07e6e53fde35c052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clear函数"><br>&#160; &#160; &#160; &#160;clear函数十分见的简单，直接for循环了集合的长度。将集合中的所有元素置null。这里的size字段是ArrayList中定义的常量。表示了集合的长度。其他的定义字段如下图<br><img src="https://upload-images.jianshu.io/upload_images/5462731-44d14edf308becd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="五、contains函数"><a href="#五、contains函数" class="headerlink" title="五、contains函数"></a>五、contains函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-7680005d270d0b1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="contains函数"><br>&#160; &#160; &#160; &#160;contains函数会首先调用indexOf方法，在indexOf方法中进行判断。返回出数据在集合中的下标位置。返回由contains来判断这个下标是否大于或等于0，得到boolean值来进行判断是否包含。</p>
+<h2 id="六、addAll函数"><a href="#六、addAll函数" class="headerlink" title="六、addAll函数"></a>六、addAll函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-f7cf68a795d5d619.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="addAll函数"><br>&#160; &#160; &#160; &#160;addAll函数会首先将传入的参数进行toArray操作，然后获取这个集合的长度。在通过ensureCapacityInternal函数来进行扩容的操作。这个过程和add()函数的扩容操作是一样的，所以不再多说。然后扩容之后在通过System.arraycopy()函数来获取新的组合数组。并且集合的长度增加新增集合的长度。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -228,16 +269,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/22/Java集合之ArrayList/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/22/Java集合之ArrayList/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/21/Java集合(Collection和Map)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java集合(Collection和Map)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -257,84 +357,14 @@
 
 
 
-
   
-    <article id="post-Java集合(Collection和Map)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/21/Java集合(Collection和Map)/">Java集合(Collection和Map)</a>
-    </h1>
   
 
-        
-        <a href="/2018/07/21/Java集合(Collection和Map)/" class="archive-article-date">
-  	<time datetime="2018-07-21T03:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;本文开始对Java中常用的集合以及不同集合之间的关系，使用场景，以及基本的api做一个简要的概述。接下去的文章，也会对不同的集合做简要的讲解。<br>
-        
-          <a class="article-more-a" href="/2018/07/21/Java集合(Collection和Map)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/21/Java集合(Collection和Map)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -357,8 +387,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
