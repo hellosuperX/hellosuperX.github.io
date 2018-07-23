@@ -6,30 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java集合之ArrayList | 李鑫的博客</title>
+  <title>Java集合之LinkedList | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用Syste">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;LinkedList以双线链表实现。链表无容量限制，但是双向链表本身使用了更多空间，也需要额外的链表指针操作。如果按照下标访问元素(get(i)/set(i))，遍历链表将指针移动到位(如果i&amp;gt;数组大小的一半，会从末尾开始移动)。插入、删除元素时修改前后节点的指针即可，但还是要遍历部分链表的指针才能移动到下标所指的位置，只有在链表两头的操">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java集合之ArrayList">
-<meta property="og:url" content="http://yoursite.com/2018/07/22/Java集合之ArrayList/index.html">
+<meta property="og:title" content="Java集合之LinkedList">
+<meta property="og:url" content="http://yoursite.com/2018/07/23/Java集合之LinkedList/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用Syste">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;LinkedList以双线链表实现。链表无容量限制，但是双向链表本身使用了更多空间，也需要额外的链表指针操作。如果按照下标访问元素(get(i)/set(i))，遍历链表将指针移动到位(如果i&amp;gt;数组大小的一半，会从末尾开始移动)。插入、删除元素时修改前后节点的指针即可，但还是要遍历部分链表的指针才能移动到下标所指的位置，只有在链表两头的操">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-b1c53dde94b8f463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-2d9758a1084602da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-360837c60601c470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-85cfeacce7ef80f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-5f7da5d48fc26605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-07e6e53fde35c052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-44d14edf308becd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-7680005d270d0b1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-f7cf68a795d5d619.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-22T10:18:12.297Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-32c5762d655c00b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-73c145e53c69e12c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-ea042a764cd2c138.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-d082c41b88e01b0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-c2e350e7a6becf09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-bd543606ac3bc405.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-5635747661cb8622.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-9064aa97b0f2f57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-6ea695520a086094.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-33d8d40a72a8eafc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-9f8cbfa9ef5dced3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-32593a1795b7a625.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-cb6efc18a8a4ef9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-f9f84c26be9dd9cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-0bc26822ff7d7e8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-8e9d236c741a3a64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-07-23T11:10:41.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java集合之ArrayList">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用Syste">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-b1c53dde94b8f463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Java集合之LinkedList">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;LinkedList以双线链表实现。链表无容量限制，但是双向链表本身使用了更多空间，也需要额外的链表指针操作。如果按照下标访问元素(get(i)/set(i))，遍历链表将指针移动到位(如果i&amp;gt;数组大小的一半，会从末尾开始移动)。插入、删除元素时修改前后节点的指针即可，但还是要遍历部分链表的指针才能移动到下标所指的位置，只有在链表两头的操">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-32c5762d655c00b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -193,37 +200,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java集合之ArrayList" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java集合之LinkedList" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java集合之ArrayList
+      Java集合之LinkedList
     </h1>
   
 
         
-        <a href="/2018/07/22/Java集合之ArrayList/" class="archive-article-date">
-  	<time datetime="2018-07-22T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
+        <a href="/2018/07/23/Java集合之LinkedList/" class="archive-article-date">
+  	<time datetime="2018-07-23T03:13:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;以数组实现，节约空间，但是数组有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认差第一次插入元素时创建大小为10的数组。按照数组下标访问元素的性能很高，这是数组的基本优势。直接在数组末尾加入元素(add())的性能也很高，但是如果按下标插入、删除元素则要用System.arraycopy()来移动部分受影响的元素，性能就变差了，这是基本劣势。</p>
-<p>&#160; &#160; &#160; &#160;所以List集合应景而生，ArrayList是一个相对来说比较简单的数据结构。最重要的一点就是它的自动扩容可以认为就是我们常说的“动态数组”。</p>
-<a id="more"></a>
-<h2 id="一、add函数"><a href="#一、add函数" class="headerlink" title="一、add函数"></a>一、add函数</h2><p>&#160; &#160; &#160; &#160;当我们在ArrayList中增加元素的时候，会使用add函数，它会将元素放到末尾。add函数在ArrayList中的实现下图所示。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-b1c53dde94b8f463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="add源码"><br>&#160; &#160; &#160; &#160;我们可以看到他的实现其实最核心的内容就是ensureCapacityInternal。这个函数其实就是自动扩容机制的核心。我们看一下它的具体实现。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5462731-2d9758a1084602da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;也就是说，当增加数据的时候，如果ArrayList的大小已经不满足需求时，那么就将数组变为原长度的1.5倍，之后的操作就是把老的数组拷贝到新的数组里面。例如，默认的数组大小是10，也就是说我们调用add()方法添加10个元素之后，再进行一次add时，就会发生自动扩容，数组长度由10变成了15。</p>
-<h2 id="二、set和get函数"><a href="#二、set和get函数" class="headerlink" title="二、set和get函数"></a>二、set和get函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-360837c60601c470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="set函数"><br>&#160; &#160; &#160; &#160;Array的set函数，先进行了index检查，如果要设置的位置大于了数组长度将会抛出异常IndexOutOfBoundsException，然后在执行赋值。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5462731-85cfeacce7ef80f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="get函数"><br>&#160; &#160; &#160; &#160;Array的get函数，先进行了index检查，如果要设置的位置大于了数组长度将会抛出异常IndexOutOfBoundsException，然后访问操作。</p>
-<h2 id="三、romove函数"><a href="#三、romove函数" class="headerlink" title="三、romove函数"></a>三、romove函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-5f7da5d48fc26605.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="romove函数"><br>&#160; &#160; &#160; &#160;romove函数先会对要移除的位置和集合长度进行判空，如果要移除的位置大于了集合长度会抛出异常IndexOutOfBoundsException。否则将会进行计算(这个计算目的是计算是否是移除的集合的最后一位)如果不是最后一位会把后面的往前移然后把最后的置为null。如果是最后一位直接置null。</p>
-<h2 id="四、clear函数"><a href="#四、clear函数" class="headerlink" title="四、clear函数"></a>四、clear函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-07e6e53fde35c052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clear函数"><br>&#160; &#160; &#160; &#160;clear函数十分见的简单，直接for循环了集合的长度。将集合中的所有元素置null。这里的size字段是ArrayList中定义的常量。表示了集合的长度。其他的定义字段如下图<br><img src="https://upload-images.jianshu.io/upload_images/5462731-44d14edf308becd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="五、contains函数"><a href="#五、contains函数" class="headerlink" title="五、contains函数"></a>五、contains函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-7680005d270d0b1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="contains函数"><br>&#160; &#160; &#160; &#160;contains函数会首先调用indexOf方法，在indexOf方法中进行判断。返回出数据在集合中的下标位置。返回由contains来判断这个下标是否大于或等于0，得到boolean值来进行判断是否包含。</p>
-<h2 id="六、addAll函数"><a href="#六、addAll函数" class="headerlink" title="六、addAll函数"></a>六、addAll函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-f7cf68a795d5d619.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="addAll函数"><br>&#160; &#160; &#160; &#160;addAll函数会首先将传入的参数进行toArray操作，然后获取这个集合的长度。在通过ensureCapacityInternal函数来进行扩容的操作。这个过程和add()函数的扩容操作是一样的，所以不再多说。然后扩容之后在通过System.arraycopy()函数来获取新的组合数组。并且集合的长度增加新增集合的长度。</p>
+        <p>&#160; &#160; &#160; &#160;LinkedList以双线链表实现。链表无容量限制，但是双向链表本身使用了更多空间，也需要额外的链表指针操作。如果按照下标访问元素(get(i)/set(i))，遍历链表将指针移动到位(如果i&gt;数组大小的一半，会从末尾开始移动)。插入、删除元素时修改前后节点的指针即可，但还是要遍历部分链表的指针才能移动到下标所指的位置，只有在链表两头的操作–add()，addFirst(),removeList()或用iterator()上的remove()能省掉指针的移动。<br><a id="more"></a></p>
+<h2 id="一、set和get函数"><a href="#一、set和get函数" class="headerlink" title="一、set和get函数"></a>一、set和get函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-32c5762d655c00b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="set函数"><br><img src="https://upload-images.jianshu.io/upload_images/5462731-73c145e53c69e12c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="get函数"><br>这两个函数都调用了node函数，该函数会以O(n/2)的性能去获取一个节点，具体实现入下图<br><img src="https://upload-images.jianshu.io/upload_images/5462731-ea042a764cd2c138.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="node函数"><br>&#160; &#160; &#160; &#160;就是判断index是在前半区间还是在后半区间，如果在前半区间就从head搜索，而在后半区间就从tail搜索。而不是一直从头到尾的搜索。这样一来就将节点访问的复杂度由O(n)变为了O(n/2)。</p>
+<h2 id="二、add函数"><a href="#二、add函数" class="headerlink" title="二、add函数"></a>二、add函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-d082c41b88e01b0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="add函数"><br>&#160; &#160; &#160; &#160;从方法中的判断来看，如果添加的位置和集合的长度相同的情况下会调用linkLast函数，否则调用linkBefore函数。下面我们去查看这个函数的内容之前，先查看一下内部类Node。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-c2e350e7a6becf09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Node"><br>&#160; &#160; &#160; &#160;这个内部类只有三个参数，以及一个构造的方法。但是这个Node内部类是实现双向列表的关键存在。我们用一个简单的图解来了解一下这个数据内部形成链的过程。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-bd543606ac3bc405.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;这样通过第一个的next指向第二个的prev…..依次类推下去形成链表。当然也可以理解为这就是一个贪吃蛇通关的问题。贪吃蛇最后连接出来的结局是头尾相连。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-5635747661cb8622.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="linkLast"><br>&#160; &#160; &#160; &#160;linkLast函数的函数会接收都我们的参数。然后这个位置就是添加在集合的最尾部。那么我们先接收到原集合的最后一个值，然后作为新Node的prev传入进去构造出一个新的Node(这个Node作为最后一个，所以这个Node也就没有下一个指向的，所以next为null)，然后我们将全局最后的last设置为newNode(最新创建的Node)，然后来判断l(原本的最后一个Node)，是否为null，如果为null就说明集合原本就没有数据，所以first(第一个Node)就是我们最新创建的Node。否则，原来最后一个Node的next指向newNode的prev，这样就形成了链式结构。</p>
+<h2 id="三、addFirst函数"><a href="#三、addFirst函数" class="headerlink" title="三、addFirst函数"></a>三、addFirst函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-9064aa97b0f2f57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="addFirst"><br>&#160; &#160; &#160; &#160;addFirst函数的主要作用就是我们可以实现后添加的数据在前，换句话说可以用来实现最先添加的数据在集合的最末尾。我们通过源码可以直接看到内部直接调用了一个linkFirst方法。我们直接去看linkFirst的源码。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-6ea695520a086094.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="linkFirst"><br>&#160; &#160; &#160; &#160;linkFirst函数和linkLast函数基本是一样的，首先是保存一个局部变量来存储first(当前集合第一个元素)，然后通过传入的数据创建一个新的Node(因为是第一个所以没有prev)，然后来判断f(局部存储的原来的第一个Node是否为null)如果为null，就表示集合中没有数据。保存全局的最后一个Node为新创建的Node，然后原本的第一个Node的prev指向最新创建的Node对象即可。(换句话说，把最新的一个Node的屁股(next)一下子怼进原本第一个的脑袋(prev)，这样最新的一个是不是就在原来第一个的上面了…. = =！！！！！)</p>
+<h2 id="四、getFirst和getLast函数"><a href="#四、getFirst和getLast函数" class="headerlink" title="四、getFirst和getLast函数"></a>四、getFirst和getLast函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-33d8d40a72a8eafc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;getFirst和getLast函数仅仅就是将LinkedList中在全局保存的函数分别拿出来然后返回出来罢了，当然由于严谨性我也会进行判空处理。</p>
+<h2 id="五、removeFirst函数"><a href="#五、removeFirst函数" class="headerlink" title="五、removeFirst函数"></a>五、removeFirst函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-9f8cbfa9ef5dced3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="removeFirst"><br>&#160; &#160; &#160; &#160;removeFirst函数主要用来移除当前集合第一个元素，内部主要进行的是判空，然后调用unlinkFirst函数。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-32593a1795b7a625.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unlinkFirst"><br>&#160; &#160; &#160; &#160;unlinkFirst函数，首先会将传入进来的LinkedList的全局中存储的first(第一个Node)中的item(数据部分)和next(下一个的指向)给置为null，然后将全局的的first(第一个Node)更换为next(原本第一个Node的下一个指向)，然后判断next是否为null，如果为null说明没有下一个，那么last(最后一个Node)置为null，如果不为null，那么就将next的prev置为null，然后集合的长度减一。</p>
+<h2 id="六、removeLast函数"><a href="#六、removeLast函数" class="headerlink" title="六、removeLast函数"></a>六、removeLast函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-cb6efc18a8a4ef9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/5462731-f9f84c26be9dd9cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;removeLast函数函数是将当前最后一个元素移除掉，这里跟removeFirst函数基本是一样的。自己领悟吧~~~</p>
+<h2 id="七、remove函数"><a href="#七、remove函数" class="headerlink" title="七、remove函数"></a>七、remove函数</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-0bc26822ff7d7e8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;checkElementIndex函数就是判断了传入的index是否大于等于0并且小于集合的长度。如果不满足抛出IndexOutOfBoundsException异常。然后我们来看一下unlink方法。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-8e9d236c741a3a64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 
       
 
@@ -314,7 +319,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/22/Java集合之ArrayList/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/23/Java集合之LinkedList/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -328,18 +333,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/23/Java集合之LinkedList/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java集合之LinkedList
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/21/Java集合(Collection和Map)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java集合(Collection和Map)</div>
+    <a href="/2018/07/22/Java集合之ArrayList/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java集合之ArrayList</div>
       <i class="icon-circle-right"></i>
     </a>
   
