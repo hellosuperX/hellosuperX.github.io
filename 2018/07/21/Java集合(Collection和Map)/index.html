@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-9683ca70afaa4ec8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-2992f89ddea8c833.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-eda37f2c6ea1de4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-23T13:20:38.161Z">
+<meta property="og:updated_time" content="2018-07-24T09:32:53.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java集合(Collection和Map)">
 <meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;本文开始对Java中常用的集合以及不同集合之间的关系，使用场景，以及基本的api做一个简要的概述。接下去的文章，也会对不同的集合做简要的讲解。">
@@ -215,7 +215,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#160; &#160; &#160; &#160;本文开始对Java中常用的集合以及不同集合之间的关系，使用场景，以及基本的api做一个简要的概述。接下去的文章，也会对不同的集合做简要的讲解。<br><a id="more"></a></p>
-<h2 id="一、Java集合的分类"><a href="#一、Java集合的分类" class="headerlink" title="一、Java集合的分类"></a>一、Java集合的分类</h2><ul>
+<h2 id="Java集合的分类"><a href="#Java集合的分类" class="headerlink" title="Java集合的分类"></a>Java集合的分类</h2><ul>
 <li><p>Set(代表无序，不可重复的集合)</p>
 </li>
 <li><p>List(代表有序，重复的集合)</p>
@@ -225,9 +225,9 @@
 <li><p>Map(代表一种队列集合的实现)</p>
 </li>
 </ul>
-<h2 id="二、Java集合和数组的区别"><a href="#二、Java集合和数组的区别" class="headerlink" title="二、Java集合和数组的区别"></a>二、Java集合和数组的区别</h2><p>&#160; &#160; &#160; &#160;1.数组长度在初始化时指定，意味着只能保存定长的数据。而集合可以保存数量不确定的数据。同时可以保存具有映射关系的数据(键值对key-value)</p>
+<h2 id="Java集合和数组的区别"><a href="#Java集合和数组的区别" class="headerlink" title="Java集合和数组的区别"></a>Java集合和数组的区别</h2><p>&#160; &#160; &#160; &#160;1.数组长度在初始化时指定，意味着只能保存定长的数据。而集合可以保存数量不确定的数据。同时可以保存具有映射关系的数据(键值对key-value)</p>
 <p>&#160; &#160; &#160; &#160;2.数组元素即可以是基本类型的值，也可以是对象。集合里只能保存对象(实际上只是保存对象的引用变量)，基本数据类型的变量要转换成对应的包装类才能放入集合类中。</p>
-<h2 id="三、Java集合类之间的继承关系"><a href="#三、Java集合类之间的继承关系" class="headerlink" title="三、Java集合类之间的继承关系"></a>三、Java集合类之间的继承关系</h2><p>Java的集合类主要由两个接口派生出来：Collection和Map，这两个类是Java集合框架的根接口。</p>
+<h2 id="Java集合类之间的继承关系"><a href="#Java集合类之间的继承关系" class="headerlink" title="Java集合类之间的继承关系"></a>Java集合类之间的继承关系</h2><p>Java的集合类主要由两个接口派生出来：Collection和Map，这两个类是Java集合框架的根接口。</p>
 <h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><p><img src="https://upload-images.jianshu.io/upload_images/5462731-b017ce0c4646d8f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Collection类派生"></p>
 <h4 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h4><p>&#160; &#160; &#160; &#160;Collection接口是Set，Queue，List的父接口。Collection接口中定义了多种方法可供其子类进行实现，比如图中的ArrayList，HashSet，LinkedList，TreeSet是我们经常会用到的已经实现好的子类，并且提供了很多常用的方法：添加元素，删除元素，返回Collection集合的个数以及清空集合等等。其中常用的接口方法如下：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5462731-4920c918cbca6790.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="接口方法"></p>
