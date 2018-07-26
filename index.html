@@ -206,6 +206,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p>&#160; &#160; &#160; &#160;上篇文章了解了HashMap。HashMap是一种非常常见、非常有用的集合，但在多线程情况下使用不当会有线程安全问题。<br>&#160; &#160; &#160; &#160;大多数情况下，只要不涉及线程安全问题，Map基本都可以使用HashMap，不过HashMap有一个问题，就是迭代HashMap的顺序并不是HashMap放置的顺序，也就是无序，HashMap的这一缺点往往会带来不便，因为很多情况下我们需要的是一个有序的Map。<br>&#160; &#160; &#160; &#160;这个时候，LinkedHashMap就派上用场了，它虽然增加了时间和空间上的开销，但是通过维护一个运行于所有条目的双向链表，LinkedHashMap保证了元素迭代的顺序。该迭代顺序默认是插入节点的顺序，也可以在构造时传入accessOrder参数，使得其遍历顺序按照访问的顺序输出。<br>
+        
+          <a class="article-more-a" href="/2018/07/25/Java集合之LinkedHashMap/#more">more >></a>
         
       
 
@@ -214,6 +217,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -268,7 +282,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。<br>
+        <p>&#160; &#160; &#160; &#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。<br>
         
           <a class="article-more-a" href="/2018/07/25/Java集合之TreeMap/#more">more >></a>
         

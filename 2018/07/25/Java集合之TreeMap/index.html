@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java集合之TreeMap | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java集合之TreeMap">
 <meta property="og:url" content="http://yoursite.com/2018/07/25/Java集合之TreeMap/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-e5ad0723a01e9018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-8de91aa80b211355.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-cd733d3973251277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-6fe9a0de2df2e4a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-25T08:08:17.826Z">
+<meta property="og:updated_time" content="2018-07-25T08:14:49.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java集合之TreeMap">
-<meta name="twitter:description" content="之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-e5ad0723a01e9018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
@@ -214,7 +214,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。<br><a id="more"></a></p>
+        <p>&#160; &#160; &#160; &#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。<br><a id="more"></a></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&#160; &#160; &#160; &#160;我们先创建一个TreeMap，然后看一下它内部的结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">TreeMap&lt;Integer, String&gt; map = new TreeMap&lt;&gt;();</span><br><span class="line">map.put(1, &quot;语文&quot;);</span><br><span class="line">map.put(2, &quot;英语&quot;);</span><br><span class="line">map.put(3, &quot;数学&quot;);</span><br><span class="line">map.put(4, &quot;政治&quot;);</span><br><span class="line">map.put(5, &quot;历史&quot;);</span><br><span class="line">map.put(6, &quot;地理&quot;);</span><br><span class="line">map.put(7, &quot;生物&quot;);</span><br><span class="line">map.put(8, &quot;化学&quot;);</span><br><span class="line"></span><br><span class="line">//遍历数据</span><br><span class="line">for (Map.Entry&lt;Integer, String&gt; entry : map.entrySet()) &#123;</span><br><span class="line">	System.out.println(entry.getKey() + &quot;: &quot; + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其大致结构如下：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-e5ad0723a01e9018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;使用红黑树的好处是能够使得树具有不错的平衡性，这样操作的速度就可以达到log(n)的水平了。其他的参考数据结构的部分的文章吧。。。</p>
 <h2 id="put函数"><a href="#put函数" class="headerlink" title="put函数"></a>put函数</h2><p>&#160; &#160; &#160; &#160;TreeMap集合中，最主要的过程就是如果存在的话，oldValue被替换掉；如果不存在的话，则新添一个节点，然后对红黑树做平衡操作。了解红黑树之前，我们先看一下TreeMap存储元素的基本单位TreeMapEntry的内部属性。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-8de91aa80b211355.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;可以看出TreeMapEntry的几个主要属性，k值，value值，然后就是左边，右边，父亲，从这里很轻易的可以看出这是一个树结构了，然后还有一个默认的为黑色的color，那么这样就可以确定TreeMap是基于红黑树实现的了。接下来我们大概了解一下红黑树的特点：<br>&#160; &#160; &#160; &#160;<strong>1.树的节点只有红与黑两种颜色</strong><br>&#160; &#160; &#160; &#160;<strong>2.根节点为黑色的</strong><br>&#160; &#160; &#160; &#160;<strong>3.叶子节点为黑色的</strong><br>&#160; &#160; &#160; &#160;<strong>4.红色节点的子节点必定是黑色的</strong><br>&#160; &#160; &#160; &#160;<strong>5.从任意一节点出发，到其后继的叶子节点的路径中，黑色节点的数目相同</strong></p>
