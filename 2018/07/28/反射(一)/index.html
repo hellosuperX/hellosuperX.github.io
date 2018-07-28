@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/7 | 李鑫的博客</title>
+  <title>反射(一) | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/07/index.html">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类中的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；对这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反射(一)">
+<meta property="og:url" content="http://yoursite.com/2018/07/28/反射(一)/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类中的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；对这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-28T11:44:36.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="反射(一)">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类中的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；对这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -184,36 +189,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-反射(一)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      反射(一)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/28/反射(一)/" class="archive-article-date">
+
+        
+        <a href="/2018/07/28/反射(一)/" class="archive-article-date">
   	<time datetime="2018-07-28T05:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/28/反射(一)/">反射(一)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#160; &#160; &#160; &#160;Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类中的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；对这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。<br><a id="more"></a></p>
+<h2 id="Java反射机制的功能"><a href="#Java反射机制的功能" class="headerlink" title="Java反射机制的功能"></a>Java反射机制的功能</h2><p>&#160; &#160; &#160; &#160;1.在运行时判断任意一个对象所属的类<br>&#160; &#160; &#160; &#160;2.在运行时构造任意一个类的对象<br>&#160; &#160; &#160; &#160;3.在运行时判断任意一个类所具有的成员变量和方法<br>&#160; &#160; &#160; &#160;4.在运行时调用任意一个对象的方法<br>&#160; &#160; &#160; &#160;5.生成动态代理</p>
+<h2 id="Java反射机制的应用场景"><a href="#Java反射机制的应用场景" class="headerlink" title="Java反射机制的应用场景"></a>Java反射机制的应用场景</h2><p>&#160; &#160; &#160; &#160;1.逆向代码，例如反编译<br>&#160; &#160; &#160; &#160;2.与注解相结合的框架(例如Retrofit)<br>&#160; &#160; &#160; &#160;3.单纯的反射机制应用框架(例如EventBus)<br>&#160; &#160; &#160; &#160;4.动态生成类框架(例如Gson)</p>
+<h2 id="通过Java反射查看类信息"><a href="#通过Java反射查看类信息" class="headerlink" title="通过Java反射查看类信息"></a>通过Java反射查看类信息</h2><p>&#160; &#160; &#160; &#160;获得Class对象，每个类被加载之后，系统就会为该类生成一个对应的Class对象。通过该Class对象就可以访问到JVM中的这个类。在Java程序中获得Class对象通常有如下三种方式：<br>1.使用Class类的forName(String clazzName)静态方法。该方法需要传入字符串参数，该字符串参数的值是某个类的全限定名(必须添加完整包名)。<br>2.调用某个类的class属性来获取该类对应的Class对象。<br>3.调用某个对象的getClass()方法。该方法是java.lang.Object类中的一个方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//第一种方式，通过Class类的静态方法---forName()来实现</span><br><span class="line">Class&lt;?&gt; aClass = Class.forName(&quot;li.com.javaproject.Person&quot;);</span><br><span class="line"></span><br><span class="line">//第二种方式，通过类的class属性</span><br><span class="line">Class&lt;Person&gt; personClass = Person.class;</span><br><span class="line"></span><br><span class="line">//第三种方式，通过对象getClass方法</span><br><span class="line">Person person = new Person();</span><br><span class="line">Class&lt;? extends Person&gt; aClass1 = person.getClass();</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-获取class对象的成员变量"><a href="#1-获取class对象的成员变量" class="headerlink" title="1.获取class对象的成员变量"></a>1.获取class对象的成员变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> //获取class对象的所有属性</span><br><span class="line">Field[] declaredFields = aClass.getDeclaredFields();</span><br><span class="line"></span><br><span class="line">//获取class对象的public属性</span><br><span class="line">Field[] fields = aClass.getFields();</span><br><span class="line"></span><br><span class="line">//获取class指定属性</span><br><span class="line">Field age = aClass.getDeclaredField(&quot;age&quot;);</span><br><span class="line"></span><br><span class="line">//获取class指定的public属性</span><br><span class="line">Field sign = aClass.getField(&quot;sign&quot;);</span><br></pre></td></tr></table></figure>
+<h4 id="2-获取class对象的方法"><a href="#2-获取class对象的方法" class="headerlink" title="2.获取class对象的方法"></a>2.获取class对象的方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//获取class对象的所有声明方法</span><br><span class="line">Method[] declaredMethods = aClass.getDeclaredMethods();</span><br><span class="line"></span><br><span class="line">//获取class对象的所有public方法，包括父类的方法</span><br><span class="line">Method[] methods = aClass.getMethods();</span><br><span class="line"></span><br><span class="line">//返回Class对象对应类的、带指定形参列表的public</span><br><span class="line">Method getSign = aClass.getMethod(&quot;age&quot;, String.class);</span><br><span class="line"></span><br><span class="line">//返回Class对象对应类的、带指定形参列表的方法</span><br><span class="line">Method getSign1 = aClass.getDeclaredMethod(&quot;age&quot;, String.class);</span><br></pre></td></tr></table></figure>
+<h4 id="3-获取class对象的构造函数"><a href="#3-获取class对象的构造函数" class="headerlink" title="3.获取class对象的构造函数"></a>3.获取class对象的构造函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//获取class对象的所有声明构造函数</span><br><span class="line">Constructor&lt;?&gt;[] declaredConstructors = aClass.getDeclaredConstructors();</span><br><span class="line"></span><br><span class="line">//获取class对象public构造函数</span><br><span class="line">Constructor&lt;?&gt;[] constructors = aClass.getConstructors();</span><br><span class="line">            </span><br><span class="line">//获取指定声明构造函数</span><br><span class="line">Constructor&lt;?&gt; declaredConstructor = aClass.getDeclaredConstructor(String.class);</span><br><span class="line"></span><br><span class="line">//获取指定声明的public构造函数</span><br><span class="line">Constructor&lt;?&gt; constructor = aClass.getConstructor(String.class);</span><br></pre></td></tr></table></figure>
+<h4 id="4-其他方法"><a href="#4-其他方法" class="headerlink" title="4.其他方法"></a>4.其他方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//获取class对象的所有注解</span><br><span class="line">Annotation[] annotations = aClass.getAnnotations();</span><br><span class="line"></span><br><span class="line">//获取class对象指定注解</span><br><span class="line">Deprecated annotation = aClass.getAnnotation(Deprecated.class);</span><br><span class="line"></span><br><span class="line">//获取class对象的直接超类的Type</span><br><span class="line">Type genericSuperclass = aClass.getGenericSuperclass();</span><br><span class="line"></span><br><span class="line">//获取class对象的所有接口的type集合</span><br><span class="line">Type[] genericInterfaces = aClass.getGenericInterfaces();</span><br></pre></td></tr></table></figure>
+<h4 id="5-获取class对象的信息"><a href="#5-获取class对象的信息" class="headerlink" title="5.获取class对象的信息"></a>5.获取class对象的信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//判断是否是基础类型</span><br><span class="line">boolean primitive = aClass.isPrimitive();</span><br><span class="line"></span><br><span class="line">//判断是否是集合类</span><br><span class="line">boolean array = aClass.isArray();</span><br><span class="line"></span><br><span class="line">//判断是否是注解类</span><br><span class="line">boolean annotation1 = aClass.isAnnotation();</span><br><span class="line"></span><br><span class="line">//判断是否是接口类</span><br><span class="line">boolean anInterface = aClass.isInterface();</span><br><span class="line"></span><br><span class="line">//判断是否是枚举类</span><br><span class="line">boolean anEnum = aClass.isEnum();</span><br><span class="line"></span><br><span class="line">//判断是否是匿名内部类</span><br><span class="line">boolean anonymousClass = aClass.isAnonymousClass();</span><br><span class="line"></span><br><span class="line">//判断是否被某个注解类修饰</span><br><span class="line">boolean annotationPresent = aClass.isAnnotationPresent(Deprecated.class);</span><br><span class="line"></span><br><span class="line">//获取class名字，包含包名路径</span><br><span class="line">String name = aClass.getName();</span><br><span class="line"></span><br><span class="line">//获取class的包信息</span><br><span class="line">Package aPackage = aClass.getPackage();</span><br><span class="line"></span><br><span class="line">//获取class类名</span><br><span class="line">String simpleName = aClass.getSimpleName();</span><br><span class="line"></span><br><span class="line">//获取class访问权限</span><br><span class="line">int modifiers = aClass.getModifiers();</span><br><span class="line"></span><br><span class="line">//内部类</span><br><span class="line">Class&lt;?&gt;[] declaredClasses = aClass.getDeclaredClasses();</span><br><span class="line"></span><br><span class="line">//外部类</span><br><span class="line">Class&lt;?&gt; declaringClass = aClass.getDeclaringClass();</span><br></pre></td></tr></table></figure>
+<h2 id="通过Java反射生成并操作对象"><a href="#通过Java反射生成并操作对象" class="headerlink" title="通过Java反射生成并操作对象"></a>通过Java反射生成并操作对象</h2><p><strong>生成类的实例对象</strong><br>1.通过Class对象的newInstance()方法来创建该Class对象对应类的实例。这种方式要求该Class对象的对应类有默认构造器，而执行newInstance()方法时实际上是利用默认构造器来创建该类的实例。<br>2.先使用Class对象获取指定的Constructor对象，再调用Constructor对象的newInstance()方法来创建该Class对象对应类的实例。通过这种方式可以选择使用指定的构造器来创建实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> //第一种方式，Class对象调用newInstance()方法生成</span><br><span class="line">Object o = aClass.newInstance();</span><br><span class="line"></span><br><span class="line">//第二种方式，对象获得对应的Constructor对象，再通过该Constructor对象的newInstance()方法生成</span><br><span class="line">Constructor&lt;?&gt; declaredConstructor1 = aClass.getDeclaredConstructor(String.class);//获取指定声明构造函数</span><br><span class="line">Object hello = declaredConstructor1.newInstance(&quot;hello&quot;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>调用类的方法</strong><br>1.通过Class对象的getMethods()方法或者getMethod()方法获得指定方法，返回Method数组或对象。<br>2.调用Method对象中的Obejct invoke(Object obj,Object… args)方法。第一个参数对应调用该方法的实例对象，第二个参数对应该方法的参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//生成新的对象：用newInstance()方法</span><br><span class="line">Obejct obj = aClass.newInstance();</span><br><span class="line">//首先需要获得与该方法对应的Method对象</span><br><span class="line">Method method = aClass.getDeclaredMethod(&quot;setAge&quot;,int.class);</span><br><span class="line">//调用指定的函数并传递参数</span><br><span class="line">method.invoke(obj,28);</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;当通过Method的invoke()方法来调用对应的方法时，Java会要求程序必须有调用该方法的权限。如果程序确实需要调用某个对象的private方法，则可以先调用Method对象的setAccessible(boolean flag)：将Method对象的acessible设置为指定的布尔值。值为true，指示该Method在使用时应该取消Java语言的访问权限检查；值为false，则只是该Method在使用时要实施Java语言的访问权限检查。</p>
+<p><strong>访问成员变量值</strong><br>1.通过Class对象的getFields()方法或者getField()方法获得指定方法，返回Field数组或对象。<br>2.Field提供了两组方法来读取或设置成员变量的值：getXXX(Object obj)：获取obj对象的该成员变量的值。此处的XXX对应8种基本类型。如果该成员变量的类型是引用类型，则取消get后面的XXX。setXXX(Object obj,XXX val)：将obj对象的该成员变量设置成val值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//生成新的对象：用newInstance()方法</span><br><span class="line">Object obj = aClass.newInstance();</span><br><span class="line">//获取age成员变量</span><br><span class="line">Field field = aClass.getField(&quot;age&quot;);</span><br><span class="line">//将obj对象的age的值设置为10</span><br><span class="line">field.setInt(obj,10);</span><br><span class="line">//获取obj对象的age的值</span><br><span class="line">field.getInt(obj);</span><br></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -225,285 +262,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/28/反射(一)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/26/泛型/" class="archive-article-date">
-  	<time datetime="2018-07-26T07:33:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/26/泛型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">泛型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/泛型/">泛型</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/25/Java集合之LinkedHashMap/" class="archive-article-date">
-  	<time datetime="2018-07-25T08:08:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/25/Java集合之LinkedHashMap/">Java集合之LinkedHashMap</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/25/Java集合之TreeMap/" class="archive-article-date">
-  	<time datetime="2018-07-25T01:38:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/25/Java集合之TreeMap/">Java集合之TreeMap</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/24/Java集合之HashMap/" class="archive-article-date">
-  	<time datetime="2018-07-24T02:06:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/24/Java集合之HashMap/">Java集合之HashMap</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/23/Java集合之LinkedList/" class="archive-article-date">
-  	<time datetime="2018-07-23T03:13:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/23/Java集合之LinkedList/">Java集合之LinkedList</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/22/Java集合之ArrayList/" class="archive-article-date">
-  	<time datetime="2018-07-22T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/22/Java集合之ArrayList/">Java集合之ArrayList</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/21/Java集合(Collection和Map)/" class="archive-article-date">
-  	<time datetime="2018-07-21T03:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/21/Java集合(Collection和Map)/">Java集合(Collection和Map)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -526,8 +384,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
