@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Kotlin学习笔记(9) | 李鑫的博客</title>
+  <title>Kotlin学习笔记(9)循环控制 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 与 Java 一样循环控制主要依赖for循环、while循环、do…while循环。">
 <meta name="keywords" content="Kotlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin学习笔记(9)">
-<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(9)/index.html">
+<meta property="og:title" content="Kotlin学习笔记(9)循环控制">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(9)循环控制/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 与 Java 一样循环控制主要依赖for循环、while循环、do…while循环。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-31T12:16:24.149Z">
+<meta property="og:updated_time" content="2018-08-01T09:18:14.801Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin学习笔记(9)">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+<meta name="twitter:title" content="Kotlin学习笔记(9)循环控制">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 与 Java 一样循环控制主要依赖for循环、while循环、do…while循环。">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -171,19 +171,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Kotlin学习笔记(9)" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Kotlin学习笔记(9)循环控制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Kotlin学习笔记(9)
+      Kotlin学习笔记(9)循环控制
     </h1>
   
 
         
-        <a href="/2018/07/31/Kotlin学习笔记(9)/" class="archive-article-date">
+        <a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" class="archive-article-date">
   	<time datetime="2018-07-31T12:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
 </a>
         
@@ -191,7 +191,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。<br><a id="more"></a></p>
+        <p>&#160; &#160; &#160; &#160;Kotlin 与 Java 一样循环控制主要依赖for循环、while循环、do…while循环。<br><a id="more"></a></p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>for 循环可以对任何提供迭代器（iterator）的对象进行遍历，语法如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for (item in collection) print(item)</span><br></pre></td></tr></table></figure></p>
+<p>循环体可以是一个代码块:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (item: Int in ints) &#123;</span><br><span class="line">    // ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上所述，for 可以循环遍历任何提供了迭代器的对象。如果你想要通过索引遍历一个数组或者一个 list，你可以这么做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (i in array.indices) &#123;</span><br><span class="line">    print(array[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意这种”在区间上遍历”会编译成优化的实现而不会创建额外对象。或者你可以用库函数 withIndex：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for ((index, value) in array.withIndex()) &#123;</span><br><span class="line">    println(&quot;the element at $index is $value&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面我们通过对集合进行迭代的实例来看一下for循环：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	val items = listOf(&quot;apple&quot;, &quot;banana&quot;, &quot;kiwi&quot;)</span><br><span class="line">	for (item in items) &#123;</span><br><span class="line">		println(item)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	for (index in items.indices) &#123;</span><br><span class="line">		println(&quot;item at $index is $&#123;items[index]&#125;&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">kiwi</span><br><span class="line">item at 0 is apple</span><br><span class="line">item at 1 is banana</span><br><span class="line">item at 2 is kiwi</span><br></pre></td></tr></table></figure></p>
+<h2 id="while-与-do…while-循环"><a href="#while-与-do…while-循环" class="headerlink" title="while 与 do…while 循环"></a>while 与 do…while 循环</h2><p>1.while是最基本的循环，它的结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while( 布尔表达式 ) &#123;</span><br><span class="line">  //循环内容</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.do…while 循环 对于 while 语句而言，如果不满足条件，则不能进入循环。但有时候我们需要即使不满足条件，也至少执行一次。do…while 循环和 while 循环相似，不同的是，do…while 循环至少会执行一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">	//代码语句</span><br><span class="line">	...</span><br><span class="line">&#125;while(布尔表达式);</span><br><span class="line"></span><br><span class="line">do &#123; </span><br><span class="line">	//代码语句</span><br><span class="line">	...</span><br><span class="line">&#125;while(布尔表达式);</span><br></pre></td></tr></table></figure></p>
+<p>3.我们以一个实例来具体看一下 while 与 do…while 循环：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	println(&quot;----while 使用-----&quot;)</span><br><span class="line">	var x = 5</span><br><span class="line">	while (x &gt; 0) &#123;</span><br><span class="line">		println( x--)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	println(&quot;----do...while 使用-----&quot;)</span><br><span class="line">	var y = 5</span><br><span class="line">	do &#123;</span><br><span class="line">		println(y--)</span><br><span class="line">	&#125; while(y&gt;0)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">----while 使用-----</span><br><span class="line">5</span><br><span class="line">4</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">----do...while 使用-----</span><br><span class="line">5</span><br><span class="line">4</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<h2 id="返回和跳转"><a href="#返回和跳转" class="headerlink" title="返回和跳转"></a>返回和跳转</h2><p>Kotlin 有三种结构化跳转表达式：<br>&#160; &#160; &#160; &#160;1.return。默认从最直接包围它的函数或者匿名函数返回。<br>&#160; &#160; &#160; &#160;2.break。终止最直接包围它的循环。<br>&#160; &#160; &#160; &#160;3.continue。继续下一次最直接包围它的循环。<br>在循环中 Kotlin 支持传统的 break 和 continue 操作符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    for (i in 1..10) &#123;</span><br><span class="line">        if (i==3) continue  // i 为 3 时跳过当前循环，继续下一次循环</span><br><span class="line">        println(i)</span><br><span class="line">        if (i&gt;5) break   // i 为 6 时 跳出循环</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></table></figure></p>
+<h2 id="Break-和-Continue-标签"><a href="#Break-和-Continue-标签" class="headerlink" title="Break 和 Continue 标签"></a>Break 和 Continue 标签</h2><p>在 Kotlin 中任何表达式都可以用标签（label）来标记。 标签的格式为标识符后跟 @ 符号，例如：abc@、fooBar@都是有效的标签。 要为一个表达式加标签，我们只要在其前加标签即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loop@ for (i in 1..100) &#123;</span><br><span class="line">    // ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在，我们可以用标签限制 break 或者continue：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loop@ for (i in 1..100) &#123;</span><br><span class="line">    for (j in 1..100) &#123;</span><br><span class="line">        if (……) break@loop</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>标签限制的 break 跳转到刚好位于该标签指定的循环后面的执行点。continue 继续标签指定的循环的下一次迭代。</p>
+<h2 id="标签处返回"><a href="#标签处返回" class="headerlink" title="标签处返回"></a>标签处返回</h2><p>Kotlin 有函数字面量、局部函数和对象表达式。因此 Kotlin 的函数可以被嵌套。 标签限制的 return 允许我们从外层函数返回。 最重要的一个用途就是从 lambda 表达式中返回。回想一下我们这么写的时候：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fun foo() &#123;</span><br><span class="line">	val ints = arrayListOf(1, 0, 2, 4)</span><br><span class="line">	ints.forEach &#123;</span><br><span class="line">		if (it == 0) return</span><br><span class="line">		print(it)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<p>这个 return 表达式从最直接包围它的函数即 foo 中返回。 （注意，这种非局部的返回只支持传给内联函数的 lambda 表达式。） 如果我们需要从 lambda 表达式中返回，我们必须给它加标签并用以限制 return。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//从结果看，简单的分析就是不跳出循环，只是跳转到标记点然后继续执行循环</span><br><span class="line">fun foo() &#123;</span><br><span class="line">	val ints = arrayListOf(1, 0, 2, 4)</span><br><span class="line">	ints.forEach lit@ &#123;</span><br><span class="line">		if (it == 0) return@lit</span><br><span class="line">		print(it)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>现在，它只会从 lambda 表达式中返回。通常情况下使用隐式标签更方便。 该标签与接受该 lambda 的函数同名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fun foo() &#123;</span><br><span class="line">	ints.forEach &#123;</span><br><span class="line">		if (it == 0) return@forEach</span><br><span class="line">		print(it)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>或者，我们用一个匿名函数替代 lambda 表达式。匿名函数内部的 return 语句将从该匿名函数自身返回<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fun foo() &#123;</span><br><span class="line">	ints.forEach(fun(value: Int) &#123;</span><br><span class="line">		if (value == 0) return</span><br><span class="line">		print(value)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>当要返一个回值的时候，解析器优先选用标签限制的 return，即<br>return@a 1 。意为”从标签 @a 返回 1”，而不是”返回一个标签标注的表达式 (@a 1)”。</p>
 
       
 
@@ -282,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(9)/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(9)循环控制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +313,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/31/Kotlin学习笔记(10)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Kotlin学习笔记(10)
+          Kotlin学习笔记(10)类和对象
         
       </div>
     </a>
   
   
-    <a href="/2018/07/31/Kotlin学习笔记(8)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Kotlin学习笔记(8)</div>
+    <a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kotlin学习笔记(8)条件控制</div>
       <i class="icon-circle-right"></i>
     </a>
   

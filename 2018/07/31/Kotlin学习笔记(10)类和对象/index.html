@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Kotlin学习笔记(10) | 李鑫的博客</title>
+  <title>Kotlin学习笔记(10)类和对象 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 类可以包含：构造函数和初始化代码块、方法(或者说成员函数，类范围内的函数)、属性(或者说成员变量，类范围内的变量)、内部类、对象声明，Kotlin 中使用关键字 class 声明类。">
 <meta name="keywords" content="Kotlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin学习笔记(10)">
-<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(10)/index.html">
+<meta property="og:title" content="Kotlin学习笔记(10)类和对象">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(10)类和对象/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 类可以包含：构造函数和初始化代码块、方法(或者说成员函数，类范围内的函数)、属性(或者说成员变量，类范围内的变量)、内部类、对象声明，Kotlin 中使用关键字 class 声明类。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-31T12:16:28.310Z">
+<meta property="og:updated_time" content="2018-08-01T12:17:33.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin学习笔记(10)">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+<meta name="twitter:title" content="Kotlin学习笔记(10)类和对象">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 类可以包含：构造函数和初始化代码块、方法(或者说成员函数，类范围内的函数)、属性(或者说成员变量，类范围内的变量)、内部类、对象声明，Kotlin 中使用关键字 class 声明类。">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -171,19 +171,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Kotlin学习笔记(10)" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Kotlin学习笔记(10)类和对象" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Kotlin学习笔记(10)
+      Kotlin学习笔记(10)类和对象
     </h1>
   
 
         
-        <a href="/2018/07/31/Kotlin学习笔记(10)/" class="archive-article-date">
+        <a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" class="archive-article-date">
   	<time datetime="2018-07-31T12:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
 </a>
         
@@ -191,7 +191,132 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。<br><a id="more"></a></p>
+        <p>&#160; &#160; &#160; &#160;Kotlin 类可以包含：构造函数和初始化代码块、方法(或者说成员函数，类范围内的函数)、属性(或者说成员变量，类范围内的变量)、内部类、对象声明，Kotlin 中使用关键字 class 声明类。<br><a id="more"></a></p>
+<h2 id="类的简单声明"><a href="#类的简单声明" class="headerlink" title="类的简单声明"></a>类的简单声明</h2><p>Kotlin 中使用关键字 class 声明类，后面紧跟类名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Runoob &#123;  //类名为 Runoob</span><br><span class="line">	// 大括号内是类体构成</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们也可以定义一个空类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Empty</span><br></pre></td></tr></table></figure></p>
+<p>可以在类中定义成员函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Runoob() &#123;</span><br><span class="line">	fun foo() &#123; print(&quot;Foo&quot;) &#125; // 成员函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="类的属性"><a href="#类的属性" class="headerlink" title="类的属性"></a>类的属性</h2><h4 id="1-属性定义"><a href="#1-属性定义" class="headerlink" title="1.属性定义"></a>1.属性定义</h4><p>类的属性可以用关键字 var 声明为可变的，也可以使用只读关键字 val 声明为不可变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Runoob &#123;</span><br><span class="line">    var name: String = ……</span><br><span class="line">    var url: String = ……</span><br><span class="line">    var city: String = ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以像使用普通函数那样使用构造函数创建类实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val site = Runoob() // Kotlin 中没有 new 关键字</span><br></pre></td></tr></table></figure></p>
+<p>要使用一个属性，只要用名称引用它即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">site.name           // 使用 . 号来引用</span><br><span class="line">site.url</span><br></pre></td></tr></table></figure></p>
+<p>Koltin 中的类可以有一个 主构造器，以及一个或多个次构造器，主构造器是类头部的一部分，位于类名称之后:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Person constructor(firstName: String) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果主构造器没有任何注解，也没有任何可见度修饰符，那么constructor关键字可以省略。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Person(firstName: String) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在属性初始化的时候，我们应该注意以下几点：<br>&#160; &#160; &#160; &#160;1.属性的初始化尽量在构造方法中完成。<br>&#160; &#160; &#160; &#160;2.无法在构造方法中初始化，尝试降级为局部变量。<br>&#160; &#160; &#160; &#160;3.var用lateinit延迟初始化，val用lazy。<br>&#160; &#160; &#160; &#160;4.可空类型谨慎用null直接初始化。</p>
+<h4 id="2-getter-和-setter"><a href="#2-getter-和-setter" class="headerlink" title="2.getter 和 setter"></a>2.getter 和 setter</h4><p>属性声明的完整语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var &lt;propertyName&gt;[: &lt;PropertyType&gt;] [= &lt;property_initializer&gt;]</span><br><span class="line">    [&lt;getter&gt;]</span><br><span class="line">    [&lt;setter&gt;]</span><br></pre></td></tr></table></figure></p>
+<p>getter 和 setter 都是可选的，如果属性类型可以从初始化语句或者类的成员函数中推断出来，那就可以省去类型，val不允许设置setter函数，因为它是只读的。我们从下面的几个例子分析一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var allByDefault: Int? // 错误: 需要一个初始化语句, 默认实现了 getter 和 setter 方法</span><br><span class="line"></span><br><span class="line">var initialized = 1    // 类型为 Int, 默认实现了 getter 和 setter</span><br><span class="line"></span><br><span class="line">val simple: Int?       // 类型为 Int ，默认实现 getter ，但必须在构造函数中初始化</span><br><span class="line"></span><br><span class="line">val inferredType = 1   // 类型为 Int 类型,默认实现 getter</span><br></pre></td></tr></table></figure></p>
+<p><strong>实例</strong><br>以下实例定义了一个 Person 类，包含两个可变变量 lastName 和 no，lastName 修改了 getter 方法，no 修改了 setter 方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">	var lastName: String = &quot;zhang&quot;</span><br><span class="line">	get() = field.toUpperCase()   // 将变量赋值后转换为大写</span><br><span class="line">	set</span><br><span class="line"></span><br><span class="line">	var no: Int = 100</span><br><span class="line">		get() = field  // 后端变量</span><br><span class="line">		set(value) &#123;</span><br><span class="line">			if (value &lt; 10) &#123;  // 如果传入的值小于 10 返回该值</span><br><span class="line">				field = value</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				field = -1  // 如果传入的值大于等于 10 返回 -1</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	var heiht: Float = 145.4f</span><br><span class="line">		private set</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	var person: Person = Person()</span><br><span class="line"></span><br><span class="line">	person.lastName = &quot;wang&quot;</span><br><span class="line">	println(&quot;lastName:$&#123;person.lastName&#125;&quot;)</span><br><span class="line"></span><br><span class="line">	person.no = 9</span><br><span class="line">	println(&quot;no:$&#123;person.no&#125;&quot;)</span><br><span class="line"></span><br><span class="line">	person.no = 20</span><br><span class="line">	println(&quot;no:$&#123;person.no&#125;&quot;)</span><br><span class="line">&#125;</span><br><span class="line">输出结果为：</span><br><span class="line">lastName:WANG</span><br><span class="line">no:9</span><br><span class="line">no:-1</span><br></pre></td></tr></table></figure></p>
+<p>Kotlin 中类不能有字段。提供了 Backing Fields(后端变量) 机制,备用字段使用field关键字声明,field 关键词只能用于属性的访问器，如以上实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var no: Int = 100</span><br><span class="line">	get() = field  // 后端变量</span><br><span class="line">	set(value) &#123;</span><br><span class="line">		if (value &lt; 10) &#123;  // 如果传入的值小于 10 返回该值</span><br><span class="line">			field = value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			field = -1  // 如果传入的值大于等于 10 返回 -1</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>非空属性必须在定义的时候初始化,kotlin提供了一种可以延迟初始化的方案,使用 lateinit 关键字描述属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class LazyProperty(val initializer: () -&gt; Int) &#123;</span><br><span class="line">	var value: Int? = null</span><br><span class="line">	val lazy: Int</span><br><span class="line">		get() &#123;</span><br><span class="line">			if (value == null) &#123;</span><br><span class="line">				value = initializer()</span><br><span class="line">			&#125;</span><br><span class="line">			return value!!</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="主构造器"><a href="#主构造器" class="headerlink" title="主构造器"></a>主构造器</h2><p>主构造器中不能包含任何代码，初始化代码可以放在初始化代码段中，初始化代码段使用 init 关键字作为前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Person constructor(firstName: String) &#123;</span><br><span class="line">    init &#123;</span><br><span class="line">        System.out.print(&quot;FirstName is $firstName&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：主构造器的参数可以在初始化代码段中使用，也可以在类主体n定义的属性初始化代码中使用。一种简洁语法，可以通过主构造器来定义属性并初始化属性值（可以是var或val）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class People(val firstName: String, val lastName: String) &#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果构造器有注解，或者有可见度修饰符，这时constructor关键字是必须的，注解和修饰符要放在它之前。<br><strong>实例：创建一个 Runoob类，并通过构造函数传入网站名：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Runoob constructor(name: String) &#123;  //类名为Runoob</span><br><span class="line">    // 大括号内是类体构成</span><br><span class="line">    var url: String = &quot;http://www.liulijing.net&quot;</span><br><span class="line">    var country: String = &quot;CN&quot;</span><br><span class="line">    var siteName = name</span><br><span class="line"></span><br><span class="line">    init &#123;</span><br><span class="line">        println(&quot;初始化网站名: $&#123;name&#125;&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fun printTest() &#123;</span><br><span class="line">        println(&quot;我是类的函数&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    val runoob =  Runoob(&quot;学习笔记&quot;)</span><br><span class="line">    println(runoob.siteName)</span><br><span class="line">    println(runoob.url)</span><br><span class="line">    println(runoob.country)</span><br><span class="line">    runoob.printTest()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果为：</span><br><span class="line">初始化网站名: 学习笔记</span><br><span class="line">学习笔记</span><br><span class="line">http://www.liulijing.net</span><br><span class="line">CN</span><br><span class="line">我是类的函数</span><br></pre></td></tr></table></figure></p>
+<h2 id="次构造函数"><a href="#次构造函数" class="headerlink" title="次构造函数"></a>次构造函数</h2><p>类也可以有二级构造函数，需要加前缀 constructor:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123; </span><br><span class="line">    constructor(parent: Person) &#123;</span><br><span class="line">        parent.children.add(this) </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果类有主构造函数，每个次构造函数都要，或直接或间接通过另一个次构造函数代理主构造函数。在同一个类中代理另一个构造函数使用 this 关键字：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Person(val name: String) &#123;</span><br><span class="line">    constructor (name: String, age:Int) : this(name) &#123;</span><br><span class="line">        // 初始化...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果一个非抽象类没有声明构造函数(主构造函数或次构造函数)，它会产生一个没有参数的构造函数。构造函数是 public 。如果你不想你的类有公共的构造函数，你就得声明一个空的主构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class DontCreateMe private constructor () &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：在 JVM 虚拟机中，如果主构造函数的所有参数都有默认值，编译器会生成一个附加的无参的构造函数，这个构造函数会直接使用默认值。这使得 Kotlin 可以更简单的使用像 Jackson 或者 JPA 这样使用无参构造函数来创建类实例的库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Customer(val customerName: String = &quot;&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>实例，同样是上面那个例子，我们看一下主构造函数和次构造函数的先后关系</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Runoob  constructor(name: String) &#123;  //类名为Runoob</span><br><span class="line">    // 大括号内是类体构成</span><br><span class="line">    var url: String = &quot;http://www.liulijing.net&quot;</span><br><span class="line">    var country: String = &quot;CN&quot;</span><br><span class="line">    var siteName = name</span><br><span class="line"></span><br><span class="line">    init &#123;</span><br><span class="line">        println(&quot;初始化网站名: $&#123;name&#125;&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 次构造函数</span><br><span class="line">    constructor (name: String, num: Int) : this(name) &#123;</span><br><span class="line">        println(&quot;有 $num 篇博文&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fun printTest() &#123;</span><br><span class="line">        println(&quot;我是类的函数&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    val runoob =  Runoob(&quot;学习笔记&quot;, 100)</span><br><span class="line">    println(runoob.siteName)</span><br><span class="line">    println(runoob.url)</span><br><span class="line">    println(runoob.country)</span><br><span class="line">    runoob.printTest()</span><br><span class="line">&#125;</span><br><span class="line">输出结果为：</span><br><span class="line">初始化网站名: 学习笔记</span><br><span class="line">有 100 篇博文</span><br><span class="line">学习笔记</span><br><span class="line">http://www.liulijing.net</span><br><span class="line">CN</span><br><span class="line">我是类的函数</span><br></pre></td></tr></table></figure></p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>抽象是面向对象编程的特征之一，类本身，或类中的部分成员，都可以声明为abstract的。抽象成员在类中不存在具体的实现。<br><strong>注意：无需对抽象类或抽象成员标注open注解。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">open class Base &#123;</span><br><span class="line">    open fun f() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Derived : Base() &#123;</span><br><span class="line">    override abstract fun f()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h2><p>我们可以把类嵌套在其他类中，看以下实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Outer &#123;  // 外部类</span><br><span class="line">	private val bar: Int = 1</span><br><span class="line">	class Nested &#123;  // 嵌套类</span><br><span class="line">		fun foo() = 2</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	// 调用格式：外部类.嵌套类.嵌套类方法/属性</span><br><span class="line">	val demo = Outer.Nested().foo()    </span><br><span class="line">	println(demo)    // == 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><p>内部类使用 inner 关键字来表示。内部类会带有一个对外部类的对象的引用，所以内部类可以访问外部类成员属性和成员函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Outer &#123;</span><br><span class="line">	private val bar: Int = 1</span><br><span class="line">	var v = &quot;成员属性&quot;</span><br><span class="line">	/**嵌套内部类**/</span><br><span class="line">	inner class Inner &#123;</span><br><span class="line">		fun foo() = bar  // 访问外部类成员</span><br><span class="line">		fun innerTest() &#123;</span><br><span class="line">			var o = this@Outer //获取外部类的成员变量</span><br><span class="line">			println(&quot;内部类可以引用外部类的成员，例如：&quot; + o.v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	val demo = Outer().Inner().foo()</span><br><span class="line">	println(demo)  // 1</span><br><span class="line">	val demo2 = Outer().Inner().innerTest()   </span><br><span class="line">	println(demo2)   // 内部类可以引用外部类的成员，例如：成员属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>为了消除歧义，要访问来自外部作用域的 this，我们使用this@label，其中 @label 是一个 代指 this 来源的标签。</p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>使用对象表达式来创建匿名内部类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Test &#123;</span><br><span class="line">	var v = &quot;成员属性&quot;</span><br><span class="line">	</span><br><span class="line">	fun setInterFace(test: TestInterFace) &#123;</span><br><span class="line">		test.test()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 定义接口</span><br><span class="line"> */</span><br><span class="line">interface TestInterFace &#123;</span><br><span class="line">	fun test()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	var test = Test()</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	  * 采用对象表达式来创建接口对象，即匿名内部类的实例。</span><br><span class="line">	  */</span><br><span class="line">	test.setInterFace(object : TestInterFace &#123;</span><br><span class="line">		override fun test() &#123;</span><br><span class="line">			println(&quot;对象表达式创建匿名内部类的实例&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="类的修饰符"><a href="#类的修饰符" class="headerlink" title="类的修饰符"></a>类的修饰符</h2><p>类的修饰符包括 classModifier 和accessModifier:<br>1.classModifier: 类属性修饰符，标示类本身特性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">修饰符关键字</th>
+<th style="text-align:center">表示含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">abstract</td>
+<td style="text-align:center">抽象类</td>
+</tr>
+<tr>
+<td style="text-align:center">final</td>
+<td style="text-align:center">类不可继承，默认属性</td>
+</tr>
+<tr>
+<td style="text-align:center">enum</td>
+<td style="text-align:center">枚举类</td>
+</tr>
+<tr>
+<td style="text-align:center">open</td>
+<td style="text-align:center">类可继承，类默认是final的</td>
+</tr>
+<tr>
+<td style="text-align:center">annotation</td>
+<td style="text-align:center">注解类</td>
+</tr>
+</tbody>
+</table>
+<p>2.accessModifier: 访问权限修饰符</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">修饰符关键字</th>
+<th style="text-align:center">表示含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">private</td>
+<td style="text-align:center">仅在同一个文件中可见</td>
+</tr>
+<tr>
+<td style="text-align:center">protected</td>
+<td style="text-align:center">同一个文件中或子类可见</td>
+</tr>
+<tr>
+<td style="text-align:center">public</td>
+<td style="text-align:center">所有调用的地方都可见</td>
+</tr>
+<tr>
+<td style="text-align:center">internal</td>
+<td style="text-align:center">同一个模块中可见</td>
+</tr>
+</tbody>
+</table>
+<p><strong>实例</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 文件名：example.kt</span><br><span class="line">package foo</span><br><span class="line">private fun foo() &#123;&#125; // 在 example.kt 内可见</span><br><span class="line">public var bar: Int = 5 // 该属性随处可见</span><br><span class="line">internal val baz = 6    // 相同模块内可见</span><br></pre></td></tr></table></figure></p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>Kotlin中的所有类都有一个共同的超类Any，这是一个没有声明超类型的类的默认超类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Example // Implicitly inherits from Any</span><br></pre></td></tr></table></figure></p>
+<p>Any不是java.lang.Object; 特别是，它并没有给其他任何成员equals()，hashCode()和toString()。为了声明一个明确的超类型，我们把这个类型放在类头部的冒号后面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">open class Base(p: Int)</span><br><span class="line"></span><br><span class="line">class Derived(p: Int) : Base(p)</span><br></pre></td></tr></table></figure></p>
+<p>如果类有一个主构造函数，那么可以（并且必须）使用主构造函数的参数来初始化基类型。<br>如果类没有主构造函数，那么每个次构造函数都必须使用super关键字来初始化基类型，或者委托给另一个构造函数。请注意，在这种情况下，不同的辅助构造函数可以调用基类型的不同构造函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class MyView : View &#123;</span><br><span class="line">	constructor(ctx: Context) : super(ctx)</span><br><span class="line">	constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一个类的open注释与Java的final一个是相反的：它允许其他人从这个类继承。默认情况下，Kotlin中的所有类都是final的，这对应于<a href="http://www.oracle.com/technetwork/java/effectivejava-136174.html" target="_blank">Effective Java，Item 17：</a>设计和文档以进行继承或者禁止它</p>
+<h2 id="要点总结"><a href="#要点总结" class="headerlink" title="要点总结"></a>要点总结</h2><p><strong>1.抽象类</strong></p>
+<ul>
+<li>实现了一部分协议的半成品。</li>
+<li>可以有状态，可以有方法实现。</li>
+<li>必须由子类继承后使用。</li>
+</ul>
+<p><strong>2.内部类</strong></p>
+<ul>
+<li>定义在类内部的类。</li>
+<li>与类成员有相似的访问控制。</li>
+<li>默认是静态内部类，非静态用inner关键字。</li>
+<li>this@Outter，this@Inner的用法。</li>
+</ul>
+<p><strong>3.匿名内部类</strong></p>
+<ul>
+<li>没有定义名字的内部类。</li>
+<li>类名编译时生成，类似Outter$1.class。</li>
+<li>可继承父类、实现多个接口，与Java注意区别。</li>
+</ul>
+<p><strong>4.函数和方法的区别</strong></p>
+<ul>
+<li>函数强调功能本身，不考虑从属</li>
+<li>方法的称呼通常是从类的角度出发</li>
+<li>叫法不同而已。无需过多的纠结</li>
+</ul>
+<p><strong>5.继承(实现)语法</strong></p>
+<ul>
+<li>class D:A(),B,C</li>
+<li>注意继承类时实际上调用了父类构造方法</li>
+<li>类只能单继承，接口可以多实现</li>
+<li>父类需要open才可以被继承</li>
+<li>父类方法、属性需要open才可以被覆写</li>
+<li>接口、接口方法、抽象类默认为open</li>
+<li>覆写父类(接口)成员需要override关键字</li>
+</ul>
 
       
 
@@ -282,7 +407,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(10)/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(10)类和对象/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,8 +422,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/07/31/Kotlin学习笔记(9)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Kotlin学习笔记(9)</div>
+    <a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kotlin学习笔记(9)循环控制</div>
       <i class="icon-circle-right"></i>
     </a>
   

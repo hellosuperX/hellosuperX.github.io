@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Kotlin学习笔记(8) | 李鑫的博客</title>
+  <title>Kotlin学习笔记(8)条件控制 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Java中我们大多使用if语句或者switch语句来进行条件筛选，if语句过多会导致语法臃肿，switch只能限定同一种数据类型进行筛选。Kotlin 在 Java 的基础上为我们提供了一种全新的条件控制语句when语句来替代switch语句来实现我们复杂的需求……">
 <meta name="keywords" content="Kotlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin学习笔记(8)">
-<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(8)/index.html">
+<meta property="og:title" content="Kotlin学习笔记(8)条件控制">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(8)条件控制/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Java中我们大多使用if语句或者switch语句来进行条件筛选，if语句过多会导致语法臃肿，switch只能限定同一种数据类型进行筛选。Kotlin 在 Java 的基础上为我们提供了一种全新的条件控制语句when语句来替代switch语句来实现我们复杂的需求……">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-31T12:16:19.766Z">
+<meta property="og:updated_time" content="2018-08-01T08:31:10.238Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin学习笔记(8)">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。">
+<meta name="twitter:title" content="Kotlin学习笔记(8)条件控制">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Java中我们大多使用if语句或者switch语句来进行条件筛选，if语句过多会导致语法臃肿，switch只能限定同一种数据类型进行筛选。Kotlin 在 Java 的基础上为我们提供了一种全新的条件控制语句when语句来替代switch语句来实现我们复杂的需求……">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -171,19 +171,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Kotlin学习笔记(8)" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Kotlin学习笔记(8)条件控制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Kotlin学习笔记(8)
+      Kotlin学习笔记(8)条件控制
     </h1>
   
 
         
-        <a href="/2018/07/31/Kotlin学习笔记(8)/" class="archive-article-date">
+        <a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
   	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
 </a>
         
@@ -191,7 +191,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;Kotlin是JetBrains公司开发的。JetBrains实际上是开发IDES。例如IntelliJ和ReSharper。真正闪耀则是通过Kotlin,Kotlin是简洁和务实的,并且使得编码成为了令人满意和有效的体验。<br><a id="more"></a></p>
+        <p>&#160; &#160; &#160; &#160;在Java中我们大多使用if语句或者switch语句来进行条件筛选，if语句过多会导致语法臃肿，switch只能限定同一种数据类型进行筛选。Kotlin 在 Java 的基础上为我们提供了一种全新的条件控制语句when语句来替代switch语句来实现我们复杂的需求……<br><a id="more"></a></p>
+<h2 id="if表达式"><a href="#if表达式" class="headerlink" title="if表达式"></a>if表达式</h2><p>1.一个 if 语句包含一个布尔表达式和一条或多条语句。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var max = a </span><br><span class="line">if (a &lt; b) max = b</span><br><span class="line"></span><br><span class="line">// 使用 else </span><br><span class="line">var max: Int</span><br><span class="line">if (a &gt; b) &#123;</span><br><span class="line">    max = a</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    max = b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 作为表达式</span><br><span class="line">val max = if (a &gt; b) a else b</span><br></pre></td></tr></table></figure></p>
+<p>2.我们也可以把 if 表达式的结果赋值给一个变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val max = if (a &gt; b) &#123;</span><br><span class="line">    print(&quot;Choose a&quot;)</span><br><span class="line">    a</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    print(&quot;Choose b&quot;)</span><br><span class="line">    b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.这也说明我也不需要像Java那种有一个三元操作符，因为我们可以使用它来简单实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val c = if (condition) a else b</span><br></pre></td></tr></table></figure></p>
+<p>4.实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	var x = 0</span><br><span class="line">	if(x&gt;0)&#123;</span><br><span class="line">		println(&quot;x 大于 0&quot;)</span><br><span class="line">	&#125;else if(x==0)&#123;</span><br><span class="line">		println(&quot;x 等于 0&quot;)</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		println(&quot;x 小于 0&quot;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	var a = 1</span><br><span class="line">	var b = 2</span><br><span class="line">	val c = if (a&gt;=b) a else b</span><br><span class="line">	println(&quot;c 的值为 $c&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果为：</span><br><span class="line">x 等于 0</span><br><span class="line">c 的值为 2</span><br></pre></td></tr></table></figure></p>
+<h2 id="When表达式"><a href="#When表达式" class="headerlink" title="When表达式"></a>When表达式</h2><p>1.when 将它的参数和所有的分支条件顺序比较，直到某个分支满足条件。when 既可以被当做表达式使用也可以被当做语句使用。如果它被当做表达式，符合条件的分支的值就是整个表达式的值，如果当做语句使用，则忽略个别分支的值。when 类似其他语言的 switch 操作符。其最简单的形式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">when (x) &#123;</span><br><span class="line">	1 -&gt; print(&quot;x == 1&quot;)</span><br><span class="line">	2 -&gt; print(&quot;x == 2&quot;)</span><br><span class="line">	else -&gt; &#123; // 注意这个块</span><br><span class="line">		print(&quot;x 不是 1 ，也不是 2&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.在 when 中，else 同 switch 的 default。如果其他分支都不满足条件将会求值 else 分支。如果很多分支需要用相同的方式处理，则可以把多个分支条件放在一起，用逗号分隔：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">when (x) &#123;</span><br><span class="line">	0, 1 -&gt; print(&quot;x == 0 or x == 1&quot;)</span><br><span class="line">	else -&gt; print(&quot;otherwise&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.我们也可以检测一个值在（in）或者不在（!in）一个区间或者集合中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">when (x) &#123;</span><br><span class="line">	in 1..10 -&gt; print(&quot;x is in the range&quot;)</span><br><span class="line">	in validNumbers -&gt; print(&quot;x is valid&quot;)</span><br><span class="line">	!in 10..20 -&gt; print(&quot;x is outside the range&quot;)</span><br><span class="line">	else -&gt; print(&quot;none of the above&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.另一种可能性是检测一个值是（is）或者不是（!is）一个特定类型的值。注意： 由于智能转换，你可以访问该类型的方法和属性而无需 任何额外的检测。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fun hasPrefix(x: Any) = when(x) &#123;</span><br><span class="line">    is String -&gt; x.startsWith(&quot;prefix&quot;)</span><br><span class="line">    else -&gt; false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.when 也可以用来取代 if-else if链。 如果不提供参数，所有的分支条件都是简单的布尔表达式，而当一个分支的条件为真时则执行该分支：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	var x = 0</span><br><span class="line">	when (x) &#123;</span><br><span class="line">		0, 1 -&gt; println(&quot;x == 0 or x == 1&quot;)</span><br><span class="line">		else -&gt; println(&quot;otherwise&quot;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	when (x) &#123;</span><br><span class="line">		1 -&gt; println(&quot;x == 1&quot;)</span><br><span class="line">		2 -&gt; println(&quot;x == 2&quot;)</span><br><span class="line">		else -&gt; &#123; // 注意这个块</span><br><span class="line">			println(&quot;x 不是 1 ，也不是 2&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	when (x) &#123;</span><br><span class="line">		in 0..10 -&gt; println(&quot;x 在该区间范围内&quot;)</span><br><span class="line">		else -&gt; println(&quot;x 不在该区间范围内&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">x == 0 or x == 1</span><br><span class="line">x 不是 1 ，也不是 2</span><br><span class="line">x 在该区间范围内</span><br></pre></td></tr></table></figure></p>
+<p>6.when 中使用 in 运算符来判断集合内是否包含某实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    val items = setOf(&quot;apple&quot;, &quot;banana&quot;, &quot;kiwi&quot;)</span><br><span class="line">    when &#123;</span><br><span class="line">        &quot;orange&quot; in items -&gt; println(&quot;juicy&quot;)</span><br><span class="line">        &quot;apple&quot; in items -&gt; println(&quot;apple is fine too&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">apple is fine too</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -282,7 +292,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(8)/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(8)条件控制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,11 +306,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/31/Kotlin学习笔记(9)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Kotlin学习笔记(9)
+          Kotlin学习笔记(9)循环控制
         
       </div>
     </a>
