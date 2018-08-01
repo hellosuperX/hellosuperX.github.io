@@ -6,25 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java集合之TreeMap | 李鑫的博客</title>
+  <title>Archives | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
-<meta name="keywords" content="Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java集合之TreeMap">
-<meta property="og:url" content="http://yoursite.com/2018/07/25/Java集合之TreeMap/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="李鑫的博客">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-e5ad0723a01e9018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-8de91aa80b211355.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-cd733d3973251277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-6fe9a0de2df2e4a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-25T08:14:49.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java集合之TreeMap">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-e5ad0723a01e9018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="李鑫的博客">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -176,67 +166,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java集合之TreeMap" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java集合之TreeMap
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/31/反射(三)/" class="archive-article-date">
+  	<time datetime="2018-07-31T11:47:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/31/反射(三)/">反射(三)</a>
     </h1>
   
 
-        
-        <a href="/2018/07/25/Java集合之TreeMap/" class="archive-article-date">
-  	<time datetime="2018-07-25T01:38:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;之前看过了HashMap和LinkedHashMap。HashMap不保证数据有序，LinkedHashMap保证数据可以保持插入顺序，而如果我们希望Map可以保持key的大小顺序的时候，我们就需要利用TreeMap了。<br><a id="more"></a></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&#160; &#160; &#160; &#160;我们先创建一个TreeMap，然后看一下它内部的结构。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">TreeMap&lt;Integer, String&gt; map = new TreeMap&lt;&gt;();</span><br><span class="line">map.put(1, &quot;语文&quot;);</span><br><span class="line">map.put(2, &quot;英语&quot;);</span><br><span class="line">map.put(3, &quot;数学&quot;);</span><br><span class="line">map.put(4, &quot;政治&quot;);</span><br><span class="line">map.put(5, &quot;历史&quot;);</span><br><span class="line">map.put(6, &quot;地理&quot;);</span><br><span class="line">map.put(7, &quot;生物&quot;);</span><br><span class="line">map.put(8, &quot;化学&quot;);</span><br><span class="line"></span><br><span class="line">//遍历数据</span><br><span class="line">for (Map.Entry&lt;Integer, String&gt; entry : map.entrySet()) &#123;</span><br><span class="line">	System.out.println(entry.getKey() + &quot;: &quot; + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其大致结构如下：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-e5ad0723a01e9018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;使用红黑树的好处是能够使得树具有不错的平衡性，这样操作的速度就可以达到log(n)的水平了。其他的参考数据结构的部分的文章吧。。。</p>
-<h2 id="put函数"><a href="#put函数" class="headerlink" title="put函数"></a>put函数</h2><p>&#160; &#160; &#160; &#160;TreeMap集合中，最主要的过程就是如果存在的话，oldValue被替换掉；如果不存在的话，则新添一个节点，然后对红黑树做平衡操作。了解红黑树之前，我们先看一下TreeMap存储元素的基本单位TreeMapEntry的内部属性。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-8de91aa80b211355.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;可以看出TreeMapEntry的几个主要属性，k值，value值，然后就是左边，右边，父亲，从这里很轻易的可以看出这是一个树结构了，然后还有一个默认的为黑色的color，那么这样就可以确定TreeMap是基于红黑树实现的了。接下来我们大概了解一下红黑树的特点：<br>&#160; &#160; &#160; &#160;<strong>1.树的节点只有红与黑两种颜色</strong><br>&#160; &#160; &#160; &#160;<strong>2.根节点为黑色的</strong><br>&#160; &#160; &#160; &#160;<strong>3.叶子节点为黑色的</strong><br>&#160; &#160; &#160; &#160;<strong>4.红色节点的子节点必定是黑色的</strong><br>&#160; &#160; &#160; &#160;<strong>5.从任意一节点出发，到其后继的叶子节点的路径中，黑色节点的数目相同</strong></p>
-<p>&#160; &#160; &#160; &#160;红黑树的第4条性质保证了这些路径中的任意一条都不存在连续的红节点，而红黑树的第5条性质又保证了所有的这些路径上的黑色节点的数目相同。因而最短路径必定只是包含黑色节点的路径，而最长路径为红黑节点互相交叉的路径，由于所有的路径的起点必须是黑色的，而红色节点又不能连续存在，因而最长路径的长度为全为黑色节点路径长度的二倍。<br>&#160; &#160; &#160; &#160;然后回到TreeMap本身，看看它的put方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">public V put(K key, V value) &#123;</span><br><span class="line">	TreeMapEntry&lt;K,V&gt; t = root;</span><br><span class="line">	//如果父节点为null</span><br><span class="line">   if (t == null) &#123;</span><br><span class="line">   		//比较器，用于维护该树图中的顺序，或者如果使用其键的自然排序，则为空。</span><br><span class="line">	   if (comparator != null) &#123;</span><br><span class="line">       	if (key == null) &#123;</span><br><span class="line">          	comparator.compare(key, key);</span><br><span class="line">          &#125;</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">       	//这里分不同的情况去抛出异常显示</span><br><span class="line">       	if (key == null) &#123;</span><br><span class="line">          	throw new NullPointerException(&quot;key == null&quot;);</span><br><span class="line">          &#125; else if (!(key instanceof Comparable)) &#123;</span><br><span class="line">          	throw new ClassCastException(&quot;Cannot cast&quot; + key.getClass().getName() + &quot; to Comparable.&quot;);</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       //创建新的节点为null，这个节点就作为父节点</span><br><span class="line">       root = new TreeMapEntry&lt;&gt;(key, value, null);</span><br><span class="line">       size = 1;</span><br><span class="line">       modCount++;</span><br><span class="line">       return null;</span><br><span class="line">    &#125;</span><br><span class="line">    int cmp;</span><br><span class="line">    TreeMapEntry&lt;K,V&gt; parent;</span><br><span class="line">    // split comparator and comparable paths</span><br><span class="line">    Comparator&lt;? super K&gt; cpr = comparator;</span><br><span class="line">    //如果该节点存在，则替换值直接返回</span><br><span class="line">    if (cpr != null) &#123;</span><br><span class="line">    	do &#123;</span><br><span class="line">       	parent = t;</span><br><span class="line">          cmp = cpr.compare(key, t.key);</span><br><span class="line">          if (cmp &lt; 0)</span><br><span class="line">				t = t.left;</span><br><span class="line">				else if (cmp &gt; 0)</span><br><span class="line">				t = t.right;</span><br><span class="line">          else</span><br><span class="line">             return t.setValue(value);</span><br><span class="line">       &#125; while (t != null);</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">     	if (key == null)</span><br><span class="line">       	throw new NullPointerException();</span><br><span class="line">          @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">          	Comparable&lt;? super K&gt; k = (Comparable&lt;? super K&gt;) key;</span><br><span class="line">           	do &#123;</span><br><span class="line">                parent = t;</span><br><span class="line">                cmp = k.compareTo(t.key);</span><br><span class="line">                if (cmp &lt; 0)</span><br><span class="line">                    t = t.left;</span><br><span class="line">                else if (cmp &gt; 0)</span><br><span class="line">                    t = t.right;</span><br><span class="line">                else</span><br><span class="line">                    return t.setValue(value);</span><br><span class="line">             &#125; while (t != null);</span><br><span class="line">    &#125;</span><br><span class="line">    //如果该节点未存在，则新建</span><br><span class="line">    TreeMapEntry&lt;K,V&gt; e = new TreeMapEntry&lt;&gt;(key, value, parent);</span><br><span class="line">    if (cmp &lt; 0)</span><br><span class="line">        parent.left = e;</span><br><span class="line">    else</span><br><span class="line">        parent.right = e;</span><br><span class="line">   	 //红黑树平衡调整</span><br><span class="line">    fixAfterInsertion(e);</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此处就是二叉树的比较查找到合适的位置，然后插入，需要注意的是：<br>1.先检测root节点是不是null，如果为null，则新插入的节点为root节点。<br>2.最好自定义自己的Comparator，否则将会继承原始的比较方法，可能会出现问题。<br>3.插入的键值不能为null，否则会抛出空指针的异常。<br>4.插入新节点后，调用fixAfterInsertion(e)方法来修复红黑树</p>
-<h2 id="get函数"><a href="#get函数" class="headerlink" title="get函数"></a>get函数</h2><p>&#160; &#160; &#160; &#160;get函数则相对来说比较简单，以log(n)的复杂度进行get。但是其内部最关键的一个的一个方法是getEntry方法，我们直接看getEntry(key)方法吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public V get(Object key) &#123;</span><br><span class="line">	TreeMapEntry&lt;K,V&gt; p = getEntry(key);</span><br><span class="line">	return (p==null ? null : p.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这个方法只要就是对二叉树进行了搜索操作，并返回数值</span><br><span class="line">final TreeMapEntry&lt;K,V&gt; getEntry(Object key) &#123;</span><br><span class="line">	if (comparator != null)</span><br><span class="line">		return getEntryUsingComparator(key);</span><br><span class="line">	if (key == null)</span><br><span class="line">		throw new NullPointerException();</span><br><span class="line">	@SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">	Comparable&lt;? super K&gt; k = (Comparable&lt;? super K&gt;) key;</span><br><span class="line">	TreeMapEntry&lt;K,V&gt; p = root;</span><br><span class="line">	//这里按照二叉树搜索的方式进行搜索，搜到返回</span><br><span class="line">	while (p != null) &#123;</span><br><span class="line">		int cmp = k.compareTo(p.key);</span><br><span class="line">		if (cmp &lt; 0)</span><br><span class="line">			p = p.left;</span><br><span class="line">		else if (cmp &gt; 0)</span><br><span class="line">			p = p.right;</span><br><span class="line">		else</span><br><span class="line">			return p;</span><br><span class="line">	&#125;</span><br><span class="line">	return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="successor后继"><a href="#successor后继" class="headerlink" title="successor后继"></a>successor后继</h2><p>&#160; &#160; &#160; &#160;TreeMap是如何保证其迭代输出是有序的呢？其实从宏观上来讲，就相当于树中序遍历(LDR)。我们先看一下迭代输出的步骤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (Map.Entry&lt;Integer, String&gt; entry : map.entrySet()) &#123;</span><br><span class="line">	System.out.println(entry.getKey() + &quot;: &quot; + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>根据The enhanced for statement，for语句会做如下转换为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (Map.Entry&lt;Integer, String&gt; it = map.entrySet().iterator(); map.hasNext() ; ) &#123;</span><br><span class="line">	Entry&lt;Integer, String&gt; entry = it.next();</span><br><span class="line">	System.out.println(entry.getKey() + &quot;: &quot; + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在it.next()的调用中会使用nextEntry调用successor这个是过的后继的重点，具体实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">static &lt;K,V&gt; TreeMapEntry&lt;K,V&gt; successor(TreeMapEntry&lt;K,V&gt; t) &#123;</span><br><span class="line">	if (t == null)</span><br><span class="line">		return null;</span><br><span class="line">	else if (t.right != null) &#123;</span><br><span class="line">		//有右子树的节点，后继节点就是右子树的”最左节点“</span><br><span class="line">		//因为”最左子树“是右子树的最小节点</span><br><span class="line">		TreeMapEntry&lt;K,V&gt; p = t.right;</span><br><span class="line"> 		while (p.left != null)</span><br><span class="line">			p = p.left;</span><br><span class="line">			return p;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//如果右子树为空，则寻找当前节点所在左子树的第一个祖先节点</span><br><span class="line">			//因为左子树找完了，根据LDR该D了</span><br><span class="line">			TreeMapEntry&lt;K,V&gt; p = t.parent;</span><br><span class="line">			TreeMapEntry&lt;K,V&gt; ch = t;</span><br><span class="line">			//保证左子树</span><br><span class="line">			while (p != null &amp;&amp; ch == p.right) &#123;</span><br><span class="line">				ch = p;</span><br><span class="line">				p = p.parent;</span><br><span class="line">			&#125;</span><br><span class="line">			return p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>怎么理解这个successor呢？只要记住，这个是中序遍历就可以了，L-D-R。具体细节如下：<br>&#160; &#160; &#160; &#160;1.空节点，没有后继。<br>&#160; &#160; &#160; &#160;2.有右子树的节点，后继就是右子树的”最左节点“。<br>&#160; &#160; &#160; &#160;3.无右子树的节点，后继就是该节点所在左子树的第一个祖先节点。</p>
-<p>&#160; &#160; &#160; &#160;有右子树的节点，节点的下一个节点，肯定在右子树中，而右子树中”最左“的那个节点则是右子树中最小的一个，那么当然是右子树的”最左节点“，就好像下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-cd733d3973251277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>&#160; &#160; &#160; &#160;无右子树的节点，先找到这个节点所在的左子树(有图)，那么这个节点所在的左子树的父节点(绿色节点)，就是下一个节点。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-6fe9a0de2df2e4a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -248,114 +207,364 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/25/Java集合之TreeMap/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2018/07/25/Java集合之LinkedHashMap/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java集合之LinkedHashMap
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/07/24/Java集合之HashMap/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java集合之HashMap</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/30/反射(二)/" class="archive-article-date">
+  	<time datetime="2018-07-30T08:14:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/30/反射(二)/">反射(二)</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/28/反射(一)/" class="archive-article-date">
+  	<time datetime="2018-07-28T05:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/28/反射(一)/">反射(一)</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/26/泛型/" class="archive-article-date">
+  	<time datetime="2018-07-26T07:33:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/26/泛型/">泛型</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/25/Java集合之LinkedHashMap/" class="archive-article-date">
+  	<time datetime="2018-07-25T08:08:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/25/Java集合之LinkedHashMap/">Java集合之LinkedHashMap</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/25/Java集合之TreeMap/" class="archive-article-date">
+  	<time datetime="2018-07-25T01:38:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/25/Java集合之TreeMap/">Java集合之TreeMap</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/24/Java集合之HashMap/" class="archive-article-date">
+  	<time datetime="2018-07-24T02:06:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/24/Java集合之HashMap/">Java集合之HashMap</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/23/Java集合之LinkedList/" class="archive-article-date">
+  	<time datetime="2018-07-23T03:13:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/23/Java集合之LinkedList/">Java集合之LinkedList</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/22/Java集合之ArrayList/" class="archive-article-date">
+  	<time datetime="2018-07-22T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/22/Java集合之ArrayList/">Java集合之ArrayList</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/07/21/Java集合(Collection和Map)/" class="archive-article-date">
+  	<time datetime="2018-07-21T03:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/21/Java集合(Collection和Map)/">Java集合(Collection和Map)</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -379,8 +588,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
