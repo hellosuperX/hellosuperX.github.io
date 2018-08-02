@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>Kotlin学习笔记(19)代理 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 代理模式提供一种实现继承的替代方式，Kotlin原生就支持代理模块。">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin学习笔记(19)代理">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/Kotlin学习笔记(19)代理/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 代理模式提供一种实现继承的替代方式，Kotlin原生就支持代理模块。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-02T08:19:35.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="Kotlin学习笔记(19)代理">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160; 代理模式提供一种实现继承的替代方式，Kotlin原生就支持代理模块。">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -166,74 +171,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Kotlin学习笔记(19)代理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(20)常用函数/" class="archive-article-date">
-  	<time datetime="2018-08-02T08:19:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(20)常用函数/">Kotlin学习笔记(20)常用函数</a>
+    <h1 class="article-title" itemprop="name">
+      Kotlin学习笔记(19)代理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(19)代理/" class="archive-article-date">
+        
+        <a href="/2018/08/02/Kotlin学习笔记(19)代理/" class="archive-article-date">
   	<time datetime="2018-08-02T07:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(19)代理/">Kotlin学习笔记(19)代理</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#160; &#160; &#160; &#160; 代理模式提供一种实现继承的替代方式，Kotlin原生就支持代理模块。<br><a id="more"></a></p>
+<h2 id="类代理（Class-Delegation）"><a href="#类代理（Class-Delegation）" class="headerlink" title="类代理（Class Delegation）"></a>类代理（Class Delegation）</h2><p>&#160; &#160; &#160; &#160;代理模式提供一种实现继承的替代方式，Kotlin原生就支持代理模块。如下，“Derived”继承“Base”接口，并代理了它的全部公共方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface Base &#123;</span><br><span class="line">	fun print()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BaseImpl(val x: Int) : Base &#123;</span><br><span class="line">	override fun print() &#123; </span><br><span class="line">		print(x) </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Derived(b: Base) : Base by b</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	val b = BaseImpl(10)</span><br><span class="line">	Derived(b).print()  // prints 10</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过“by”关键字，将“b”实例存储到Derived对象中，编译器会生成“Base”接口的所有方法，使用“b”的实现。</p>
+<h2 id="代理属性（Delegated-Properties）"><a href="#代理属性（Delegated-Properties）" class="headerlink" title="代理属性（Delegated Properties）"></a>代理属性（Delegated Properties）</h2><p>对于很多公用属性，尽管在每次需要的时候可以通过手动实现；更好的方式是一次实现多次使用，并放到一个库（library）。比如，有下面类型的属性：<br>&#160; &#160; &#160; &#160;1.延迟属性（lazy properties）：只有第一次访问时才会计算值。<br>&#160; &#160; &#160; &#160;2.观察属性（observable properties）：当该属性发生改变时，会通知监听者。<br>&#160; &#160; &#160; &#160;3.map中存储属性，不是在单独的字段中。<br>在Kotlin中，为了满足上面几种情况，提供了代理属性（delegated properties）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Example &#123;</span><br><span class="line">    var p: String by Delegate()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;<strong>语法：val/var propertyName: Type by Expression</strong>，“by”关键字后面的表达式就是代理（delegate），属性的“get()”和“set()”对应代理的“getValue()”和“setValue()”。属性代理不要去实现任何接口，但需要提供“getValue()”和“setValue()”（val属性不需要，var需要）函数。<br>&#160; &#160; &#160; &#160;当读取“p”的值时，实际是访问它的代理“Delegate”实例的“getValue()”函数，第一个参数是读取“p”的实例（即对应的类的实例），第二个参数为“p”自身的描述。如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val e = Example()</span><br><span class="line">println(e.p)  //Example@33a17727, thank you for delegating ‘p’ to me!</span><br></pre></td></tr></table></figure></p>
+<p>同样，当给“p”赋值时，会调用代理的“setValue()”函数；前面两个参数跟“getValue()”函数一致，第三个参数为赋的值。如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e.p = &quot;NEW&quot;</span><br><span class="line"></span><br><span class="line">//打印结果：</span><br><span class="line">//NEW has been assigned to ‘p’ in Example@33a17727.</span><br></pre></td></tr></table></figure></p>
+<h2 id="属性代理的要求（Property-Delegate-Requirements）"><a href="#属性代理的要求（Property-Delegate-Requirements）" class="headerlink" title="属性代理的要求（Property Delegate Requirements）"></a>属性代理的要求（Property Delegate Requirements）</h2><p>下面总结代理属性的要求：<br><strong>1.只读属性（read-only，使用val定义）</strong>，代理类提供“getValue”函数，参数要求：<br>&#160; &#160; &#160; &#160;1.接收者（receiver）：第一个参数，必须是属性对应的类或父类型。<br>&#160; &#160; &#160; &#160;2.元数据（metadata）：第二个参数，必须是“KProperty&lt;*&gt;”或它的父类型。<br>&#160; &#160; &#160; &#160;3.该函数，必须返回一个跟属性同类型的值。<br><strong>2.可变属性（mutable，使用var定义）</strong>，代理类的“getValue”函数跟只读属性的一样；另外还需要提供一个“setValue”函数，参数要求：<br>&#160; &#160; &#160; &#160;1.接收者（receiver）：第一个参数，同“getValue”对应的参数。<br>&#160; &#160; &#160; &#160;2.元数据（metadata）：第二个参数，同“getValue”对应的参数。<br>&#160; &#160; &#160; &#160;3.新值：第三个参数，类型必须跟属性一样或其父类型。<br>“getValue”与“setValue”函数，可以是代理类的成员函数或扩展函数。当需要将一个对象作为一个代理属性的代理，而该类没有对应的“getValue”与“setValue”函数，通过扩展函数方式实现就非常方便。另外两个函数需要使用“operator”关键字修饰。</p>
+<h2 id="标准代理（Standard-Delegates）"><a href="#标准代理（Standard-Delegates）" class="headerlink" title="标准代理（Standard Delegates）"></a>标准代理（Standard Delegates）</h2><p>Kotlin的标准库，通过工厂方法提供了一些有用的代理类。<br><strong>1.Lazy</strong><br>&#160; &#160; &#160; &#160;“lazy()”函数接受Lambda表达式 并 返回“Lazy<t>”实例，它可以当做延迟属性的代理实现：当第一次属性执行“get()”（获取属性值，即使用该属性）时，会通过“lazy()”函数执行添加的Lambda表达式并记录返回值；后续再使用该属性时，直接使用记录的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">val lazyValue: String by lazy &#123;</span><br><span class="line">	println(&quot;computed!&quot;)</span><br><span class="line">	&quot;Hello&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	println(lazyValue)</span><br><span class="line">	println(lazyValue)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//输出结果：</span><br><span class="line">//computed!</span><br><span class="line">//Hello</span><br><span class="line">//Hello</span><br></pre></td></tr></table></figure></t></p>
+<p>&#160; &#160; &#160; &#160;默认情况，延迟属性的赋值是线程同步的：只会在一个线程中计算一次值，其他线程使用同一个值。如果初始化同步不是必须的，可以通过将“lazy()”函数的参数设置为“LazyThreadSafetyMode.PUBLICATION”，那么多个线程对其同时赋值。如果可以确保属性只会在单个线程中初始化，可以将“lazy()”设置“LazyThreadSafetyMode.NONE”模式，该模式下，不会确保线程安全及相关开销。<br><strong>2.可观察方法（Observable）</strong><br>&#160; &#160; &#160; &#160;“Delegates.observable()”，包含两个参数：初始化值和属性值修改的回调handler；每次对属性赋值操作，都会回调该handler方法（在属性赋值后执行），该方法包含三个参数，分别为：属性对象，原值，新值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class User &#123;</span><br><span class="line">	var name: String by Delegates.observable(&quot;&lt;nomalName&gt;&quot;) &#123;</span><br><span class="line">		prop, old, new -&gt;</span><br><span class="line">		println(&quot;$old -&gt; $new&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	val user = User()</span><br><span class="line">	user.name = &quot;first&quot;</span><br><span class="line">	user.name = &quot;second&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//输出结果：</span><br><span class="line">//&lt; nomalName &gt; -&gt; first</span><br><span class="line">//first -&gt; second</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;另外，如果需要拦截修改属性值动作并禁止修改，可以使用“Delegates.vetoable()”，参数跟“observable()”类似，第二个回调handler需要返回一个Boolean，true表示同意修改，false表示禁止修改；该回调会在属性值修改前调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class User &#123;</span><br><span class="line">	var name: String by Delegates. vetoable (&quot;&lt;nomalName&gt;&quot;) &#123;</span><br><span class="line">		prop, old, new -&gt;</span><br><span class="line">			println(&quot;want modify $old -&gt; $new&quot;)</span><br><span class="line">			false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">	val user = User()</span><br><span class="line">	println(user.name)</span><br><span class="line">	user.name = &quot;newValue&quot;</span><br><span class="line">	println(user.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//输出结果：</span><br><span class="line">//&lt; nomalName &gt;</span><br><span class="line">//want modify &lt; nomalName &gt; -&gt; newValue</span><br><span class="line">//&lt; nomalName &gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.Storing Properties in a Map</strong><br>&#160; &#160; &#160; &#160;经常会在map中存储属性值，经常用于如解析JSON或其他“动态”事情。可以使用map对象作为一个代理属性的代理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class User(val map: Map&lt;String, Any?&gt;) &#123;</span><br><span class="line">	val name: String by map</span><br><span class="line">	val age: Int by map</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val user = User(mapOf(</span><br><span class="line">	&quot;name&quot; to &quot;John Doe&quot;,</span><br><span class="line">	&quot;age&quot;  to 25</span><br><span class="line">))</span><br><span class="line"></span><br><span class="line">println(user.name) // Prints &quot;John Doe&quot;</span><br><span class="line">println(user.age)  // Prints 25</span><br></pre></td></tr></table></figure></p>
+<p>注：若属性定义为“var”，需要使用“MutableMap ”代替只读的map。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -245,326 +243,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/02/Kotlin学习笔记(19)代理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/" class="archive-article-date">
-  	<time datetime="2018-08-02T07:08:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/02/Kotlin学习笔记(20)常用函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Kotlin学习笔记(20)常用函数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kotlin学习笔记(18)方法重载与高阶函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/">Kotlin学习笔记(18)方法重载与高阶函数</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(17)对象/" class="archive-article-date">
-  	<time datetime="2018-08-02T06:13:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(17)对象/">Kotlin学习笔记(17)对象</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(16)密封类/" class="archive-article-date">
-  	<time datetime="2018-08-02T05:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(16)密封类/">Kotlin学习笔记(16)密封类</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(15)数据类/" class="archive-article-date">
-  	<time datetime="2018-08-02T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(15)数据类/">Kotlin学习笔记(15)数据类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -588,8 +374,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

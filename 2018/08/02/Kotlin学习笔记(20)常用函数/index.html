@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>Kotlin学习笔记(20)常用函数 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="在Kotlin中官方给我定义了很多集合的扩展，现在我们用实例来总结一下常用集合函数。创建集合1val list = listOf(1, 2, 3, 4, 5, 6)">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin学习笔记(20)常用函数">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/Kotlin学习笔记(20)常用函数/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="在Kotlin中官方给我定义了很多集合的扩展，现在我们用实例来总结一下常用集合函数。创建集合1val list = listOf(1, 2, 3, 4, 5, 6)">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-02T10:01:29.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="Kotlin学习笔记(20)常用函数">
+<meta name="twitter:description" content="在Kotlin中官方给我定义了很多集合的扩展，现在我们用实例来总结一下常用集合函数。创建集合1val list = listOf(1, 2, 3, 4, 5, 6)">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -166,36 +171,107 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Kotlin学习笔记(20)常用函数" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Kotlin学习笔记(20)常用函数
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(20)常用函数/" class="archive-article-date">
+
+        
+        <a href="/2018/08/02/Kotlin学习笔记(20)常用函数/" class="archive-article-date">
   	<time datetime="2018-08-02T08:19:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(20)常用函数/">Kotlin学习笔记(20)常用函数</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Kotlin中官方给我定义了很多集合的扩展，现在我们用实例来总结一下常用集合函数。创建集合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val list = listOf(1, 2, 3, 4, 5, 6)</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h4 id="any-如果至少有一个元素符合给出的判断条件，则返回true"><a href="#any-如果至少有一个元素符合给出的判断条件，则返回true" class="headerlink" title="any:如果至少有一个元素符合给出的判断条件，则返回true"></a>any:如果至少有一个元素符合给出的判断条件，则返回true</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val returnTrue1 = list.any &#123; </span><br><span class="line">	it % 2 == 0 </span><br><span class="line">&#125;</span><br><span class="line">val returnFalse2 = list.any &#123;</span><br><span class="line">	it &gt; 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">返回结果：</span><br><span class="line">true</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+<h4 id="all：如果全部的元素符合给出的判断条件，则返回ture"><a href="#all：如果全部的元素符合给出的判断条件，则返回ture" class="headerlink" title="all：如果全部的元素符合给出的判断条件，则返回ture"></a>all：如果全部的元素符合给出的判断条件，则返回ture</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val returnTrue = list.all &#123; </span><br><span class="line">	it &lt; 10 </span><br><span class="line">&#125;</span><br><span class="line">val returnFalse = list.all &#123;</span><br><span class="line">	it % 2 == 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">返回结果：</span><br><span class="line">true</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+<h4 id="count-返回符合给出条件的元素总数"><a href="#count-返回符合给出条件的元素总数" class="headerlink" title="count:返回符合给出条件的元素总数"></a>count:返回符合给出条件的元素总数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val returnCount = list.count &#123;</span><br><span class="line">	it % 2 == 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">返回结果：</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4 id="fold-在一个初始值的基础上从第一项到最后一项通过一个函数累计所有元素"><a href="#fold-在一个初始值的基础上从第一项到最后一项通过一个函数累计所有元素" class="headerlink" title="fold:在一个初始值的基础上从第一项到最后一项通过一个函数累计所有元素"></a>fold:在一个初始值的基础上从第一项到最后一项通过一个函数累计所有元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">val countNum1 = list.fold(0) &#123; total, next -&gt;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;total&quot; + total + &quot;next&quot; + next)</span><br><span class="line">	total + next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">total：0，next：1</span><br><span class="line">total：1，next：2</span><br><span class="line">total：3，next：3</span><br><span class="line">total：6，next：4</span><br><span class="line">total：10，next：5</span><br><span class="line">total：15，next：6</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+<h4 id="foldRight-与fold一样，但是顺序是从最后一项到第一项"><a href="#foldRight-与fold一样，但是顺序是从最后一项到第一项" class="headerlink" title="foldRight:与fold一样，但是顺序是从最后一项到第一项"></a>foldRight:与fold一样，但是顺序是从最后一项到第一项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">val countNum = list.foldRight(0) &#123; a, b -&gt;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;a：$a，b：$b&quot;)</span><br><span class="line">	a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a：6，b：0</span><br><span class="line">a：5，b：6</span><br><span class="line">a：4，b：11</span><br><span class="line">a：3，b：15</span><br><span class="line">a：2，b：18</span><br><span class="line">a：1，b：20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+<h4 id="forEach-遍历所有元素，并执行给定的操作"><a href="#forEach-遍历所有元素，并执行给定的操作" class="headerlink" title="forEach:遍历所有元素，并执行给定的操作"></a>forEach:遍历所有元素，并执行给定的操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">list.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;1</span><br><span class="line">it--&gt;2</span><br><span class="line">it--&gt;3</span><br><span class="line">it--&gt;4</span><br><span class="line">it--&gt;5</span><br><span class="line">it--&gt;6</span><br></pre></td></tr></table></figure>
+<h4 id="forEachIndexed-与forEach，但是我们同时可以得到元素的index"><a href="#forEachIndexed-与forEach，但是我们同时可以得到元素的index" class="headerlink" title="forEachIndexed:与forEach，但是我们同时可以得到元素的index"></a>forEachIndexed:与forEach，但是我们同时可以得到元素的index</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">list.forEachIndexed &#123; index, value -&gt;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;position $index contains $value&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">position 0 contains 1</span><br><span class="line">position 1 contains 2</span><br><span class="line">position 2 contains 3</span><br><span class="line">position 3 contains 4</span><br><span class="line">position 4 contains 5</span><br><span class="line">position 5 contains 6</span><br></pre></td></tr></table></figure>
+<h4 id="max-返回最大的一项，如果没有则返回null"><a href="#max-返回最大的一项，如果没有则返回null" class="headerlink" title="max:返回最大的一项，如果没有则返回null"></a>max:返回最大的一项，如果没有则返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val returnMax = list.max()</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnMax--&gt;&quot; + returnMax)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnMax--&gt;6</span><br></pre></td></tr></table></figure>
+<h4 id="maxBy-根据给定的函数返回最大的一项，如果没有则返回null"><a href="#maxBy-根据给定的函数返回最大的一项，如果没有则返回null" class="headerlink" title="maxBy:根据给定的函数返回最大的一项，如果没有则返回null"></a>maxBy:根据给定的函数返回最大的一项，如果没有则返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val returnMaxBy = list.maxBy &#123;</span><br><span class="line">	-it</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnMaxBy--&gt;&quot; + returnMaxBy)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnMaxBy--&gt;1</span><br></pre></td></tr></table></figure>
+<h4 id="min-返回最小的一项，如果没有则返回null"><a href="#min-返回最小的一项，如果没有则返回null" class="headerlink" title="min:返回最小的一项，如果没有则返回null"></a>min:返回最小的一项，如果没有则返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val returnMin = list.min()</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnMin--&gt;&quot; + returnMin)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnMin--&gt;1</span><br></pre></td></tr></table></figure>
+<h4 id="minBy-根据给定的函数返回最小的一项，如果没有则返回null"><a href="#minBy-根据给定的函数返回最小的一项，如果没有则返回null" class="headerlink" title="minBy:根据给定的函数返回最小的一项，如果没有则返回null"></a>minBy:根据给定的函数返回最小的一项，如果没有则返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val returnMinBy = list.minBy &#123;</span><br><span class="line">	-it</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnMinBy--&gt;&quot; + returnMinBy)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnMinBy--&gt;6</span><br></pre></td></tr></table></figure>
+<h4 id="none-如果没有任何元素与给定的函数匹配，则返回true"><a href="#none-如果没有任何元素与给定的函数匹配，则返回true" class="headerlink" title="none:如果没有任何元素与给定的函数匹配，则返回true"></a>none:如果没有任何元素与给定的函数匹配，则返回true</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val returnNone = list.none &#123;</span><br><span class="line">	it % 7 == 0</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnNone--&gt;&quot; + returnNone)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnNone--&gt;true</span><br></pre></td></tr></table></figure>
+<h4 id="reduce-与fold一样，但是没有一个初始值，通过一个函数从第一项到最后一项进行累计"><a href="#reduce-与fold一样，但是没有一个初始值，通过一个函数从第一项到最后一项进行累计" class="headerlink" title="reduce:与fold一样，但是没有一个初始值，通过一个函数从第一项到最后一项进行累计"></a>reduce:与fold一样，但是没有一个初始值，通过一个函数从第一项到最后一项进行累计</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val returnReduce = list.reduce &#123; total, next -&gt;</span><br><span class="line">	total + next</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnReduce--&gt;&quot; + returnReduce)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnReduce--&gt;21</span><br></pre></td></tr></table></figure>
+<h4 id="reduceRight-与reduce一样，但是顺序是从最后一项到第一项"><a href="#reduceRight-与reduce一样，但是顺序是从最后一项到第一项" class="headerlink" title="reduceRight:与reduce一样，但是顺序是从最后一项到第一项"></a>reduceRight:与reduce一样，但是顺序是从最后一项到第一项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val returnReduceRight = list.reduceRight &#123; total, next -&gt;</span><br><span class="line">	total + next</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnReduceRight--&gt;&quot; + returnReduceRight)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnReduceRight--&gt;21</span><br></pre></td></tr></table></figure>
+<h4 id="sumBy-返回所有每一项通过函数转换之后的数据的总和"><a href="#sumBy-返回所有每一项通过函数转换之后的数据的总和" class="headerlink" title="sumBy:返回所有每一项通过函数转换之后的数据的总和"></a>sumBy:返回所有每一项通过函数转换之后的数据的总和</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val returnSumBy = list.sumBy &#123;</span><br><span class="line">	it * 2</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnSumBy--&gt;&quot; + returnSumBy)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnSumBy--&gt;42</span><br></pre></td></tr></table></figure>
+<h4 id="drop-返回包含去掉前n个元素的所有元素的列表"><a href="#drop-返回包含去掉前n个元素的所有元素的列表" class="headerlink" title="drop:返回包含去掉前n个元素的所有元素的列表"></a>drop:返回包含去掉前n个元素的所有元素的列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val returnDrop1 = listOf(5, 6) == list.drop(4)</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnDrop1--&gt;&quot; + returnDrop1)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnDrop1--&gt;true</span><br></pre></td></tr></table></figure>
+<h4 id="dropLastListWhile-返回根据给定函数从最后一项开始去掉指定元素的列表"><a href="#dropLastListWhile-返回根据给定函数从最后一项开始去掉指定元素的列表" class="headerlink" title="dropLastListWhile:返回根据给定函数从最后一项开始去掉指定元素的列表"></a>dropLastListWhile:返回根据给定函数从最后一项开始去掉指定元素的列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val returnDrop = listOf(1, 2, 3, 4) == list.dropLastWhile &#123;</span><br><span class="line">	it &gt; 4</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnDrop--&gt;&quot; + returnDrop)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">returnDrop--&gt;true</span><br></pre></td></tr></table></figure>
+<h4 id="filter-过滤所有符合给定函数条件的元素"><a href="#filter-过滤所有符合给定函数条件的元素" class="headerlink" title="filter:过滤所有符合给定函数条件的元素"></a>filter:过滤所有符合给定函数条件的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">val returnList = list.filter &#123;</span><br><span class="line">	it % 2 == 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">returnList.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;2</span><br><span class="line">it--&gt;4</span><br><span class="line">it--&gt;6</span><br></pre></td></tr></table></figure>
+<h4 id="filterNot-过滤所有不符合给定函数条件的元素"><a href="#filterNot-过滤所有不符合给定函数条件的元素" class="headerlink" title="filterNot:过滤所有不符合给定函数条件的元素"></a>filterNot:过滤所有不符合给定函数条件的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">val returnList =list.filterNot &#123;</span><br><span class="line">	it % 2 == 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">returnList.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;1</span><br><span class="line">it--&gt;3</span><br><span class="line">it--&gt;5</span><br></pre></td></tr></table></figure>
+<h4 id="filterNotNull：过滤所有元素不是null的元素"><a href="#filterNotNull：过滤所有元素不是null的元素" class="headerlink" title="filterNotNull：过滤所有元素不是null的元素"></a>filterNotNull：过滤所有元素不是null的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.filterNotNull()</span><br></pre></td></tr></table></figure>
+<h4 id="slice-过滤一个list中指定index的元素"><a href="#slice-过滤一个list中指定index的元素" class="headerlink" title="slice:过滤一个list中指定index的元素"></a>slice:过滤一个list中指定index的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val returnList = list.slice(listOf(1, 3, 4))</span><br><span class="line"></span><br><span class="line">returnList.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;2</span><br><span class="line">it--&gt;4</span><br><span class="line">it--&gt;5</span><br></pre></td></tr></table></figure>
+<h4 id="take-返回从第一个开始的n个元素"><a href="#take-返回从第一个开始的n个元素" class="headerlink" title="take:返回从第一个开始的n个元素"></a>take:返回从第一个开始的n个元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val returnList = list.take(2)</span><br><span class="line"></span><br><span class="line">returnList.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;1</span><br><span class="line">it--&gt;2</span><br></pre></td></tr></table></figure>
+<h4 id="takeLast-返回从最后一个开始的n个元素"><a href="#takeLast-返回从最后一个开始的n个元素" class="headerlink" title="takeLast:返回从最后一个开始的n个元素"></a>takeLast:返回从最后一个开始的n个元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val returnList = list.takeLast(2)</span><br><span class="line"></span><br><span class="line">returnList.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;5</span><br><span class="line">it--&gt;6</span><br></pre></td></tr></table></figure>
+<h4 id="takeWhile-返回从第一个开始符合给定函数条件的元素"><a href="#takeWhile-返回从第一个开始符合给定函数条件的元素" class="headerlink" title="takeWhile:返回从第一个开始符合给定函数条件的元素"></a>takeWhile:返回从第一个开始符合给定函数条件的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">val returnTakeWhile = list.takeWhile &#123;</span><br><span class="line">	it &lt; 3</span><br><span class="line">&#125;</span><br><span class="line">        </span><br><span class="line">returnTakeWhile.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;1</span><br><span class="line">it--&gt;2</span><br></pre></td></tr></table></figure>
+<h4 id="flatMap-遍历所有的元素，为每一个创建一个集合，最后把所有的集合放在一个集合中"><a href="#flatMap-遍历所有的元素，为每一个创建一个集合，最后把所有的集合放在一个集合中" class="headerlink" title="flatMap:遍历所有的元素，为每一个创建一个集合，最后把所有的集合放在一个集合中"></a>flatMap:遍历所有的元素，为每一个创建一个集合，最后把所有的集合放在一个集合中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val list22 = listOf(1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7)</span><br><span class="line">val returnNewList = list.flatMap &#123;</span><br><span class="line">	listOf(it, it + 1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//val returnT = list2 == returnNewList//true</span><br><span class="line">for (i in returnNewList) &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;i--&gt;&quot; + i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="groupBy-返回一个根据给定函数分组后的map"><a href="#groupBy-返回一个根据给定函数分组后的map" class="headerlink" title="groupBy:返回一个根据给定函数分组后的map"></a>groupBy:返回一个根据给定函数分组后的map</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">val returnGroupBy = list.groupBy &#123;</span><br><span class="line">	if (it % 2 == 0) &quot;even&quot; else &quot;odd&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (i in returnGroupBy)&#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;&quot; + i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">odd=[1, 3, 5]</span><br><span class="line">even=[2, 4, 6]</span><br></pre></td></tr></table></figure>
+<h4 id="map-返回一个每一个元素根据给定函数转换所组成的List"><a href="#map-返回一个每一个元素根据给定函数转换所组成的List" class="headerlink" title="map:返回一个每一个元素根据给定函数转换所组成的List"></a>map:返回一个每一个元素根据给定函数转换所组成的List</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">list.map &#123;</span><br><span class="line">	it * 2</span><br><span class="line">&#125;.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">6</span><br><span class="line">8</span><br><span class="line">10</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<h4 id="mapIndexed-返回一个每一个元素根据给定的包含元素index的函数转换所组成的List"><a href="#mapIndexed-返回一个每一个元素根据给定的包含元素index的函数转换所组成的List" class="headerlink" title="mapIndexed:返回一个每一个元素根据给定的包含元素index的函数转换所组成的List"></a>mapIndexed:返回一个每一个元素根据给定的包含元素index的函数转换所组成的List</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">list.mapIndexed &#123; index, i -&gt; index + i &#125;.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">1</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">7</span><br><span class="line">9</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<h4 id="mapNotNull-返回一个每一个非null元素根据给定的函数转换所组成的List"><a href="#mapNotNull-返回一个每一个非null元素根据给定的函数转换所组成的List" class="headerlink" title="mapNotNull:返回一个每一个非null元素根据给定的函数转换所组成的List"></a>mapNotNull:返回一个每一个非null元素根据给定的函数转换所组成的List</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">list.mapNotNull &#123; it*2 &#125;.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">6</span><br><span class="line">8</span><br><span class="line">10</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<h4 id="contains-如果指定元素可以在集合中找到，则返回true"><a href="#contains-如果指定元素可以在集合中找到，则返回true" class="headerlink" title="contains:如果指定元素可以在集合中找到，则返回true"></a>contains:如果指定元素可以在集合中找到，则返回true</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val returnBoolean = list.contains(2)</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;returnBoolean --&gt;&quot; + returnBoolean)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+<h4 id="elementAt-返回给定index对应的元素，如果index数组越界则会抛出异常"><a href="#elementAt-返回给定index对应的元素，如果index数组越界则会抛出异常" class="headerlink" title="elementAt:返回给定index对应的元素，如果index数组越界则会抛出异常"></a>elementAt:返回给定index对应的元素，如果index数组越界则会抛出异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val elementAt = list.elementAt(2)</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;elementAt --&gt;&quot; + elementAt)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4 id="elementAtOrElse-返回给定index对应的元素，如果index数组越界则会根据给定函数返回默认值"><a href="#elementAtOrElse-返回给定index对应的元素，如果index数组越界则会根据给定函数返回默认值" class="headerlink" title="elementAtOrElse:返回给定index对应的元素，如果index数组越界则会根据给定函数返回默认值"></a>elementAtOrElse:返回给定index对应的元素，如果index数组越界则会根据给定函数返回默认值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lval elementAtOrElse = list.elementAtOrElse(10, &#123; 2 * it &#125;)</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;elementAtOrElse --&gt;&quot; + elementAtOrElse)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
+<h4 id="elementAtOrNull-返回给定index对应的元素，如果index数组越界则会返回null"><a href="#elementAtOrNull-返回给定index对应的元素，如果index数组越界则会返回null" class="headerlink" title="elementAtOrNull:返回给定index对应的元素，如果index数组越界则会返回null"></a>elementAtOrNull:返回给定index对应的元素，如果index数组越界则会返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.elementAtOrNull(10)</span><br></pre></td></tr></table></figure>
+<h4 id="first-返回符合给定函数条件的第一个元素"><a href="#first-返回符合给定函数条件的第一个元素" class="headerlink" title="first:返回符合给定函数条件的第一个元素"></a>first:返回符合给定函数条件的第一个元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val first = list.first &#123;</span><br><span class="line">	it % 2 == 0</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;first --&gt;&quot; + first)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<h4 id="firstOrNull-返回符合给定函数条件的第一个元素，如果没有符合则返回null"><a href="#firstOrNull-返回符合给定函数条件的第一个元素，如果没有符合则返回null" class="headerlink" title="firstOrNull:返回符合给定函数条件的第一个元素，如果没有符合则返回null"></a>firstOrNull:返回符合给定函数条件的第一个元素，如果没有符合则返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val firstOrNull = list.firstOrNull &#123;</span><br><span class="line">	it % 7 == 0</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;firstOrNull --&gt;&quot; + firstOrNull)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">firstOrNull --&gt;null</span><br></pre></td></tr></table></figure>
+<h4 id="indexOf-返回指定元素的第一个index，如果不存在，则返回-1"><a href="#indexOf-返回指定元素的第一个index，如果不存在，则返回-1" class="headerlink" title="indexOf:返回指定元素的第一个index，如果不存在，则返回-1"></a>indexOf:返回指定元素的第一个index，如果不存在，则返回-1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val indexOf = list.indexOf(4)</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;indexOf --&gt;&quot; + indexOf)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4 id="indexOfFirst-返回第一个符合给定函数条件的元素的index，如果没有符合则返回-1"><a href="#indexOfFirst-返回第一个符合给定函数条件的元素的index，如果没有符合则返回-1" class="headerlink" title="indexOfFirst:返回第一个符合给定函数条件的元素的index，如果没有符合则返回-1"></a>indexOfFirst:返回第一个符合给定函数条件的元素的index，如果没有符合则返回-1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val indexOfFirst = list.indexOfFirst &#123; it % 2 == 0 &#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;indexOfFirst --&gt;&quot; + indexOfFirst)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h4 id="last-返回符合给定函数条件的最后一个元素"><a href="#last-返回符合给定函数条件的最后一个元素" class="headerlink" title="last:返回符合给定函数条件的最后一个元素"></a>last:返回符合给定函数条件的最后一个元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val last = list.last &#123; it % 2 == 0 &#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;last --&gt;&quot; + last)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<h4 id="lastIndexOf-返回指定元素的最后一个index，如果不存在返回-1"><a href="#lastIndexOf-返回指定元素的最后一个index，如果不存在返回-1" class="headerlink" title="lastIndexOf:返回指定元素的最后一个index，如果不存在返回-1"></a>lastIndexOf:返回指定元素的最后一个index，如果不存在返回-1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val lastIndexOf = list.lastIndexOf(3)</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;lastIndexOf --&gt;&quot; + lastIndexOf)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<h4 id="lastOrNull-返回符合给定函数条件的最后一个元素，如果没有则返回null"><a href="#lastOrNull-返回符合给定函数条件的最后一个元素，如果没有则返回null" class="headerlink" title="lastOrNull:返回符合给定函数条件的最后一个元素，如果没有则返回null"></a>lastOrNull:返回符合给定函数条件的最后一个元素，如果没有则返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val lastOrNull = list.lastOrNull &#123;</span><br><span class="line">	it % 7 == 0</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;lastOrNull --&gt;&quot; + lastOrNull)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
+<h4 id="single-返回符合给定函数的单个元素，如果没有符合或者超过一个，则抛出异常"><a href="#single-返回符合给定函数的单个元素，如果没有符合或者超过一个，则抛出异常" class="headerlink" title="single:返回符合给定函数的单个元素，如果没有符合或者超过一个，则抛出异常"></a>single:返回符合给定函数的单个元素，如果没有符合或者超过一个，则抛出异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val single = list.single &#123; it % 5 == 0 &#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;single --&gt;&quot; + single)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<h4 id="singleOrNull-返回符合给定函数的单个元素，如果没有符合或者超过一个，则返回null"><a href="#singleOrNull-返回符合给定函数的单个元素，如果没有符合或者超过一个，则返回null" class="headerlink" title="singleOrNull:返回符合给定函数的单个元素，如果没有符合或者超过一个，则返回null"></a>singleOrNull:返回符合给定函数的单个元素，如果没有符合或者超过一个，则返回null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val singleOrNull = list.singleOrNull &#123;</span><br><span class="line">	it % 7 == 0</span><br><span class="line">&#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;singleOrNull --&gt;&quot; + singleOrNull)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
+<h2 id="生产操作符"><a href="#生产操作符" class="headerlink" title="生产操作符"></a>生产操作符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val list1 = listOf(1, 2, 3, 4, 5)</span><br><span class="line">val list2 = listOf(11, 22, 33, 44, 55)</span><br></pre></td></tr></table></figure>
+<h4 id="zip-返回由pair组成的list，每个pari由两个集合中相同的index的元素组成，这个返回的list"><a href="#zip-返回由pair组成的list，每个pari由两个集合中相同的index的元素组成，这个返回的list" class="headerlink" title="zip:返回由pair组成的list，每个pari由两个集合中相同的index的元素组成，这个返回的list"></a>zip:返回由pair组成的list，每个pari由两个集合中相同的index的元素组成，这个返回的list</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//集合的大小由最小的那个集合决定</span><br><span class="line">list1.zip(list2) &#123; t1, t2 -&gt;</span><br><span class="line">	t1 + t2</span><br><span class="line">&#125;.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;12</span><br><span class="line">it--&gt;24</span><br><span class="line">it--&gt;36</span><br><span class="line">it--&gt;48</span><br><span class="line">it--&gt;60</span><br></pre></td></tr></table></figure>
+<h4 id="partition-把一个给定的集合分割成两个，第一个集合是由原集合每一项元素匹配给定函数条件返回true的元素组成，第二个集合是由原集合每一项元素匹配给定函数条件返回false的元素组成"><a href="#partition-把一个给定的集合分割成两个，第一个集合是由原集合每一项元素匹配给定函数条件返回true的元素组成，第二个集合是由原集合每一项元素匹配给定函数条件返回false的元素组成" class="headerlink" title="partition:把一个给定的集合分割成两个，第一个集合是由原集合每一项元素匹配给定函数条件返回true的元素组成，第二个集合是由原集合每一项元素匹配给定函数条件返回false的元素组成"></a>partition:把一个给定的集合分割成两个，第一个集合是由原集合每一项元素匹配给定函数条件返回true的元素组成，第二个集合是由原集合每一项元素匹配给定函数条件返回false的元素组成</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val partition = list1.partition &#123; it &gt; 3 &#125;</span><br><span class="line">Log.e(&quot;xxx&quot;, &quot;partition--&gt;&quot; + partition)</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">partition--&gt;([4, 5], [1, 2, 3])</span><br></pre></td></tr></table></figure>
+<h4 id="plus-合并两个List，可以用”-”替代"><a href="#plus-合并两个List，可以用”-”替代" class="headerlink" title="plus:合并两个List，可以用”+”替代"></a>plus:合并两个List，可以用”+”替代</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(list1+list2).forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;it--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">it--&gt;1</span><br><span class="line">it--&gt;2</span><br><span class="line">it--&gt;3</span><br><span class="line">it--&gt;4</span><br><span class="line">it--&gt;5</span><br><span class="line">it--&gt;11</span><br><span class="line">it--&gt;22</span><br><span class="line">it--&gt;33</span><br><span class="line">it--&gt;44</span><br><span class="line">it--&gt;55</span><br></pre></td></tr></table></figure>
+<h4 id="unzip-将包含多个Pair的List-转换成-含List的Pair"><a href="#unzip-将包含多个Pair的List-转换成-含List的Pair" class="headerlink" title="unzip: 将包含多个Pair的List 转换成 含List的Pair"></a>unzip: 将包含多个Pair的List 转换成 含List的Pair</h4><h2 id="顺序操作符"><a href="#顺序操作符" class="headerlink" title="顺序操作符"></a>顺序操作符</h2><h4 id="reverse-返回一个与指定list相反顺序的list"><a href="#reverse-返回一个与指定list相反顺序的list" class="headerlink" title="reverse:返回一个与指定list相反顺序的list"></a>reverse:返回一个与指定list相反顺序的list</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">list1.reversed().forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;reversed--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">reversed--&gt;5</span><br><span class="line">reversed--&gt;4</span><br><span class="line">reversed--&gt;3</span><br><span class="line">reversed--&gt;2</span><br><span class="line">reversed--&gt;1</span><br></pre></td></tr></table></figure>
+<h4 id="sort-返回一个自然顺序后的list"><a href="#sort-返回一个自然顺序后的list" class="headerlink" title="sort:返回一个自然顺序后的list"></a>sort:返回一个自然顺序后的list</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">list1.sorted().forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;sorted--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">sorted--&gt;1</span><br><span class="line">sorted--&gt;2</span><br><span class="line">sorted--&gt;3</span><br><span class="line">sorted--&gt;4</span><br><span class="line">sorted--&gt;5</span><br></pre></td></tr></table></figure>
+<h4 id="sortBy-返回一个根据指定函数排序后是list"><a href="#sortBy-返回一个根据指定函数排序后是list" class="headerlink" title="sortBy:返回一个根据指定函数排序后是list"></a>sortBy:返回一个根据指定函数排序后是list</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">list1.sortedBy &#123; it % 3 &#125;.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;sortedBy--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">sortedBy--&gt;3</span><br><span class="line">sortedBy--&gt;1</span><br><span class="line">sortedBy--&gt;4</span><br><span class="line">sortedBy--&gt;2</span><br><span class="line">sortedBy--&gt;5</span><br></pre></td></tr></table></figure>
+<h4 id="sortDescending-返回一个降序排列后的list"><a href="#sortDescending-返回一个降序排列后的list" class="headerlink" title="sortDescending:返回一个降序排列后的list"></a>sortDescending:返回一个降序排列后的list</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">list1.sortedDescending().forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;sortedDescending--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">sortedDescending--&gt;5</span><br><span class="line">sortedDescending--&gt;4</span><br><span class="line">sortedDescending--&gt;3</span><br><span class="line">sortedDescending--&gt;2</span><br><span class="line">sortedDescending--&gt;1</span><br></pre></td></tr></table></figure>
+<h4 id="sortDescendingBy-返回一个根据指定函数降序后的list"><a href="#sortDescendingBy-返回一个根据指定函数降序后的list" class="headerlink" title="sortDescendingBy:返回一个根据指定函数降序后的list"></a>sortDescendingBy:返回一个根据指定函数降序后的list</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">list1.sortedByDescending &#123;</span><br><span class="line">	it % 2</span><br><span class="line">&#125;.forEach &#123;</span><br><span class="line">	Log.e(&quot;xxx&quot;, &quot;sortedDescending--&gt;&quot; + it)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">sortedDescending--&gt;1</span><br><span class="line">sortedDescending--&gt;3</span><br><span class="line">sortedDescending--&gt;5</span><br><span class="line">sortedDescending--&gt;2</span><br><span class="line">sortedDescending--&gt;4</span><br></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -207,364 +283,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/02/Kotlin学习笔记(20)常用函数/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(19)代理/" class="archive-article-date">
-  	<time datetime="2018-08-02T07:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/02/Kotlin学习笔记(19)代理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kotlin学习笔记(19)代理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(19)代理/">Kotlin学习笔记(19)代理</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/" class="archive-article-date">
-  	<time datetime="2018-08-02T07:08:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/">Kotlin学习笔记(18)方法重载与高阶函数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(17)对象/" class="archive-article-date">
-  	<time datetime="2018-08-02T06:13:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(17)对象/">Kotlin学习笔记(17)对象</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(16)密封类/" class="archive-article-date">
-  	<time datetime="2018-08-02T05:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(16)密封类/">Kotlin学习笔记(16)密封类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(15)数据类/" class="archive-article-date">
-  	<time datetime="2018-08-02T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(15)数据类/">Kotlin学习笔记(15)数据类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -588,8 +405,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
