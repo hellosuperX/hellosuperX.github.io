@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Kotlin学习笔记(5)常量与变量 | 李鑫的博客</title>
+  <title>Gradle(3)groovy中的逻辑控制 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。">
-<meta name="keywords" content="Kotlin">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;groovy中的if/else以及while与Java中的是一致的，所以不在多做解释了。这里针对groovy中的switch/case以及for循环来做讲解。理解groovy的语法糖的强大之处。">
+<meta name="keywords" content="Gradle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin学习笔记(5)常量与变量">
-<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(5)常量与变量/index.html">
+<meta property="og:title" content="Gradle(3)groovy中的逻辑控制">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/Gradle(3)groovy中的逻辑控制/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;groovy中的if/else以及while与Java中的是一致的，所以不在多做解释了。这里针对groovy中的switch/case以及for循环来做讲解。理解groovy的语法糖的强大之处。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-01T05:56:00.434Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-790cb4d06a4dc34e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-02T13:27:34.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin学习笔记(5)常量与变量">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。">
+<meta name="twitter:title" content="Gradle(3)groovy中的逻辑控制">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;groovy中的if/else以及while与Java中的是一致的，所以不在多做解释了。这里针对groovy中的switch/case以及for循环来做讲解。理解groovy的语法糖的强大之处。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-790cb4d06a4dc34e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -177,31 +179,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Kotlin学习笔记(5)常量与变量" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Gradle(3)groovy中的逻辑控制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Kotlin学习笔记(5)常量与变量
+      Gradle(3)groovy中的逻辑控制
     </h1>
   
 
         
-        <a href="/2018/07/31/Kotlin学习笔记(5)常量与变量/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
+        <a href="/2018/08/02/Gradle(3)groovy中的逻辑控制/" class="archive-article-date">
+  	<time datetime="2018-08-02T12:02:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。<br><a id="more"></a></p>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>&#160; &#160; &#160; &#160;kotlin变量的声明方式与Java中声明变量有很大的区别，而且必须使用var关键字<strong>定义格式： 关键字 变量名: 数据类型 = xxx</strong>，我们先用代码看一下变量的声明与操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//立即初始化</span><br><span class="line">var a: Int = 10</span><br><span class="line"></span><br><span class="line">//推导出类型</span><br><span class="line">var b = 5</span><br><span class="line"></span><br><span class="line">//没有初始化的时候，必须声明类型</span><br><span class="line">var c: Float</span><br><span class="line">c = 12.3f    //赋值</span><br><span class="line">c += 1        //操作变量</span><br><span class="line">println(&quot;a =&gt; $a   b =&gt; $b   c =&gt; $c&quot;)</span><br><span class="line"></span><br><span class="line">打印结果为：</span><br><span class="line">a =&gt;10    b =&gt;5     c =&gt;13.3</span><br></pre></td></tr></table></figure></p>
-<p><strong>注意：</strong><br>&#160; &#160; &#160; &#160;1.var是kotlin中定义变量必须使用的关键字。<br>&#160; &#160; &#160; &#160;2.每一行代码的结束可以省略掉分号（‘；’），这一点是和Java不同的地方。当然，第一次写可能会有一点不习惯。<br>&#160; &#160; &#160; &#160;3.print()与println()都是打印方法，后者打印完成之后会换一行。此两个方法和Java的打印方法是一模一样的。<br>&#160; &#160; &#160; &#160;4.$符号表示引用的意思。<br>&#160; &#160; &#160; &#160;5.变量的主要特点是可以再次赋值。</p>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>&#160; &#160; &#160; &#160;kotlin变量的声明方式与Java中声明变量有很大的区别，而且必须使用var关键字,而在Java中是使用final关键字修饰的，而且为了区别一般都用大写字母表示常量。<strong>定义格式： 关键字 常量名: 数据类型 = xxx</strong>，我们先用代码看一下变量的声明与操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//立即初始化</span><br><span class="line">val NUM_A: Int = 100</span><br><span class="line"></span><br><span class="line">//推导出类型</span><br><span class="line">val NUM_B = 50</span><br><span class="line"></span><br><span class="line">//没有初始化的时候，必须声明类型</span><br><span class="line">val NUM_C: Int</span><br><span class="line">NUM_C = 1</span><br><span class="line">// c += 1 因为c是常量，所以这句代码是会报错的	</span><br><span class="line">println(&quot;NUM_A =&gt; $NUM_A   NUM_B =&gt; $NUM_B   NUM_C =&gt; $NUM_C&quot;)</span><br><span class="line"></span><br><span class="line">打印结果为：</span><br><span class="line">NUM_A =&gt; 100       NUM_B =&gt; 50       NUM_C =&gt; 1</span><br></pre></td></tr></table></figure></p>
-<p><strong>注意：</strong><br>&#160; &#160; &#160; &#160;1.从代码可以看出几乎和定义变量没什么区别<br>&#160; &#160; &#160; &#160;2.val是kotlin中定义常量必须使用的关键字。<br>&#160; &#160; &#160; &#160;3.当然，使用大写字母表示常量，个人觉得从编码习惯的角度来说，还是保持和Java一样。<br>&#160; &#160; &#160; &#160;4.常量做关键的特点是不可以再次赋值。</p>
+        <p><img src="https://upload-images.jianshu.io/upload_images/5462731-790cb4d06a4dc34e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="逻辑控制"><br>&#160; &#160; &#160; &#160;groovy中的if/else以及while与Java中的是一致的，所以不在多做解释了。这里针对groovy中的switch/case以及for循环来做讲解。理解groovy的语法糖的强大之处。<br><a id="more"></a></p>
+<h2 id="switch-case"><a href="#switch-case" class="headerlink" title="switch/case"></a>switch/case</h2><p>&#160; &#160; &#160; &#160;groovy中的switch/case不仅仅像Java那样只支持(int，string，char，枚举)四种数据类型，而且还支持其他多样的数据类型，我们直接通过一个例子来讲解switch/case<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">def x = 1.23</span><br><span class="line">def result</span><br><span class="line">switch (x) &#123;</span><br><span class="line">    case &apos;foo&apos;:</span><br><span class="line">        result = &apos;found foo&apos;</span><br><span class="line">        break</span><br><span class="line">    case &apos;bar&apos;:</span><br><span class="line">        result = &apos;found bar&apos;</span><br><span class="line">        break</span><br><span class="line">    case [4, 5, 6, &apos;inlist&apos;]://列表</span><br><span class="line">        result = &apos;list&apos;</span><br><span class="line">        break</span><br><span class="line">    case 12..30:</span><br><span class="line">        result = &apos;range&apos;//范围</span><br><span class="line">        break</span><br><span class="line">    case Integer:</span><br><span class="line">        result = &apos;integer&apos;</span><br><span class="line">        break</span><br><span class="line">    case BigDecimal:</span><br><span class="line">        result = &apos;big decimal&apos;</span><br><span class="line">        break</span><br><span class="line">    default:</span><br><span class="line">        result = &apos;default&apos;</span><br><span class="line">        break</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println result</span><br><span class="line"></span><br><span class="line">运行结果:</span><br><span class="line">big decimal</span><br></pre></td></tr></table></figure></p>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p><strong>1.对范围的for循环</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def sum = 0</span><br><span class="line">for (i in 0..9) &#123;</span><br><span class="line">    sum += i</span><br><span class="line">&#125;</span><br><span class="line">println sum</span><br><span class="line"></span><br><span class="line">运行结果:</span><br><span class="line">45</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.对List的循环</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (i in [1, 2, 3, 4, 5, 6, 7, 8, 9]) &#123;</span><br><span class="line">    sum += i</span><br><span class="line">&#125;</span><br><span class="line">println sum</span><br><span class="line"></span><br><span class="line">运行结果:</span><br><span class="line">45</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.对map进行循环,可以更快捷的获取key和value</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">for (i in [&apos;lili&apos;: 1, &apos;luck&apos;: 2, &apos;xiaoming&apos;: 3]) &#123;</span><br><span class="line">    sum += i.value</span><br><span class="line">    println i.key</span><br><span class="line">&#125;</span><br><span class="line">println sum</span><br><span class="line"></span><br><span class="line">运行结果:</span><br><span class="line">lili</span><br><span class="line">luck</span><br><span class="line">xiaoming</span><br><span class="line">6</span><br></pre></td></tr></table></figure></p>
+<h2 id="if循环"><a href="#if循环" class="headerlink" title="if循环"></a>if循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def i = 100</span><br><span class="line"></span><br><span class="line">if (i &gt; 80) &#123;</span><br><span class="line">    println(&quot;优秀&quot;)</span><br><span class="line">&#125; else if (i &gt; 60 &amp;&amp; i &lt; 80) &#123;</span><br><span class="line">    println(&quot;良好&quot;)</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    println(&quot;不及格&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">优秀</span><br></pre></td></tr></table></figure>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def count = 0</span><br><span class="line"></span><br><span class="line">while(count&lt;5) &#123;</span><br><span class="line">    println(count)</span><br><span class="line">    count++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
 
       
 
@@ -236,7 +240,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
         		</li>
       		
 		</ul>
@@ -292,7 +296,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(5)常量与变量/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/02/Gradle(3)groovy中的逻辑控制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,18 +310,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/31/Kotlin学习笔记(6)函数/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/02/Gradle(2)groovy基础语法/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Kotlin学习笔记(6)函数
+          Gradle(2)groovy基础语法
         
       </div>
     </a>
   
   
-    <a href="/2018/07/31/Kotlin学习笔记(4)数组/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Kotlin学习笔记(4)数组</div>
+    <a href="/2018/08/02/Gradle(1)基础概念及其配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gradle(1)基础概念及其配置</div>
       <i class="icon-circle-right"></i>
     </a>
   

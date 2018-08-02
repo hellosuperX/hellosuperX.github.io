@@ -6,20 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Kotlin学习笔记(5)常量与变量 | 李鑫的博客</title>
+  <title>Gradle(1)基础概念及其配置 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。">
-<meta name="keywords" content="Kotlin">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;DSL全称domain specific language，领域特定语言，可以看成是元数据的一种具体实现。元数据是指对数据信息的描述，比如Latex对排版的描述，Mac中的plist，gradle对Android项目的描述，Java中的注解，甚至通信领域中通过ASN.1对LTE报文的描述，都可以称作“元数据”。这种描述可以看作为一种抽象语法，即">
+<meta name="keywords" content="Gradle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin学习笔记(5)常量与变量">
-<meta property="og:url" content="http://yoursite.com/2018/07/31/Kotlin学习笔记(5)常量与变量/index.html">
+<meta property="og:title" content="Gradle(1)基础概念及其配置">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/Gradle(1)基础概念及其配置/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;DSL全称domain specific language，领域特定语言，可以看成是元数据的一种具体实现。元数据是指对数据信息的描述，比如Latex对排版的描述，Mac中的plist，gradle对Android项目的描述，Java中的注解，甚至通信领域中通过ASN.1对LTE报文的描述，都可以称作“元数据”。这种描述可以看作为一种抽象语法，即">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-01T05:56:00.434Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-90ad80fcede8c91f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-3e416a7ae98481ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-ae87944b820eccfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-14b7984530907047.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-d94f0dba09bd71ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-95f174ddc3ffc43f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-3d2949e081ab6286.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-59b11ae7083f6b53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-02T12:02:04.065Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin学习笔记(5)常量与变量">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。">
+<meta name="twitter:title" content="Gradle(1)基础概念及其配置">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;DSL全称domain specific language，领域特定语言，可以看成是元数据的一种具体实现。元数据是指对数据信息的描述，比如Latex对排版的描述，Mac中的plist，gradle对Android项目的描述，Java中的注解，甚至通信领域中通过ASN.1对LTE报文的描述，都可以称作“元数据”。这种描述可以看作为一种抽象语法，即">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-90ad80fcede8c91f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -177,31 +186,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Kotlin学习笔记(5)常量与变量" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Gradle(1)基础概念及其配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Kotlin学习笔记(5)常量与变量
+      Gradle(1)基础概念及其配置
     </h1>
   
 
         
-        <a href="/2018/07/31/Kotlin学习笔记(5)常量与变量/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
+        <a href="/2018/08/02/Gradle(1)基础概念及其配置/" class="archive-article-date">
+  	<time datetime="2018-08-02T11:17:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。<br><a id="more"></a></p>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>&#160; &#160; &#160; &#160;kotlin变量的声明方式与Java中声明变量有很大的区别，而且必须使用var关键字<strong>定义格式： 关键字 变量名: 数据类型 = xxx</strong>，我们先用代码看一下变量的声明与操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//立即初始化</span><br><span class="line">var a: Int = 10</span><br><span class="line"></span><br><span class="line">//推导出类型</span><br><span class="line">var b = 5</span><br><span class="line"></span><br><span class="line">//没有初始化的时候，必须声明类型</span><br><span class="line">var c: Float</span><br><span class="line">c = 12.3f    //赋值</span><br><span class="line">c += 1        //操作变量</span><br><span class="line">println(&quot;a =&gt; $a   b =&gt; $b   c =&gt; $c&quot;)</span><br><span class="line"></span><br><span class="line">打印结果为：</span><br><span class="line">a =&gt;10    b =&gt;5     c =&gt;13.3</span><br></pre></td></tr></table></figure></p>
-<p><strong>注意：</strong><br>&#160; &#160; &#160; &#160;1.var是kotlin中定义变量必须使用的关键字。<br>&#160; &#160; &#160; &#160;2.每一行代码的结束可以省略掉分号（‘；’），这一点是和Java不同的地方。当然，第一次写可能会有一点不习惯。<br>&#160; &#160; &#160; &#160;3.print()与println()都是打印方法，后者打印完成之后会换一行。此两个方法和Java的打印方法是一模一样的。<br>&#160; &#160; &#160; &#160;4.$符号表示引用的意思。<br>&#160; &#160; &#160; &#160;5.变量的主要特点是可以再次赋值。</p>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>&#160; &#160; &#160; &#160;kotlin变量的声明方式与Java中声明变量有很大的区别，而且必须使用var关键字,而在Java中是使用final关键字修饰的，而且为了区别一般都用大写字母表示常量。<strong>定义格式： 关键字 常量名: 数据类型 = xxx</strong>，我们先用代码看一下变量的声明与操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//立即初始化</span><br><span class="line">val NUM_A: Int = 100</span><br><span class="line"></span><br><span class="line">//推导出类型</span><br><span class="line">val NUM_B = 50</span><br><span class="line"></span><br><span class="line">//没有初始化的时候，必须声明类型</span><br><span class="line">val NUM_C: Int</span><br><span class="line">NUM_C = 1</span><br><span class="line">// c += 1 因为c是常量，所以这句代码是会报错的	</span><br><span class="line">println(&quot;NUM_A =&gt; $NUM_A   NUM_B =&gt; $NUM_B   NUM_C =&gt; $NUM_C&quot;)</span><br><span class="line"></span><br><span class="line">打印结果为：</span><br><span class="line">NUM_A =&gt; 100       NUM_B =&gt; 50       NUM_C =&gt; 1</span><br></pre></td></tr></table></figure></p>
-<p><strong>注意：</strong><br>&#160; &#160; &#160; &#160;1.从代码可以看出几乎和定义变量没什么区别<br>&#160; &#160; &#160; &#160;2.val是kotlin中定义常量必须使用的关键字。<br>&#160; &#160; &#160; &#160;3.当然，使用大写字母表示常量，个人觉得从编码习惯的角度来说，还是保持和Java一样。<br>&#160; &#160; &#160; &#160;4.常量做关键的特点是不可以再次赋值。</p>
+        <p>&#160; &#160; &#160; &#160;DSL全称domain specific language，领域特定语言，可以看成是元数据的一种具体实现。元数据是指对数据信息的描述，比如Latex对排版的描述，Mac中的plist，gradle对Android项目的描述，Java中的注解，甚至通信领域中通过ASN.1对LTE报文的描述，都可以称作“元数据”。这种描述可以看作为一种抽象语法，即Abstract Syntax。如果这种抽象语法的描述只为特定领域设计，就被称作领域专属语言(DSL, Domain Specific Language)。<br><a id="more"></a></p>
+<h2 id="DSL语言简介"><a href="#DSL语言简介" class="headerlink" title="DSL语言简介"></a>DSL语言简介</h2><h3 id="1-有哪些常见的DSL语言及特点"><a href="#1-有哪些常见的DSL语言及特点" class="headerlink" title="1.有哪些常见的DSL语言及特点"></a>1.有哪些常见的DSL语言及特点</h3><p>领域专属语言与通用语言是相对的，它一般用于解决特定的专业问题</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">DSL的分类</th>
+<th style="text-align:center">举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">内部DSL</td>
+<td style="text-align:center">Ruby，Lisp，Java(Annotation)，Groovy, kotlin</td>
+</tr>
+<tr>
+<td style="text-align:center">外部DSL</td>
+<td style="text-align:center">XML, SQL, JSON, Plist, Regex, Markdown, SCSS, React</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-DSL与通用编程语言的区别"><a href="#2-DSL与通用编程语言的区别" class="headerlink" title="2.DSL与通用编程语言的区别"></a>2.DSL与通用编程语言的区别</h3><ul>
+<li>DSL是纵向往深度发展。</li>
+<li>系统编程语言是横向，往更广的范围发展的。</li>
+</ul>
+<h3 id="3-DSL核心思想"><a href="#3-DSL核心思想" class="headerlink" title="3.DSL核心思想"></a>3.DSL核心思想</h3><p>求专不求全，解决特定问题</p>
+<h2 id="groovy介绍"><a href="#groovy介绍" class="headerlink" title="groovy介绍"></a>groovy介绍</h2><h3 id="1-groovy的简介"><a href="#1-groovy的简介" class="headerlink" title="1.groovy的简介"></a>1.groovy的简介</h3><p>1.是一种基于JVM的敏捷开发语言<br>2.结合了Python，Ruby和Smalltalk的许多强大的特性<br>3.groovy可以与Java完美结合，而且可以使用Java所有的库</p>
+<h3 id="2-groovy特性"><a href="#2-groovy特性" class="headerlink" title="2.groovy特性"></a>2.groovy特性</h3><p>1.语法上支持动态类型，闭包等新一代语言特性<br>2.无缝集成所有已经存在的Java类库<br>3.既支持面向对象编程也支持面向过程编程    </p>
+<h3 id="3-groovy优势"><a href="#3-groovy优势" class="headerlink" title="3.groovy优势"></a>3.groovy优势</h3><p>1.一种更加敏捷的编程语言(语法上有很多语法糖)<br>2.入门非常的容易，但功能非常的强大<br>3.即可以作为编程语言，也可以作为脚本语言<br>4.熟练掌握java的小伙伴会非常容易掌握Groovy</p>
+<h2 id="Mac-Linux下环境搭建步骤"><a href="#Mac-Linux下环境搭建步骤" class="headerlink" title="Mac/Linux下环境搭建步骤"></a>Mac/Linux下环境搭建步骤</h2><p>1.安装好<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">JDK</a>环境</p>
+<p>2.到官网下载好groovySDK，解压到合适的位置<strong>下载完之后打开bin文件夹，目录结构如下:</strong><br><img src="https://upload-images.jianshu.io/upload_images/5462731-90ad80fcede8c91f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bin目录结构"><br><strong>这个文件夹主要存放的是一些命令，主要命令如下：</strong></p>
+<ul>
+<li>groovy:执行我们的编译的groovy字节码文件的</li>
+<li>groovyc:将groovy语言编译为自解码文件</li>
+<li>groovysh:解释执行groovy脚本 </li>
+</ul>
+<p><strong>其他的主要目录用处如下</strong></p>
+<ul>
+<li>doc/html/api主要存放了groovy的方法</li>
+<li>doc/html/documentation主要存放了官方的groovy教程</li>
+</ul>
+<p>3.在电脑中配置groovy环境变量，在mac找到groovy的SDK存放路径，将bin目录记录下来。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Users/xxxx/Environmental/groovy-2.4.12/bin</span><br></pre></td></tr></table></figure></p>
+<p>然后执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>这里根据自己的喜好将bin的路径配置到环境变量中，然后刷新环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>刷新完成后验证环境变量是否配置成功，截图如下：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-3e416a7ae98481ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="检验是否安装成功"></p>
+<h2 id="Windows下环境搭建"><a href="#Windows下环境搭建" class="headerlink" title="Windows下环境搭建"></a>Windows下环境搭建</h2><p>1.下载groovySDK开发工具，然后解压到自己的目录中</p>
+<p>2.配置classpath环境变量(找到我的电脑 &gt; 高级系统设置 &gt; 环境变量 &gt; 新建环境变量)。然后将groovy的bin文件夹追加到PATH中。</p>
+<p>3.在控制台中输入 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groovy -v</span><br></pre></td></tr></table></figure>
+<p>通过版本的信息来校验是否安装成功。</p>
+<h2 id="IntelliJ配置groovy"><a href="#IntelliJ配置groovy" class="headerlink" title="IntelliJ配置groovy"></a>IntelliJ配置groovy</h2><p>1.到IntelliJ官网下载安装包，虽然这里下载基础版就够用了。。但是最好是完整版(去找破解法法！！！！！)。</p>
+<p>2.下载完成以后开始安装</p>
+<p>3.在IDEA中配置groovy工程环境,打开设置中找到Plugins然后搜索groovy，保证安装有工具插件。(最新版是自己有的)<br><img src="https://upload-images.jianshu.io/upload_images/5462731-ae87944b820eccfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="插件截图"></p>
+<h2 id="创建一个groovy项目"><a href="#创建一个groovy项目" class="headerlink" title="创建一个groovy项目"></a>创建一个groovy项目</h2><p>这里选择要选择Groovy的目录，然后创建</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-14b7984530907047.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建项目"></p>
+<p>创建成功的目录结构如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-d94f0dba09bd71ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录结构"></p>
+<p>然后新建一个class文件。编写一个基础代码。这里不需要书写分号。以及省略了public</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-95f174ddc3ffc43f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建代码"></p>
+<p>当然。groovy真正的强大之处。你还可以省略掉void mian方法。甚至省略掉class类，最后省略一下的结果呢就是这样的：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-3d2949e081ab6286.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建项目"></p>
+<p>运行结果当然都是一样的。如下所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-59b11ae7083f6b53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行结果"></p>
 
       
 
@@ -236,7 +302,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
         		</li>
       		
 		</ul>
@@ -292,7 +358,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/31/Kotlin学习笔记(5)常量与变量/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/02/Gradle(1)基础概念及其配置/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,18 +372,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/31/Kotlin学习笔记(6)函数/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/02/Gradle(3)groovy中的逻辑控制/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Kotlin学习笔记(6)函数
+          Gradle(3)groovy中的逻辑控制
         
       </div>
     </a>
   
   
-    <a href="/2018/07/31/Kotlin学习笔记(4)数组/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Kotlin学习笔记(4)数组</div>
+    <a href="/2018/08/02/Kotlin学习笔记(20)常用函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kotlin学习笔记(20)常用函数</div>
       <i class="icon-circle-right"></i>
     </a>
   
