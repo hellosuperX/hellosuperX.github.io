@@ -17,7 +17,7 @@
 <meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;想要理解注解，就要先理解Java中元数据的概念。元数据是关于数据的数据。在编程语言上下文中，元数据是添加到程序元素如方法、字段、类和包上的额外信息。对数据进行说明描述的数据。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-8e356b6d0553d4dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-08-05T09:04:47.135Z">
+<meta property="og:updated_time" content="2018-08-06T03:45:53.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="注解">
 <meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;想要理解注解，就要先理解Java中元数据的概念。元数据是关于数据的数据。在编程语言上下文中，元数据是添加到程序元素如方法、字段、类和包上的额外信息。对数据进行说明描述的数据。">
@@ -247,8 +247,112 @@
 </tbody>
 </table>
 <p><strong>@Functionallnterface</strong><br>用途：用户告知编辑器，检查这个接口，保证该接口是函数式接口，既只能包含一个抽象方法，否则就会编译出错。<br>注解类型分析：@Functionallnterface可适合用于注解类型声明，保留时长为运行时。</p>
-<h3 id="元注解-Annotation"><a href="#元注解-Annotation" class="headerlink" title="元注解(Annotation)"></a>元注解(Annotation)</h3><p>&#160; &#160; &#160; &#160;JDK除了在java.lang提供了上述内建注解外，还在java.lang.Annotation包下提供了6个Meta Annotation(元Annotation)，其中有5个元Annotation都用于修饰其他的Annotation定义。其中@Repeatable专门用户定义Java 8 新增的可重复注解。我们先介绍其中4个常用的修饰其他Annotation的元Annotation。在此之前，我们先了解如何自定义Annotation。<br>&#160; &#160; &#160; &#160;当一个接口直接继承java.lang.annotation. Annotation接口时，仍是接口，而并非注解。要想自定义注解类型，只能通过@interface关键字的方式，其实通过该方法是会隐含地继承Annotation接口。</p>
-<hr>
+<h3 id="元注解-Annotation"><a href="#元注解-Annotation" class="headerlink" title="元注解(Annotation)"></a>元注解(Annotation)</h3><p>&#160; &#160; &#160; &#160;JDK除了在java.lang提供了上述内建注解外，还在java.lang.Annotation包下提供了6个Meta Annotation(元Annotation)，其中有5个元Annotation都用于修饰其他的Annotation定义。其中@Repeatable专门用户定义Java 8 新增的可重复注解。我们先介绍其中4个常用的修饰其他Annotation的元Annotation。在此之前，我们先了解如何自定义Annotation。<br>&#160; &#160; &#160; &#160;当一个接口直接继承java.lang.annotation. Annotation接口时，仍是接口，而并非注解。要想自定义注解类型，只能通过@interface关键字的方式，其实通过该方法是会隐含地继承Annotation接口。<br><strong>@Documented</strong><br>&#160; &#160; &#160; &#160;@Documented用户指定被该元Annotation修饰的Annotation类将会被javadoc工具提取成文档，如果定义Annotation类时使用了@Documented修饰，则所有使用该Annotation修饰的程序元素的API文档中将会包含该Annotation说明。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(value = &#123;CONSTRUCTOR, FIELD, LOCAL_VARIABLE,</span><br><span class="line">        METHOD, PACKAGE, PARAMETER, TYPE&#125;)</span><br><span class="line">public @interface Deprecated &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>定义@Deprecated时使用了@Documented，则任何元素使用@Deprecated修饰时，在生成API文档时，将会包含@Deprecated的说明，以下是String的一个过时的构造方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Deprecated</span><br><span class="line">public String(byte[] ascii, int hibyte, int offset, int count)</span><br></pre></td></tr></table></figure></p>
+<p>该注解实现了元数据的第一个功能：编写文档。</p>
+<p><strong>@Inherited</strong><br>&#160; &#160; &#160; &#160;@Inherited指定被它修饰的Annotation将具有继承性—如果某个类使用了@Xxx注解(定义该Annotation时使用了@Inherited修饰)修饰，则其子类将自动被@Xxx修饰。</p>
+<p><strong>@Retention</strong><br>&#160; &#160; &#160; &#160;@Retention：表示该注解类型的注解保留的时长。当注解类型声明中没有@Retention元注解，则默认保留策略为RetentionPolicy.CLASS。关于保留策略(RetentionPolicy)是枚举类型，共定义3种保留策略，如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SOURCE</td>
+<td style="text-align:center">仅存在Java源文件，经过编译器后便丢弃相应的注解</td>
+</tr>
+<tr>
+<td style="text-align:center">CLASS</td>
+<td style="text-align:center">存在Java源文件，以及经编译器后生成的Class字节码文件，但在运行时VM不再保留注解</td>
+</tr>
+<tr>
+<td style="text-align:center">RUNTIME</td>
+<td style="text-align:center">存在源文件、编译生成的Class字节码文件，以及保留在运行时VM中，可通过反射性地读取注解</td>
+</tr>
+</tbody>
+</table>
+<p><strong>@Target</strong><br>&#160; &#160; &#160; &#160;@Target：表示该注解类型的所适用的程序元素类型。当注解类型声明中没有@Target元注解，则默认为可适用所有的程序元素。如果存在指定的@Target元注解，则编译器强制实施相应的使用限制。关于程序元素(ElementType)是枚举类型，共定义8中程序元素，如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ElementType</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ANNOTATION_TYPE</td>
+<td style="text-align:center">注解类型声明</td>
+</tr>
+<tr>
+<td style="text-align:center">CONSTRUCTOR</td>
+<td style="text-align:center">构造方法声明</td>
+</tr>
+<tr>
+<td style="text-align:center">FIELD</td>
+<td style="text-align:center">字段声明(包括枚举常量)</td>
+</tr>
+<tr>
+<td style="text-align:center">LOCAL_VARIABLE</td>
+<td style="text-align:center">局部变量声明</td>
+</tr>
+<tr>
+<td style="text-align:center">METHOD</td>
+<td style="text-align:center">方法声明</td>
+</tr>
+<tr>
+<td style="text-align:center">PACKAGE</td>
+<td style="text-align:center">包声明</td>
+</tr>
+<tr>
+<td style="text-align:center">PARAMETER</td>
+<td style="text-align:center">参数声明</td>
+</tr>
+<tr>
+<td style="text-align:center">TYPE</td>
+<td style="text-align:center">类、接口(包括注解类型)或枚举声明</td>
+</tr>
+</tbody>
+</table>
+<h2 id="自定义注解-Annotation"><a href="#自定义注解-Annotation" class="headerlink" title="自定义注解(Annotation)"></a>自定义注解(Annotation)</h2><p>创建自定义注解，与创建接口有几分相似，但是注解需要以@开头。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Target(ElementType.METHOD)</span><br><span class="line">@Inherited</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface MyAnnotation &#123;</span><br><span class="line">	String name();</span><br><span class="line">	String website() default &quot;hello&quot;;</span><br><span class="line">	int revision() default 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>自定义注解中定义成员变量的规则：<br>&#160; &#160; &#160; &#160;1.其定义是以无形参的方法形式来声明的。即：注解方法不带参数，比如name()，website()；<br>&#160; &#160; &#160; &#160;2.注解方法返回值类型：基本类型、String、Enums、Annotation以及前面那些类型的数组类型<br>&#160; &#160; &#160; &#160;3.注解方法可有默认值，比如default “hello”，默认website = ”hello“<br>当然注解中也可以不存在成员变量，在使用解析注解进行操作时，仅以是否包含该注解来进行操作。当注解中有成员变量时，若没有默认值，需要在使用注解时，指定成员变量的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class AnnotationDemo &#123;</span><br><span class="line"></span><br><span class="line">	@MyAnnotation(name = &quot;jing&quot;, website = &quot;hello&quot;, revision = 1)</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.print(&quot;I am main method&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@MyAnnotation(name = &quot;jing&quot;, website = &quot;hello&quot;, revision = 2)</span><br><span class="line">	public void demo() &#123;</span><br><span class="line">		System.out.print(&quot;I am demo method&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于该注解的保留策略为RetentionPolicy.RUNTIME，故可以在运行期通过反射机制来使用，否则无法通过反射机制来获取。这时候注解实现的就是元数据的第二个作用：代码分析。</p>
+<h2 id="注解解析"><a href="#注解解析" class="headerlink" title="注解解析"></a>注解解析</h2><p>接下来，通过反射技术来解析自定义注解。关于反射类位于包java.lang.reflect，其中有一个接口AnnotatedElement，该接口主要有如下几个实现类：Class，Constructor，Field，Method，Package。除此之外，该接口定义了注解相关的几个核心方法，如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">返回值</th>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">getAnnotation(Class annotationClass)</td>
+<td style="text-align:center">当存在该元素的指定类型注解，则返回相应注解，否则返回null</td>
+</tr>
+<tr>
+<td style="text-align:center">Annotation[]</td>
+<td style="text-align:center">getAnnotation()</td>
+<td style="text-align:center">返回此元素上存在的所有注解</td>
+</tr>
+<tr>
+<td style="text-align:center">Annotation[]</td>
+<td style="text-align:center">getDeclaredAnnotations()</td>
+<td style="text-align:center">返回直接存在于此元素上的所有注解</td>
+</tr>
+<tr>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass)</td>
+<td style="text-align:center">当存在该元素的指定类型注解，则返回true，否则返回false</td>
+</tr>
+</tbody>
+</table>
+<p>因此，当获取了某个类的Class对象，然后获取其Field，Method等对象，通过上述4个方法提取其中的注解，然后获取注解的详细信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class AnnotationParser &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws ClassNotFoundException &#123;</span><br><span class="line">		String clazz = &quot;li.com.javaproject.AnnotationDemo&quot;;</span><br><span class="line">		Method[] methods = AnnotationParser.class.getClassLoader().loadClass(clazz)</span><br><span class="line">                .getMethods();</span><br><span class="line">		for (Method method : methods) &#123;</span><br><span class="line">			if (method.isAnnotationPresent(MyAnnotation.class))&#123;</span><br><span class="line">				MyAnnotation annotation = method.getAnnotation(MyAnnotation.class);</span><br><span class="line">				System.out.println(&quot;method：&quot;+method);</span><br><span class="line">				System.out.println(&quot;name：&quot;+annotation.name());</span><br><span class="line">				System.out.println(&quot;website：&quot;+annotation.website());</span><br><span class="line">				System.out.println(&quot;revision：&quot;+annotation.revision());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
