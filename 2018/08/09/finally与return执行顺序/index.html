@@ -6,15 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>finally与return执行顺序 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/4/index.html">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;try…catch…finally块中的finally语句是不是一定会被执行？？答案是正确的，但是至少有两种情况finally语句是不会被执行的。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="finally与return执行顺序">
+<meta property="og:url" content="http://yoursite.com/2018/08/09/finally与return执行顺序/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;try…catch…finally块中的finally语句是不是一定会被执行？？答案是正确的，但是至少有两种情况finally语句是不会被执行的。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-61cf0ffd2acc8362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-9190b67a5fe36821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-625142043e841731.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-105d1c6e129907ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-294136f887b4d524.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-3a3ce844bc958ec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-24361dc254a35328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-10T02:05:51.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="finally与return执行顺序">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;try…catch…finally块中的finally语句是不是一定会被执行？？答案是正确的，但是至少有两种情况finally语句是不会被执行的。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-61cf0ffd2acc8362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,405 +185,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-finally与return执行顺序" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      finally与return执行顺序
+    </h1>
+  
+
+        
+        <a href="/2018/08/09/finally与return执行顺序/" class="archive-article-date">
+  	<time datetime="2018-08-09T09:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#160; &#160; &#160; &#160;try…catch…finally块中的finally语句是不是一定会被执行？？答案是正确的，但是至少有两种情况finally语句是不会被执行的。<br><a id="more"></a></p>
+<h2 id="finally不会执行的两种情况。"><a href="#finally不会执行的两种情况。" class="headerlink" title="finally不会执行的两种情况。"></a>finally不会执行的两种情况。</h2><p>1.try语句没有被执行到，如在try语句之前就返回了，这样finally语句就不会执行，这也说明了finally语句被执行的必要而非充分条件是：相应的try语句一定被执行到。</p>
+<p>2.在try块中有System.exit(0)；这样的语句，System.exit(0)；是终止Java虚拟机JVM的，连JVM都停止了，所有都结束了，当然finally语句也不会被执行到。</p>
+<h3 id="1-finally语句在return语句执行之后return返回之前执行的"><a href="#1-finally语句在return语句执行之后return返回之前执行的" class="headerlink" title="1.finally语句在return语句执行之后return返回之前执行的"></a>1.finally语句在return语句执行之后return返回之前执行的</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Test4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(test1());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static int test1() &#123;</span><br><span class="line">		int b = 20;</span><br><span class="line">		try &#123;</span><br><span class="line">			System.out.println(&quot;try block&quot;);</span><br><span class="line">			return b += 80;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			System.out.println(&quot;catch block&quot;);</span><br><span class="line">		&#125; finally &#123;</span><br><span class="line">			System.out.println(&quot;finally block&quot;);</span><br><span class="line">			if (b &gt; 25) &#123;</span><br><span class="line">				System.out.println(&quot;b&gt;25，b =  &quot; + b);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-61cf0ffd2acc8362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这里说明了return语句已经执行了再去执行finally语句，不过并没有直接返回，而是等finally语句执行完了再返回结果。在看下面这个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Test4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(test1());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static String test1() &#123;</span><br><span class="line">		try&#123;</span><br><span class="line">			System.out.println(&quot;try block&quot;);</span><br><span class="line">			return test2();</span><br><span class="line">		&#125;finally &#123;</span><br><span class="line">			System.out.println(&quot;finally block&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static String test2() &#123;</span><br><span class="line">		System.out.println(&quot;return statement&quot;);</span><br><span class="line">		return &quot;after return&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-9190b67a5fe36821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>说明try中的return语句先执行了但并没有立刻返回，等到finally执行结束后再返回。</p>
+<h3 id="2-finally块中的return语句会覆盖try块中的return返回"><a href="#2-finally块中的return语句会覆盖try块中的return返回" class="headerlink" title="2.finally块中的return语句会覆盖try块中的return返回"></a>2.finally块中的return语句会覆盖try块中的return返回</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Test4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(test2());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static int test2() &#123;</span><br><span class="line">		int b = 20;</span><br><span class="line">		try &#123;</span><br><span class="line">			System.out.println(&quot;try block&quot;);</span><br><span class="line">			return b += 80;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			System.out.println(&quot;catch block&quot;);</span><br><span class="line">		&#125; finally &#123;</span><br><span class="line">			System.out.println(&quot;finally block&quot;);</span><br><span class="line">			if (b &gt; 25) &#123;</span><br><span class="line">				System.out.println(&quot;b&gt;25,b = &quot; + b);</span><br><span class="line">			&#125;</span><br><span class="line">			return 200;</span><br><span class="line">		&#125;</span><br><span class="line">		// return b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-625142043e841731.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这说明finally里的return直接返回了，就不管try中是否还有返回语句，这里还有个细节要注意，finally里加上return过后，finally外面的return b就变成不可达到语句了，也就永远不会被执行到，所以需要注释掉否则编译器报错。</p>
+<h3 id="3-如果finally语句中没有return语句覆盖返回值，那么原来的返回值可能因为finally里的修改而改变也可能不变"><a href="#3-如果finally语句中没有return语句覆盖返回值，那么原来的返回值可能因为finally里的修改而改变也可能不变" class="headerlink" title="3.如果finally语句中没有return语句覆盖返回值，那么原来的返回值可能因为finally里的修改而改变也可能不变"></a>3.如果finally语句中没有return语句覆盖返回值，那么原来的返回值可能因为finally里的修改而改变也可能不变</h3><p>测试用例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Test4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(test3());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static int test3() &#123;</span><br><span class="line">		int b = 20;</span><br><span class="line">		try &#123;</span><br><span class="line">			System.out.println(&quot;try block&quot;);</span><br><span class="line">			return b += 80;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			System.out.println(&quot;catch block&quot;);</span><br><span class="line">		&#125; finally &#123;</span><br><span class="line">			System.out.println(&quot;finally block&quot;);</span><br><span class="line">			if (b &gt; 25) &#123;</span><br><span class="line">				System.out.println(&quot;b&gt;25,b = &quot; + b);</span><br><span class="line">			&#125;</span><br><span class="line">			b = 150;</span><br><span class="line">		&#125;</span><br><span class="line">		return 2000;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-105d1c6e129907ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>测试用例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Test4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(getMap().get(&quot;KEY&quot;).toString());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static Map&lt;String, String&gt; getMap() &#123;</span><br><span class="line">		Map&lt;String, String&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">		map.put(&quot;KEY&quot;, &quot;INIT&quot;);</span><br><span class="line">		try &#123;</span><br><span class="line">			map.put(&quot;KEY&quot;, &quot;TRY&quot;);</span><br><span class="line">			return map;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			map.put(&quot;KEY&quot;, &quot;CATCH&quot;);</span><br><span class="line">		&#125; finally &#123;</span><br><span class="line">			map.put(&quot;KEY&quot;, &quot;FINALLY&quot;);</span><br><span class="line">			map = null;</span><br><span class="line">		&#125;</span><br><span class="line">		return map;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-294136f887b4d524.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>为什么测试1中finally里的b=150；并没有起到作用而测试2中finally的map.put(“KEY”,”FINALLY”)；起了作用而map=null；却没有作用呢？这就是Java到底是传值还是传址的问题了。参考<a href="http://www.cnblogs.com/lanxuezaipiao/p/3371224.html" target="_blank" rel="noopener">Java面试题</a>，简单的说就是：Java中只有传值还没有传址，这也是为什么map=null语句不起作用。这同时也说明了返回语句是try中的return语句而不是finally外面的return b。</p>
+<h3 id="4-try块里的return语句在异常的情况下不会被执行，这样具体返回那个看情况。"><a href="#4-try块里的return语句在异常的情况下不会被执行，这样具体返回那个看情况。" class="headerlink" title="4.try块里的return语句在异常的情况下不会被执行，这样具体返回那个看情况。"></a>4.try块里的return语句在异常的情况下不会被执行，这样具体返回那个看情况。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Test4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(test4());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static int test4() &#123;</span><br><span class="line">		int b = 20;</span><br><span class="line">		try &#123;</span><br><span class="line">			System.out.println(&quot;try block&quot;);</span><br><span class="line">			b = b / 0;</span><br><span class="line">			return b += 80;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			b += 15;</span><br><span class="line">			System.out.println(&quot;catch block&quot;);</span><br><span class="line">		&#125; finally &#123;</span><br><span class="line">			System.out.println(&quot;finally block&quot;);</span><br><span class="line">			if (b &gt; 15) &#123;</span><br><span class="line">				System.out.println(&quot;b&gt;25，b = &quot; + b);</span><br><span class="line"> 			&#125;</span><br><span class="line">			b += 50;</span><br><span class="line">		&#125;</span><br><span class="line">		return b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>返回结果：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-3a3ce844bc958ec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这里因为在return之前发生了除0异常，所以try中的return不会被执行到，而是接着执行捕获异常的catch语句和最终的finally语句，此时两者对b的修改都影响了最终的返回值，这时return b；就起到作用了。当然如果你这里将return b改为return 300什么的。就会返回300。</p>
+<h3 id="5-当发生异常后，catch中的return执行情况与未发生异常时try中return的执行情况完全一样。"><a href="#5-当发生异常后，catch中的return执行情况与未发生异常时try中return的执行情况完全一样。" class="headerlink" title="5.当发生异常后，catch中的return执行情况与未发生异常时try中return的执行情况完全一样。"></a>5.当发生异常后，catch中的return执行情况与未发生异常时try中return的执行情况完全一样。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Test4 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(test5());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static int test5() &#123;</span><br><span class="line">		int b = 20;</span><br><span class="line">		try &#123;</span><br><span class="line">			System.out.println(&quot;try block&quot;);</span><br><span class="line">			b = b / 0;</span><br><span class="line">			return b += 80;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			System.out.println(&quot;catch block&quot;);</span><br><span class="line">			return b += 15;</span><br><span class="line">		&#125; finally &#123;</span><br><span class="line">			System.out.println(&quot;finally block&quot;);</span><br><span class="line">			if (b &gt; 15) &#123;</span><br><span class="line">				System.out.println(&quot;b&gt;25，b = &quot; + b);</span><br><span class="line">			&#125;</span><br><span class="line">			b += 50;</span><br><span class="line">		&#125;</span><br><span class="line">		// return b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-24361dc254a35328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>说明发生异常后，catch中的return语句先执行，确定了返回值后再去执行finally块，执行完了catch再返回，finally里对b的改变对返回值毫无影响，原因同前面一样，也就是说情况与try中的return语句执行完全一样。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&#160; &#160; &#160; &#160;finally块的语句在try或catch中的return语句执行之后返回之前执行且finally里的修改语句可能影响也可能不影响try或catch中return已经确定的返回值，若finally里也有return语句则覆盖try或catch中的return语句直接返回。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/09/finally与return执行顺序/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/10/Java 8 新特性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java 8 新特性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/09/transient关键字/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">transient关键字</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(10)类和对象/">Kotlin学习笔记(10)类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(9)循环控制/">Kotlin学习笔记(9)循环控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">Kotlin学习笔记(8)条件控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">Kotlib学习笔记(7)Lambda表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(6)函数/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(6)函数/">Kotlin学习笔记(6)函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(5)常量与变量/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(5)常量与变量/">Kotlin学习笔记(5)常量与变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2018/page/5/">5</a><a class="page-number" href="/archives/2018/page/6/">6</a><a class="extend next" rel="next" href="/archives/2018/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -594,8 +392,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

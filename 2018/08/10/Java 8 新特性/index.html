@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>Java 8 新特性 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/4/index.html">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;毫无疑问，Java8是Java5发布之后的最重要的版本。这个版本包含语言、编辑器、库、工具和JVM等方面的十多个新特性。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8 新特性">
+<meta property="og:url" content="http://yoursite.com/2018/08/10/Java 8 新特性/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;毫无疑问，Java8是Java5发布之后的最重要的版本。这个版本包含语言、编辑器、库、工具和JVM等方面的十多个新特性。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-7cac34d76c98e02e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-572691fc8391ee76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-5c4bbf98fcaedddf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-11T09:56:10.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="Java 8 新特性">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;毫无疑问，Java8是Java5发布之后的最重要的版本。这个版本包含语言、编辑器、库、工具和JVM等方面的十多个新特性。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-7cac34d76c98e02e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,405 +181,243 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java 8 新特性" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 8 新特性
+    </h1>
+  
+
+        
+        <a href="/2018/08/10/Java 8 新特性/" class="archive-article-date">
+  	<time datetime="2018-08-10T02:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#160; &#160; &#160; &#160;毫无疑问，Java8是Java5发布之后的最重要的版本。这个版本包含语言、编辑器、库、工具和JVM等方面的十多个新特性。<br><a id="more"></a></p>
+<h2 id="Java语言的新特性"><a href="#Java语言的新特性" class="headerlink" title="Java语言的新特性"></a>Java语言的新特性</h2><h3 id="Lambda表达式和函数式接口"><a href="#Lambda表达式和函数式接口" class="headerlink" title="Lambda表达式和函数式接口"></a>Lambda表达式和函数式接口</h3><p>&#160; &#160; &#160; &#160;Lambda表达式(也成为闭包)是Java 8中最大和最令人期待的语言改变。它允许我们将函数当成参数传递给某个方法，或者把代码本身当做数据处理。很多JVM平台上的语言(Groovy、Scala等)从诞生之日就支持了Lambda表达式，但是Java开发者没有选择，只能使用匿名内部类代替Lambda表达式。<br>&#160; &#160; &#160; &#160;Lambda的设计耗费了很多时间和很大的社区力量，最终找到一种折中的实现方案，可以实现简介而紧凑的语言结构。最简单的Lambda表达式可由逗号分隔的参数列表、-&gt;符号和语句块组成，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).forEach(e -&gt; System.out.println(e));</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中的参数 e 的类型是由编译器推理得出的，你也可以显式指定该参数的类型，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).forEach((String e) -&gt; System.out.println(e));</span><br></pre></td></tr></table></figure></p>
+<p>如果Lambda表达式需要更复杂的语句块，则可以使用花括号将该语句块括起来，类似于Java中的函数体，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).forEach((String e) -&gt; &#123;</span><br><span class="line">	System.out.println(e);</span><br><span class="line">	System.out.println(e);</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Lambda表达式可以引用类成员和局部变量(会将这些变量隐式的转换为final的)，例如如下两段代码效果是完全相同的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String separator = &quot;,&quot;;</span><br><span class="line">Arrays.asList(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).forEach((String e) -&gt;</span><br><span class="line">	System.out.println(e + separator));</span><br></pre></td></tr></table></figure></p>
+<p>与<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">final String separator = &quot;,&quot;;</span><br><span class="line">Arrays.asList(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).forEach((String e) -&gt;</span><br><span class="line">	System.out.println(e + separator));</span><br></pre></td></tr></table></figure></p>
+<p>Lambda表达式有返回值，返回值的类型也由编译器推理得出。如果Lambda表达式中的语句块只有一行，则可以不用使用return语句，下列两个代码片段效果相同：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).sort((e1, e2) -&gt; e1.compareTo(e2));</span><br></pre></td></tr></table></figure></p>
+<p>和<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Arrays.asList(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).sort((e1, e2) -&gt; &#123;</span><br><span class="line">	int result = e1.compareTo(e2);</span><br><span class="line">	return result;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;Lambda的设计者们为了让现有的功能与Lambda表达式良好兼容，考虑了很多方法，于是产生了函数接口这个概念。函数接口指的是只有一个函数的接口，这样的接口可以隐式转换为Lambda表达式。java.lang.Runnable和java.util.concurrent.Callable是函数式接口的最佳例子。在实践中，函数式接口非常脆弱：只要某个开发在该接口中添加一个函数，则该接口就不再是函数式接口进而导致编译失败。为了克服这种代码层面的脆弱性，并显式说明某个接口是函数式接口，Java 8提供了一个特殊的注解@FunctionalInterface(Java库中的所有相关接口都已经带有这个注释了)，举个简单的函数式接口的定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">interface Functional&#123;</span><br><span class="line">	void  method();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过有一点需要注意，默认方法和静态方法不会破坏函数式接口的定义，因此如下代码是合法的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">interface Functional &#123;</span><br><span class="line">	void method();</span><br><span class="line"></span><br><span class="line">	default void defaultMethod() &#123;</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="接口的默认方法和静态方法"><a href="#接口的默认方法和静态方法" class="headerlink" title="接口的默认方法和静态方法"></a>接口的默认方法和静态方法</h3><p>&#160; &#160; &#160; &#160;Java 8 使用两个新概念扩展了接口的含义：默认方法和静态方法。默认方法使得接口有点类似traits，不过要实现的目标不一样。默认方法使得开发者可以在不破坏二进制兼容性的前提下，往现存接口中添加新的方法，即不强制那些实现了该接口的类也同时实现这个新加的方法。<br>&#160; &#160; &#160; &#160;默认方法和抽象方法之间的区别在于抽象方法需要实现，而默认方法不需要。接口提供的默认方法会被接口的实现类继承或者覆写，例子代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface Defaulable &#123;</span><br><span class="line">	default String notRequired() &#123;</span><br><span class="line">		return &quot;Default implementation&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DefaultableImpl implements Defaulable &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class OverridableImpl implements Defaulable &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public String notRequired() &#123;</span><br><span class="line">		return &quot;OverridableImpl implementation&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160; Defaulable接口使用关键字default定义了一个默认方法notRequired()。DefaultableImpl类实现这个接口，同时默认继承了这个接口中的默认方法；OverridableImpl类也实现了这个接口，但覆写了该接口的默认方法，并提供了一个不用的实现。<br>Java 8 带来的另一个有趣的特征是在接口中可以定义静态方法，例子代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface DefaulableFactory &#123;</span><br><span class="line">	static Defaulable create(Supplier&lt;Defaulable&gt; supplier) &#123;</span><br><span class="line">		return supplier.get();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面的代码片段整合了默认方法和静态方法的使用场景：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RequiresApi(api = Build.VERSION_CODES.N)</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	Defaulable defaulable = DefaulableFactory.create(DefaultableImpl::new);</span><br><span class="line">	System.out.println(defaulable.notRequired());</span><br><span class="line"></span><br><span class="line">	defaulable = DefaulableFactory.create(OverridableImpl::new);</span><br><span class="line">	System.out.println(defaulable.notRequired());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码的输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Default implementation</span><br><span class="line">OverridableImpl implementation</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;由于JVM上的默认方法的实现在字节码层面提供了支持，因此效率非常高。默认方法允许在不打破现有继承体系的基础上改进接口。该特性在官方库中的应用是：给Java.util.Collection接口添加新方法，入stream()、parallelStrean()、forEach()和removelf()等等。<br>&#160; &#160; &#160; &#160;尽管默认方法有这么多好吃，但在实际开发中应该谨慎使用：在复杂的继承体系中，默认方法可能引起歧义和编译错误。</p>
+<h3 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h3><p>&#160; &#160; &#160; &#160;方法引用使得开发者可以直接引用现存的范发个、Java类的构造方法或者实例对象。方法引用和Lambda表达式配合使用，使得Java类的构造方法看起来紧凑而间接，没有很多复杂的代码模块。下面的例子中，Car类是不同方法引用的例子，可以帮助读者区分四种类型的方法引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static class Car &#123;</span><br><span class="line"></span><br><span class="line">	public static Car create(final Supplier&lt;Car&gt; supplier) &#123;</span><br><span class="line">		return supplier.get();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void collide(final Car car) &#123;</span><br><span class="line">		System.out.println(&quot;Collided&quot; + car.toString());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void follow(final Car another) &#123;</span><br><span class="line">		System.out.println(&quot;Following the &quot; + another.toString());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void repair()&#123;</span><br><span class="line">		System.out.println(&quot;Repaired&quot; + this.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第一种方法引用的类型是构造器引用，语法是Class::new，或者更一般的形式：Class::new。注意：这个构造器没有参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Car car = Car.create(Car::new);</span><br><span class="line">List&lt;Car&gt; cars = Arrays.asList(car);</span><br></pre></td></tr></table></figure></p>
+<p>第二种方法引用的类型是静态方法引用，语法是Class::static_method。注意：这个方法接受一个Car类型的参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cars.forEach(Car::collide);</span><br></pre></td></tr></table></figure></p>
+<p>第三种方法引用的类型是某个类的成员方法的引用，语法是Class::method，注意，这个方法没有定义入参。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cars.forEach(Car::repair);</span><br></pre></td></tr></table></figure></p>
+<p>第四种方法引用的类型是某个实例对象的成员方法的引用，语法是instance::method。注意：这个方法接受一个Car类型的参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final Car police = Car.create(Car::new); </span><br><span class="line">cars.forEach(police::follow);</span><br></pre></td></tr></table></figure></p>
+<p>运行上述例子，可以在控制台看到如下输出(Car实例可能不同)：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-7cac34d76c98e02e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="重复注解"><a href="#重复注解" class="headerlink" title="重复注解"></a>重复注解</h3><p>&#160; &#160; &#160; &#160;自从Java 5中引入注解以来，这个特性开始变得非常流行，并在各个框架和项目中被广泛使用。不过，注解有一个很大的限制是：在同一个地方不能多次使用同一个注解。Java 8打破了这个限制，引入了重复注解的概念，允许在同一个地方多次使用同一个注解。<br>&#160; &#160; &#160; &#160;在Java 8 中使用@Repeatable注解定义重复注解，实际上，这并不是语言层次的改进，而是编译器做的一个trick，底层的技术仍然相同。可以利用下面的代码说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class RepeatingAnnotations &#123;</span><br><span class="line"></span><br><span class="line">	@Target(ElementType.TYPE)</span><br><span class="line">	@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">	public @interface Filters &#123;</span><br><span class="line">		Filter[] value();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Target(ElementType.TYPE)</span><br><span class="line">	@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">	@Repeatable(Filters.class)</span><br><span class="line">	public @interface Filter &#123;</span><br><span class="line">		String value();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Filter(&quot;filter1&quot;)</span><br><span class="line">	@Filter(&quot;filter2&quot;)</span><br><span class="line">	public interface Filterable &#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@RequiresApi(api = Build.VERSION_CODES.N)</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		for (Filter filter : Filterable.class.getAnnotationsByType(Filter.class)) &#123;</span><br><span class="line">			System.out.println(filter.value());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;正如我们所见，这里的Filter类使用@Repeatable(Filters.class)注解修饰，而Filters是存放Filter注解的容器，编译器尽量对开发者屏蔽这些细节。这样，Filterable接口可以用两个Filter注解注解(这里并没有提到任何关于FIlters的信息)。另外，烦着API提供了一个新的方法getAnnotationsByType()，可以返回某个类型的重复注解，例如Filterable.class.getAnnotation(Filters.class)将返回两个Filter实例，输出到控制台的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filter1</span><br><span class="line">filter2</span><br></pre></td></tr></table></figure></p>
+<h3 id="更好的类型推断"><a href="#更好的类型推断" class="headerlink" title="更好的类型推断"></a>更好的类型推断</h3><p>&#160; &#160; &#160; &#160;Java 8编译器在类型推断方面有很大的提升，在很多场景下编译器可以推导出某个参数的数据类型，从而使得代码更为简洁。实例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Value&lt;T&gt; &#123;</span><br><span class="line">	public static &lt;T&gt; T defaultValue() &#123;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public T getOrDefault(T value, T defaultValue) &#123;</span><br><span class="line">		return (value != null) ? value : defaultValue;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下列代码是Value类型的应用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Test9 &#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		Value&lt;String&gt; value = new Value&lt;&gt;();</span><br><span class="line">		value.getOrDefault(&quot;22&quot;, Value.defaultValue());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参数Value.defaultValue()的类型由编译器推导得出，不需要显式指明。在Java 7 中这段代码会有编译错误，除非使用Value.<string>defaultValue()。</string></p>
+<h3 id="拓宽注解的应用场景"><a href="#拓宽注解的应用场景" class="headerlink" title="拓宽注解的应用场景"></a>拓宽注解的应用场景</h3><p>&#160; &#160; &#160; &#160;Java 8 拓宽了注解的应用场景。现在，注解几乎可以使用在任何元素上：局部变量、接口类型、超类和接口实现类，甚至可以用在函数的异常定义上。下面一些例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Test10 &#123;</span><br><span class="line">	@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">	@Target(&#123;ElementType.TYPE_USE, ElementType.TYPE_PARAMETER&#125;)</span><br><span class="line">	public @interface NonEmpty &#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static class Holder&lt;@NonEmpty T&gt; extends @NonEmpty Object &#123;</span><br><span class="line">		public void method() throws @NonEmpty Exception &#123;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Holder&lt;String&gt; holder = new @NonEmpty Holder&lt;&gt;();</span><br><span class="line">		@NonEmpty Collection&lt;@NonEmpty String&gt; strings = new ArrayList&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>ElementType.TYPE_USE</strong>和<strong>ElementType.TYPE_PARAMETER</strong>是Java 8新增的两个注解，用于描述注解的使用场景。Java语言也做了对应的改变，以识别那些新增的注解。</p>
+<h2 id="Java编辑器的新特性"><a href="#Java编辑器的新特性" class="headerlink" title="Java编辑器的新特性"></a>Java编辑器的新特性</h2><h3 id="参数名称"><a href="#参数名称" class="headerlink" title="参数名称"></a>参数名称</h3><p>&#160; &#160; &#160; &#160;Java 8在语言层面(使用反射API和Parameter.getName()方法)和字节码层面(使用新的javac编辑器以及-parameters参数提供支持)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Demo1 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		Method method = Demo1.class.getMethod(&quot;main&quot;, String[].class);</span><br><span class="line">		for (Parameter parameter :method.getParameters())&#123;</span><br><span class="line">			System.out.println(&quot;Parameter&quot; + parameter.getName());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在Java 8 中这个特性是默认关闭的，因此如果不带-parameters参数编译上述代码并运行，则会输出如下结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Parameter：arg0</span><br></pre></td></tr></table></figure></p>
+<p>如果带-parameters参数，则会输出如下结果(正确的结果)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Parameter：args</span><br></pre></td></tr></table></figure></p>
+<p>如果你使用Maven进行项目管理，则可以在maven-compiler-plugin编辑器的配置项中配置-parameters参数：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-572691fc8391ee76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="Java官方库的新特性"><a href="#Java官方库的新特性" class="headerlink" title="Java官方库的新特性"></a>Java官方库的新特性</h2><p>Java 8增加了很多新的工具类(date/time类)，并扩展了现存的工具类，以支持现代的并发编程、函数式编程等。</p>
+<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>&#160; &#160; &#160; &#160;Java应用中最常见的bug就是空值异常。在Java 8 之前，Google Guava引入了Optionals类来解决NullPointerException，从而避免源码被各种null检查污染，以便开发者写出更加整洁的代码。Java 8 也将Optional加入官方库。<br>&#160; &#160; &#160; &#160; Optional仅仅是一个容易：存放T类型的值或者null。它提供了一些有用的接口来避免显示的null检查。下面来看一下实例(可能为空的值或者某个类型的值)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt; fullName = Optional.ofNullable(null);</span><br><span class="line">System.out.println(&quot;Full Name is set？&quot; + fullName.isPresent());</span><br><span class="line">System.out.println(&quot;Full Name &quot; + fullName.orElseGet(() -&gt; &quot;[none]&quot;));</span><br><span class="line">System.out.println(fullName.map(s -&gt; &quot;Hey &quot; + s + &quot;!&quot;).orElse(&quot;Hey Stranger!&quot;));</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;如果Optional实例持有一个非空值，则isPresent()方法返回true，否则返回false；orElseGet()方法，Optional实例持有null，则可以接受一个lambda表达式生成的默认值；map()方法可以将现有的Optional实例的值转换成新的值；orElse()方法与orElseGet()方法类似，但是在持有null的时候返回传入的默认值。所以上述代码返回的结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Full Name is set？false</span><br><span class="line">Full Name [none]</span><br><span class="line">Hey Stranger!</span><br></pre></td></tr></table></figure></p>
+<p>在看下面的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt; fullName = Optional.ofNullable(&quot;Json&quot;);</span><br><span class="line">System.out.println(&quot;Full Name is set？&quot; + fullName.isPresent());</span><br><span class="line">System.out.println(&quot;Full Name &quot; + fullName.orElseGet(() -&gt; &quot;[none]&quot;));</span><br><span class="line">System.out.println(fullName.map(s -&gt; &quot;Hey &quot; + s + &quot;!&quot;).orElse(&quot;Hey Stranger!&quot;));</span><br></pre></td></tr></table></figure></p>
+<p>这里返回的就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Full Name is set？true</span><br><span class="line">Full Name Json</span><br><span class="line">Hey Json!</span><br></pre></td></tr></table></figure></p>
+<h3 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a>Streams</h3><p>&#160; &#160; &#160; &#160;新增的Streams API(java.util.stream)将生成环境的函数式编程引入了Java库中。这是目前为止最大的一次对Java库的完善，以便开发者能够写出更加有效、更加简洁和紧凑的代码。<br>Streams API极大得简化了集合操作，首先看一下Task的类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Streams &#123;</span><br><span class="line">	private enum Status &#123;</span><br><span class="line">		OPEN, CLOSED</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static final class Task &#123;</span><br><span class="line">		private final Status status;</span><br><span class="line">		private final Integer points;</span><br><span class="line"></span><br><span class="line">		public Task(final Status status, final Integer points) &#123;</span><br><span class="line">			this.status = status;</span><br><span class="line">			this.points = points;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public Status getStatus() &#123;</span><br><span class="line">			return status;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public Integer getPoints() &#123;</span><br><span class="line">			return points;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public String toString() &#123;</span><br><span class="line">			return String.format(&quot;[%s,%d]&quot;, status, points);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Task类有一个分数(或伪复杂度)的概念，另外还有两种状态：OPEN或者CLOSED。现在假设有一个task集合：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;Task&gt; tasks = Arrays.asList(new Task(Status.OPEN, 5), new Task(Status.OPEN, 13), new Task(Status.CLOSED, 8));</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;首先看一个问题：在这个task集合中一共有多少个OPEN状态的点？在Java 8 之前。首先，要解决这个问题。则需要使用foreach循环遍历task集合；但是在Java 8中可以利用steams解决：包括一系列元素的列表，并且支持顺序和并行处理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">final long totalPointsOfOpenTasks = tasks.stream()</span><br><span class="line">	.filter(task -&gt; task.getStatus() == Status.OPEN)</span><br><span class="line">	.mapToInt(Task::getPoints)</span><br><span class="line">	.sum();</span><br><span class="line">System.out.println(&quot;Total points：&quot; + totalPointsOfOpenTasks);</span><br></pre></td></tr></table></figure></p>
+<p>运行结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Total points：18</span><br></pre></td></tr></table></figure></p>
+<p>这里有很多知识点：<br>&#160; &#160; &#160; &#160;1.task集合被转换成steam表示。<br>&#160; &#160; &#160; &#160;2.在steam上的filter操作会过滤掉所有CLOSED的task。<br>&#160; &#160; &#160; &#160;3.mapToInt操作基于每个task实例的Task::getPoints方法将task流转换成Integer集合。<br>&#160; &#160; &#160; &#160;4.通过sum方法计算总和，得出最后的结果。<br><strong>注意</strong><br>&#160; &#160; &#160; &#160;中间操作会返回一个新的steam—-执行一个中间操作(例如filter)并不会执行实际的过滤操作，而是创建一个新的steam，并将原steam中符合条件的元素放入新创建的steam。<br>&#160; &#160; &#160; &#160;晚期操作(例如forEach或者sum)，会遍历steam并得出结果或者附带结果；在执行晚期操作之后，steam处理线已经处理完毕，就不能使用了。在几乎所有情况下，晚期操作都是立刻对steam进行遍历。<br>&#160; &#160; &#160; &#160;steam的另一个价值是创造性地支持并行处理(parallel processing)。对于上述的tasks集合，我们可以用下面的代码计算所有任务的点数之和：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">final double totalPoints = tasks</span><br><span class="line">	.stream()</span><br><span class="line">	.parallel()</span><br><span class="line">	.map(task -&gt; task.getPoints())</span><br><span class="line">	.reduce(0, Integer::sum);</span><br><span class="line">System.out.println(&quot;Total points(all tasks)：&quot; + totalPoints);</span><br></pre></td></tr></table></figure></p>
+<p>这里我们使用parallel方法并行处理所有的task，并使用reduce方法计算最终的结果。控制台输出如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Total points(all tasks)：26.0</span><br></pre></td></tr></table></figure></p>
+<p>对于一个集合，经常需要根据某些条件对其中的元素分组。利用steam提供的API可以很快完成这类任务，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final Map&lt;Status, List&lt;Task&gt;&gt; map = tasks</span><br><span class="line">	.stream()</span><br><span class="line">	.collect(Collectors.groupingBy(Task::getStatus));</span><br><span class="line">System.out.println(map);</span><br></pre></td></tr></table></figure></p>
+<p>控制台的输出如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;CLOSED=[[CLOSED,8]], OPEN=[[OPEN,5], [OPEN,13]]&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后一个关于tasks集合的例子问题：如何计算集合中每个任务的点数在集合中所占的比重，具体处理的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">final Collection&lt;String&gt; result = tasks</span><br><span class="line">	.stream()</span><br><span class="line">	.mapToInt(Task::getPoints)</span><br><span class="line">	.asLongStream()</span><br><span class="line">	.mapToDouble(points -&gt; points / totalPoints)</span><br><span class="line">	.boxed()</span><br><span class="line">	.mapToLong(weigth -&gt; (long) (weigth * 100))</span><br><span class="line">	.mapToObj(percentage -&gt; percentage + &quot;%&quot;)</span><br><span class="line">	.collect(Collectors.toList());</span><br><span class="line">System.out.println(result);</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[19%, 50%, 30%]</span><br></pre></td></tr></table></figure></p>
+<p>最后，正如之前所说，steam API不仅可以作用于Java集合，传统的IO操作(从文件或网络一行一行得读取数据)可以受益于steam处理，这有一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Path path = new File(&quot;&quot;).toPath();</span><br><span class="line">try (Stream&lt;String&gt; lines = Files.lines(path, StandardCharsets.UTF_8)) &#123;</span><br><span class="line">	lines.onClose(() -&gt; 	System.out.println(&quot;Done!&quot;)).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;Stream的方法onClose返回一个等价的有额外句柄的Stream，当Stream的close()方法被调用的时候这个句柄会被执行。Stream API、Lambda表达式还有借口默认方法和静态方法支持的方法引用，是Java 8对软件开发的现代范式的响应。</p>
+<h3 id="Date-Time-API"><a href="#Date-Time-API" class="headerlink" title="Date/Time API"></a>Date/Time API</h3><p>&#160; &#160; &#160; &#160;Java 8引入了新的Date-Time API来改进时间、日期的处理。新的java.time包包含了所有关于日期、时间、时区、Instant(跟日期类似但是精确到纳秒)、duration(持续时间)和时钟操作的类。新设计的API认真考虑了这些类的不变性(从java.util.Calendar吸取的教训)，如果某个实例需要修改，则返回一个新的对象。<br>&#160; &#160; &#160; &#160;我们看一下java.time包中的关键类和各自的使用例子。首先，Clock类使用时区来返回当前的纳秒时间和日期。Clock可以替代System.currentTimeMillis()和TimeZone.getDefault()。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Clock clock = Clock.systemUTC();</span><br><span class="line">System.out.println(clock.instant());</span><br><span class="line">System.out.println(clock.millis());</span><br></pre></td></tr></table></figure></p>
+<p>输出结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018-08-11T07:52:33.160Z</span><br><span class="line">1533973953217</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;然后关注一下LocalDate和LocalTime类。LocalDate仅仅包含ISO-8601日历系统中的部分日期；LocalTime则仅仅包含该日历系统中的时间部分，这两个类的对象都可以使用Clock对象构建得到。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LocalDate date = LocalDate.now();</span><br><span class="line">LocalDate dateFromClock = LocalDate.now(clock);</span><br><span class="line">System.out.println(date);</span><br><span class="line">System.out.println(dateFromClock);</span><br><span class="line"></span><br><span class="line">LocalTime time = LocalTime.now();</span><br><span class="line">LocalTime timeFromClock = LocalTime.now(clock);</span><br><span class="line">System.out.println(time);</span><br><span class="line">System.out.println(timeFromClock);</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2018-08-11</span><br><span class="line">2018-08-11</span><br><span class="line"></span><br><span class="line">15:59:42.301</span><br><span class="line">07:59:42.301</span><br></pre></td></tr></table></figure></p>
+<p>LocalDateTime类包含了LocalDate和LocalTime的信息，但是不包含ISO-8601日历系统中的时区信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime dateTime = LocalDateTime.now();</span><br><span class="line">LocalDateTime dateTimeFromClock = LocalDateTime.now(clock);</span><br><span class="line"></span><br><span class="line">System.out.println(dateTime);</span><br><span class="line">System.out.println(dateTimeFromClock);</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018-08-11T16:03:05.068</span><br><span class="line">2018-08-11T08:03:05.068</span><br></pre></td></tr></table></figure></p>
+<p>如果你需要特定时区的data/time信息，则可以使用ZoneDateTime，它保存有ISO-8601日期系统的日期和时间，而且有时区信息。下面是使用不用时区的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ZonedDateTime zonedDateTime = ZonedDateTime.now();</span><br><span class="line">ZonedDateTime zonedDateTimeFromClock = ZonedDateTime.now(clock);</span><br><span class="line">ZonedDateTime zonedDateFromZone = ZonedDateTime.now(ZoneId.of(&quot;America/Los_Angeles&quot;));</span><br><span class="line"></span><br><span class="line">System.out.println(zonedDateTime);</span><br><span class="line">System.out.println(zonedDateTimeFromClock);</span><br><span class="line">System.out.println(zonedDateFromZone);</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2018-08-11T16:07:47.668+08:00[Asia/Shanghai]</span><br><span class="line">2018-08-11T08:07:47.668Z</span><br><span class="line">2018-08-11T01:07:47.670-07:00[America/Los_Angeles]</span><br></pre></td></tr></table></figure></p>
+<p>最后看下Duration类，它持有的时间精确到秒和纳秒。这使得我们可以很容易得计算两个日期之间的不同，例子代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime from = LocalDateTime.of(2017, Month.APRIL, 16, 0, 0, 0, 0);</span><br><span class="line">LocalDateTime to = LocalDateTime.of(2018, Month.APRIL, 16, 0, 0, 0, 0);</span><br><span class="line"></span><br><span class="line">Duration duration = Duration.between(from, to);</span><br><span class="line">System.out.println(&quot;Duration in days：&quot; + duration.toDays());</span><br><span class="line">System.out.println(&quot;Duration in hours：&quot; + duration.toHours());</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Duration in days：365</span><br><span class="line">Duration in hours：8760</span><br></pre></td></tr></table></figure></p>
+<h3 id="Nashorn-JavaScript引擎"><a href="#Nashorn-JavaScript引擎" class="headerlink" title="Nashorn JavaScript引擎"></a>Nashorn JavaScript引擎</h3><p>&#160; &#160; &#160; &#160;Java 8提供了新的Nashorn JavaScript引擎，使我们可以在JVM上开发和运行JS应用。Nashorn JavaScript引擎是javax.script.ScriptEngine的另一个实现版本，这类Script引擎遵循相同的规则，允许Java和JavaScript交互使用，示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ScriptEngineManager manager = new ScriptEngineManager();</span><br><span class="line">ScriptEngine engine = manager.getEngineByName(&quot;JavaScript&quot;);</span><br><span class="line"></span><br><span class="line">System.out.println(engine.getClass.getName());</span><br><span class="line">System.out.println(&quot;Result：&quot; + engine.eval(&quot;function f()&#123;return 1;&#125;; f()+1;&quot;));</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jdk.nashorn.api.scripting.NashornScriptEngine</span><br><span class="line">Result：2</span><br></pre></td></tr></table></figure></p>
+<h3 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h3><p>Java 8已经将Base64编码支持加入到官方库中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String text = &quot;Base64 and Java!&quot;;</span><br><span class="line">String encoded = Base64.getEncoder()</span><br><span class="line">	.encodeToString(text.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">System.out.println(encoded);</span><br><span class="line"></span><br><span class="line">String decoded = new String(Base64.getDecoder().decode(encoded), StandardCharsets.UTF_8);</span><br><span class="line">System.out.println(decoded);</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QmFzZTY0IGFuZCBKYXZhIQ==</span><br><span class="line">Base64 and Java!</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;新的Base64 API也支持URL和MINE的编码解码。(Base64.getUrlEncoder()/Base64.getUrlDecoder()<br>, Base64.getMimeEncoder()/Base64. getMimeDecoder())</p>
+<h3 id="并行数组"><a href="#并行数组" class="headerlink" title="并行数组"></a>并行数组</h3><p>&#160; &#160; &#160; &#160;Java 8版本新增了很多新的方法，用于支持并行数组处理。最重要的方法是parallelSort()，可以显著加快多核机器上的数组排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">long[] arrayOflong = new long[20000];</span><br><span class="line">Arrays.parallelSetAll(arrayOflong, index -&gt;</span><br><span class="line">	ThreadLocalRandom.current().nextInt(1000000));</span><br><span class="line"></span><br><span class="line">Arrays.stream(arrayOflong).limit(10).forEach(i -&gt;</span><br><span class="line">	System.out.println(i + &quot; &quot;));</span><br><span class="line">System.out.println(&quot;--------------------------------------------&quot;);</span><br><span class="line"></span><br><span class="line">Arrays.parallelSort(arrayOflong);</span><br><span class="line">Arrays.stream(arrayOflong).limit(10).forEach(i -&gt;</span><br><span class="line">	System.out.println(i + &quot; &quot;));</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;上述代码使用parallelSetAll()方法生成20000个随机数，然后使用parallelSort()方法进行排序。这个程序会输出乱序数组和顺序数组的前10个元素。上述代码的输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">551059 529715 897503 585459 405186 546145 875121 876435 552889 280959 </span><br><span class="line">--------------------------------------------</span><br><span class="line">15 104 178 182 198 265 514 539 561 576</span><br></pre></td></tr></table></figure></p>
+<h3 id="并发性"><a href="#并发性" class="headerlink" title="并发性"></a>并发性</h3><p>&#160; &#160; &#160; &#160;基于新增的lambda表达式和steam特性，为Java 8中为java.util.concurrent.ConcurrentHashMap类添加了新的方法来支持聚焦操作；另外，也为java.util.concurrentForkJoinPool类添加了新的方法来支持通用线程池操作。<br>&#160; &#160; &#160; &#160;Java 8还添加了新的java.util.concurrent.locks.StampedLock类，用于支持基于容量的锁 —- 该锁有三个模型用于支持读写操作(可以把这个锁当做是java.util.concurrent.locks.ReadWriteLock的代替者)。<br>在java.util.concurrent.atomic包中也新增了不少工具类，列举如下：</p>
+<ul>
+<li>DoubleAccumulator</li>
+<li>DoubleAdder</li>
+<li>LongAccumulator</li>
+<li>LongAdder</li>
+</ul>
+<h2 id="新的Java工具"><a href="#新的Java工具" class="headerlink" title="新的Java工具"></a>新的Java工具</h2><h3 id="Nashorn引擎-jjs"><a href="#Nashorn引擎-jjs" class="headerlink" title="Nashorn引擎:jjs"></a>Nashorn引擎:jjs</h3><p>jjs是一个基于标准Nashorn引擎的命令行工具，可以接受js源码并执行。例如，我们写一个func.js文件，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br><span class="line">print(f() + 1);</span><br></pre></td></tr></table></figure></p>
+<p>可以在命令行中执行这个命令：<strong>jjs func.js</strong>，控制台输出结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<h3 id="类依赖分析器-jdeps"><a href="#类依赖分析器-jdeps" class="headerlink" title="类依赖分析器:jdeps"></a>类依赖分析器:jdeps</h3><p>&#160; &#160; &#160; &#160;jdeps是一个相当棒的命令行工具，它可以展示包层级的Java类依赖关系，它以.class文件、目录或者jar文件为输入，然后会把依赖关系输出到控制台。我们可以利用jedps分析下Spring Framework库，为了让结果少一点。仅仅分析一下JAR文件：org.springframework.core-3.0.5.RELEASE.jar。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdeps org.springframework.core-3.0.5.RELEASE.jar。</span><br></pre></td></tr></table></figure></p>
+<p>这个命令还会输出很多结果，我们仅看下其中的一部分：依赖关系按照包分组，如果在classpath上找不到依赖，则显示”not found“。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-5c4bbf98fcaedddf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="JVM的新特性"><a href="#JVM的新特性" class="headerlink" title="JVM的新特性"></a>JVM的新特性</h2><p>&#160; &#160; &#160; &#160;使用Metaspace(JEP 122)代替持久化(PermGen space)。在JVM参数方面，使用-XX:MetaSpaceSize和-XX:MaxMetaspaceSize代替原来的-XX:PermSize和-XX:MaxPermSize。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/10/Java 8 新特性/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/09/finally与return执行顺序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">finally与return执行顺序</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(10)类和对象/">Kotlin学习笔记(10)类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(9)循环控制/">Kotlin学习笔记(9)循环控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">Kotlin学习笔记(8)条件控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">Kotlib学习笔记(7)Lambda表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(6)函数/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(6)函数/">Kotlin学习笔记(6)函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(5)常量与变量/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(5)常量与变量/">Kotlin学习笔记(5)常量与变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2018/page/5/">5</a><a class="page-number" href="/archives/2018/page/6/">6</a><a class="extend next" rel="next" href="/archives/2018/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -594,8 +441,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
