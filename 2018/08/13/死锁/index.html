@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>李鑫的博客</title>
+  <title>死锁 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;本文探索线程死锁的问题。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="死锁">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/死锁/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;本文探索线程死锁的问题。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-13T09:59:38.623Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="死锁">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;本文探索线程死锁的问题。">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,642 +177,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Kotlin学习笔记(8)条件控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-死锁" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">Kotlin学习笔记(8)条件控制</a>
+    <h1 class="article-title" itemprop="name">
+      死锁
     </h1>
   
 
         
-        <a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
+        <a href="/2018/08/13/死锁/" class="archive-article-date">
+  	<time datetime="2018-08-13T08:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;在Java中我们大多使用if语句或者switch语句来进行条件筛选，if语句过多会导致语法臃肿，switch只能限定同一种数据类型进行筛选。Kotlin 在 Java 的基础上为我们提供了一种全新的条件控制语句when语句来替代switch语句来实现我们复杂的需求……<br>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(8)条件控制/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        <p>&#160; &#160; &#160; &#160;本文探索线程死锁的问题。<br><a id="more"></a></p>
+<h2 id="死锁产生的条件"><a href="#死锁产生的条件" class="headerlink" title="死锁产生的条件"></a>死锁产生的条件</h2><p>一般来说，要出现死锁问题需要满足一下条件：<br>&#160; &#160; &#160; &#160;1.互斥条件：一个资源每次只能被一个线程使用。<br>&#160; &#160; &#160; &#160;2.请求与保持条件：一个线程因请求资源而阻塞时，对已获得的资源保持不放。<br>&#160; &#160; &#160; &#160;3.不剥夺条件：线程已获得的资源，在未使用完之前，不能强行剥夺。<br>&#160; &#160; &#160; &#160;4.循环等待条件：若干线程之间形成一种头尾相接的循环等待资源关系。<br>在Java中，三种典型的死锁类型：静态的锁顺序死锁，动态的锁顺序死锁，协作对象之间发生的死锁。</p>
+<h2 id="静态的锁顺序死锁"><a href="#静态的锁顺序死锁" class="headerlink" title="静态的锁顺序死锁"></a>静态的锁顺序死锁</h2><p>&#160; &#160; &#160; &#160;a和b两个方法都需要获得A锁和B锁。一个线程执行a方法且已经获得了A锁，在等待B锁；另一个线程执行了b方法且已经获得了B锁，在等待A锁。这种状态，就是发生了静态的锁顺序死锁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//可能发生静态锁顺序死锁的代码</span><br><span class="line">class StaticLockOrderDeadLock&#123;</span><br><span class="line">	private final Object lockA = new Object();</span><br><span class="line">	private final Object lockB = new Object();</span><br><span class="line"></span><br><span class="line">	public void a()&#123;</span><br><span class="line">		synchronized (lockA)&#123;</span><br><span class="line">			synchronized (lockB)&#123;</span><br><span class="line">				System.out.println(&quot;function a&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	public void b()&#123;</span><br><span class="line">		synchronized (lockB)&#123;</span><br><span class="line">			synchronized (lockA)&#123;</span><br><span class="line">				System.out.println(&quot;function b&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>解决静态的锁顺序死锁的方法就是：所有需要多个锁的线程，都要以相同的顺序来获得锁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//正确的代码</span><br><span class="line">class StaticLockOrderDeadLock&#123;</span><br><span class="line">	private final Object lockA = new Object();</span><br><span class="line">	private final Object lockB = new Object();</span><br><span class="line"></span><br><span class="line">	public void a()&#123;</span><br><span class="line">		synchronized (lockA)&#123;</span><br><span class="line">			synchronized (lockB)&#123;</span><br><span class="line">				System.out.println(&quot;function a&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	public void b()&#123;</span><br><span class="line">		synchronized (lockA)&#123;</span><br><span class="line">			synchronized (lockB)&#123;</span><br><span class="line">				System.out.println(&quot;function b&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="动态的锁顺序死锁"><a href="#动态的锁顺序死锁" class="headerlink" title="动态的锁顺序死锁"></a>动态的锁顺序死锁</h2><p>&#160; &#160; &#160; &#160;动态的锁顺序死锁是指两个线程调用同一个方法时，传入的参数颠倒造成的死锁。如下代码，一个线程调用了transferMoney方法并传入参数accountA，accountB；另一个线程调用了transferMoney方法并传入参数accountB，accountA。此时就可能发生在静态的锁顺序死锁中存在的问题，即：第一个线程获得了accountA锁并等待accountB锁，第二个线程获得了accountB锁并等待accountA锁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class DynamicLockOrderDeadLock&#123;</span><br><span class="line">	public void transefMoney(Account fromAccount,Account toAccount,Double amount)&#123;</span><br><span class="line">		synchronized (fromAccount)&#123;</span><br><span class="line">			synchronized (toAccount)&#123;</span><br><span class="line">				// ...</span><br><span class="line">				fromAccount.minus(amount);</span><br><span class="line">				toAccount.add(amount);</span><br><span class="line">				// ...</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>动态的锁顺序死锁解决方案如下：使用<strong>System.identityHashCode</strong>来定义锁的顺序。确保所有的线程都以相同的顺序获得锁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class DynamicLockOrderDeadLock &#123;</span><br><span class="line">	private final Object myLock = new Object();</span><br><span class="line"></span><br><span class="line">	public void transefMoney(final Account fromAccount, final Account toAccount, final Double amount) &#123;</span><br><span class="line">		class Helper &#123;</span><br><span class="line">			public void transfer() &#123;</span><br><span class="line">				// ...</span><br><span class="line">				fromAccount.minus(amount);</span><br><span class="line">				toAccount.add(amount);</span><br><span class="line">				// ...</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int fromHash = System.identityHashCode(fromAccount);</span><br><span class="line">		int toHash = System.identityHashCode(toAccount);</span><br><span class="line">		if (fromHash &lt; toHash) &#123;</span><br><span class="line">			synchronized (fromAccount) &#123;</span><br><span class="line">				synchronized (toAccount) &#123;</span><br><span class="line">					new Helper().transfer();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else if (fromHash &gt; toHash) &#123;</span><br><span class="line">			synchronized (toAccount) &#123;</span><br><span class="line">				synchronized (fromAccount) &#123;</span><br><span class="line">					new Helper().transfer();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			synchronized (myLock)&#123;</span><br><span class="line">				synchronized (fromAccount)&#123;</span><br><span class="line">					synchronized (toAccount)&#123;</span><br><span class="line">						new Helper().transfer();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="协作对象之间发生的死锁"><a href="#协作对象之间发生的死锁" class="headerlink" title="协作对象之间发生的死锁"></a>协作对象之间发生的死锁</h2><p>&#160; &#160; &#160; &#160;有时，死锁并不会那么明显，比如两个相互协作的类之间的死锁，比如下面的代码：一个线程调用了Taxi对象的setLocation方法，另一个线程调用了Dispatcher对象的getImage方法。此时可能会发生，第一个线程持有Taxi对象所并等待Dispatcher对象所，另一个线程持有Dispatcher对象锁并等待Taxi对象锁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//可能发生死锁</span><br><span class="line">class Taxi &#123;</span><br><span class="line">	private Point location, destination;</span><br><span class="line">	private final Dispatcher dispatcher;</span><br><span class="line"></span><br><span class="line">	public Taxi(Dispatcher dispatcher) &#123;</span><br><span class="line">		this.dispatcher = dispatcher;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public synchronized Point getLocation() &#123;</span><br><span class="line">		return location;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public synchronized void setLocation() &#123;</span><br><span class="line">		this.location = location;</span><br><span class="line">		if (location.equals(destination)) &#123;</span><br><span class="line">			//外部调用方法，可能等待Dispatcher对象锁</span><br><span class="line">			dispatcher.notifyAvailable(this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Dispatcher &#123;</span><br><span class="line">	private final Set&lt;Taxi&gt; taxis;</span><br><span class="line">	private final Set&lt;Taxi&gt; availableTaxis;</span><br><span class="line"></span><br><span class="line">	public Dispatcher() &#123;</span><br><span class="line">		taxis = new HashSet&lt;&gt;();</span><br><span class="line">		availableTaxis = new HashSet&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public synchronized void notifyAvailable(Taxi taxi) &#123;</span><br><span class="line">		availableTaxis.add(taxi);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public synchronized Image getImage()&#123;</span><br><span class="line">		Image image= new Image();</span><br><span class="line">			for (Taxi t :taxis)</span><br><span class="line">				//外部调用方法，可能等待Taxi对象锁</span><br><span class="line">				image.drawMarker(t.getLocation());</span><br><span class="line">			return image;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;上面的代码中，我们在持有锁的情况下调用了外部的方法，这是非常危险的(可能发生死锁)。为了避免这种危险的情况发生，我们使用开放调用。如果调用某个外部方法时不需要持有锁，我们称之为开放调用。解决协作对象之间发生的死锁：需要使用开放调用，既避免在持有所的情况下调用外部的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">//正确的代码</span><br><span class="line">class Taxi &#123;</span><br><span class="line">	private Point location, destination;</span><br><span class="line">	private final Dispatcher dispatcher;</span><br><span class="line"></span><br><span class="line">	public Taxi(Dispatcher dispatcher) &#123;</span><br><span class="line">		this.dispatcher = dispatcher;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public synchronized Point getLocation() &#123;</span><br><span class="line">		return location;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setLocation(Point location) &#123;</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		synchronized (this)&#123;</span><br><span class="line">			this.location = location;</span><br><span class="line">			flag = location.equals(destination);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if (flag) &#123;</span><br><span class="line">			//外部调用方法，可能等待Dispatcher对象锁</span><br><span class="line">			dispatcher.notifyAvailable(this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Dispatcher &#123;</span><br><span class="line">	private final Set&lt;Taxi&gt; taxis;</span><br><span class="line">	private final Set&lt;Taxi&gt; availableTaxis;</span><br><span class="line"></span><br><span class="line">	public Dispatcher() &#123;</span><br><span class="line">		taxis = new HashSet&lt;&gt;();</span><br><span class="line">		availableTaxis = new HashSet&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public synchronized void notifyAvailable(Taxi taxi) &#123;</span><br><span class="line">		availableTaxis.add(taxi);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public synchronized Image getImage() &#123;</span><br><span class="line">		Set&lt;Taxi&gt; copy;</span><br><span class="line">		synchronized (this)&#123;</span><br><span class="line">			copy = new HashSet&lt;&gt;(taxis);</span><br><span class="line">		&#125;</span><br><span class="line">            </span><br><span class="line">		Image image = new Image();</span><br><span class="line">			for (Taxi t : taxis)</span><br><span class="line">				//外部调用方法，可能等待Taxi对象锁</span><br><span class="line">				image.drawMarker(t.getLocation());</span><br><span class="line">			return image;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&#160; &#160; &#160; &#160;综上，是常见的3种死锁的类型。即：静态的锁顺序死锁，协作对象之间的死锁。在写代码时，要确保线程在获取多个锁时采用一致的顺序。用时，要避免在持有锁的情况下调用外部方法。</p>
 
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kotlin学习笔记(7)Lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">Kotlib学习笔记(7)Lambda表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;Lambda 是一个匿名函数，可以把 Lambda 表达式理解为是一段可以传递的代码(将代码像数据一样进行传递)。可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java的语言表达能力得到了提升。<br>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kotlin学习笔记(6)函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(6)函数/">Kotlin学习笔记(6)函数</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/Kotlin学习笔记(6)函数/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;Kotlin 中的函数决定了一个对象能够接收到什么样的信息，函数的基本组成部分包括：名称、参数、返回值和函数体，其使用 fun 关键字定义函数，<br>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(6)函数/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(6)函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kotlin学习笔记(5)常量与变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(5)常量与变量/">Kotlin学习笔记(5)常量与变量</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/Kotlin学习笔记(5)常量与变量/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;Kotlin 变量和常量的声明方式与Java中声明变量和常量有很大的区别，更加的类似于JavaScript的语法类型。<br>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(5)常量与变量/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(5)常量与变量/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kotlin学习笔记(4)数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(4)数组/">Kotlin学习笔记(4)数组</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/Kotlin学习笔记(4)数组/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;Array 类代表着数组 [] 可以用于访问数组的元素，实际上 [] 被进行了操作符的重载，调用的是 Array 类的 setter 和 getter 方法。<br>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(4)数组/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(4)数组/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kotlin学习笔记(3)区间" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(3)区间/">Kotlin学习笔记(3)区间</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/Kotlin学习笔记(3)区间/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;区间(或叫作范围)表达式由具有操作符形式 .. 的 rangeTo 函数辅以 in{: .keyword } 和 !in{: .keyword } 形成，区间是为任何可比较类型定义的，但对于整型原生类型，它有一个优化的实现。以下是使用区间的一些示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (i in 1..10) &#123; // 等同于 1 &lt;= i &amp;&amp; i &lt;= 10</span><br><span class="line">	println(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(3)区间/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(3)区间/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kotlin学习笔记(2)智能类型转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(2)智能类型转换/">Kotlin学习笔记(2)智能类型转换</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/Kotlin学习笔记(2)智能类型转换/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;于 Java 不同，Kotlin 一般不需要显式转换对象类型，因为对于不可变的值，编译器不能跟踪检查类型，在需要时会自动插入类型转换代码(安全)。<br>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(2)智能类型转换/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(2)智能类型转换/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Kotlin学习笔记(1)基本数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/Kotlin学习笔记(1)基本数据类型/">Kotlin学习笔记(1)基本数据类型</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/Kotlin学习笔记(1)基本数据类型/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;Kotlin 的基本数据类型包括了Byte、Short、Int、Long、Float、Double，但是不同于 Java 的是，字符不属于数值类型，是一个独立的数据类型。<br>
-        
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(1)基本数据类型/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/Kotlin学习笔记(1)基本数据类型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-反射(三)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/反射(三)/">反射(三)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/反射(三)/" class="archive-article-date">
-  	<time datetime="2018-07-31T11:47:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;从JDK1.5后，Java中引入泛型机制，Class类也增加了泛型功能，从而允许使用泛型来限制Class类，例如：String.class的类型实际上是Class<string>。如果Class对应的类暂时未知，则使用Class&lt;?&gt;(?是通配符)。通过反射中使用泛型，可以避免使用反射生成的对象需要强制类型转换。<br>
-        
-          <a class="article-more-a" href="/2018/07/31/反射(三)/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -827,16 +249,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/反射(三)/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/13/死锁/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/08/13/ReentrantLock/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ReentrantLock
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/13/线程池/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线程池</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -856,88 +346,14 @@
 
 
 
-
-  
-    <article id="post-反射(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/反射(二)/">反射(二)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/反射(二)/" class="archive-article-date">
-  	<time datetime="2018-07-30T08:14:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>代理模式：给某个对象提供一个代理对象，并由代理对象控制对于原对象的访问，即客户不直接操控原对象，而是通过代理对象间接地操控原对象。<br>
-        
-          <a class="article-more-a" href="/2018/07/30/反射(二)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/反射(二)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -960,8 +376,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
