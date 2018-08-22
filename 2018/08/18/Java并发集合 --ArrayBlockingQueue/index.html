@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | 李鑫的博客</title>
+  <title>Java并发集合 -- ArrayBlockingQueue | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Java/page/2/index.html">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;本文主要详细分析ArrayBlockingQueue的实现原理，由于该并发集合其底层是使用java.util.ReentrantLock和java.util.Condition来完成并发控制的，我们可以通过JDK的源代码更好的学习这些并发控制类的使用，同时该类也是所有并发集合中最简单的一个，分析该类的源码也是为之后分析其他并发集合做好基础。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发集合 -- ArrayBlockingQueue">
+<meta property="og:url" content="http://yoursite.com/2018/08/18/Java并发集合 --ArrayBlockingQueue/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;本文主要详细分析ArrayBlockingQueue的实现原理，由于该并发集合其底层是使用java.util.ReentrantLock和java.util.Condition来完成并发控制的，我们可以通过JDK的源代码更好的学习这些并发控制类的使用，同时该类也是所有并发集合中最简单的一个，分析该类的源码也是为之后分析其他并发集合做好基础。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-1e0da7566d89a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-14689ec6412b2387.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-0ed1c9543a7e9875.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-20T02:11:47.270Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="Java并发集合 -- ArrayBlockingQueue">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;本文主要详细分析ArrayBlockingQueue的实现原理，由于该并发集合其底层是使用java.util.ReentrantLock和java.util.Condition来完成并发控制的，我们可以通过JDK的源代码更好的学习这些并发控制类的使用，同时该类也是所有并发集合中最简单的一个，分析该类的源码也是为之后分析其他并发集合做好基础。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-1e0da7566d89a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,36 +181,128 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java并发集合 --ArrayBlockingQueue" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java并发集合 -- ArrayBlockingQueue
+    </h1>
+  
+
+        
+        <a href="/2018/08/18/Java并发集合 --ArrayBlockingQueue/" class="archive-article-date">
+  	<time datetime="2018-08-18T03:13:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-18</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#160; &#160; &#160; &#160;本文主要详细分析ArrayBlockingQueue的实现原理，由于该并发集合其底层是使用java.util.ReentrantLock和java.util.Condition来完成并发控制的，我们可以通过JDK的源代码更好的学习这些并发控制类的使用，同时该类也是所有并发集合中最简单的一个，分析该类的源码也是为之后分析其他并发集合做好基础。<br><a id="more"></a></p>
+<h2 id="Queue接口和BlockingQueue接口回顾"><a href="#Queue接口和BlockingQueue接口回顾" class="headerlink" title="Queue接口和BlockingQueue接口回顾"></a>Queue接口和BlockingQueue接口回顾</h2><h3 id="1-Queue接口回顾"><a href="#1-Queue接口回顾" class="headerlink" title="1.Queue接口回顾"></a>1.Queue接口回顾</h3><p>&#160; &#160; &#160; &#160;在Queue接口中，除了继承Collection接口中定义的方法外，它还分别额外地定义插入、删除、查询这3个操作，其中每一个操作都以两种不同的形式存在，每一种形式都对应着一个方法。<br><strong>方法说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Throws exception</th>
+<th style="text-align:center">Returns special value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Insert</td>
+<td style="text-align:center">add(e)</td>
+<td style="text-align:center">offer(e)</td>
+</tr>
+<tr>
+<td style="text-align:center">Remove</td>
+<td style="text-align:center">remove()</td>
+<td style="text-align:center">poll()</td>
+</tr>
+<tr>
+<td style="text-align:center">Examine</td>
+<td style="text-align:center">element()</td>
+<td style="text-align:center">peek()</td>
+</tr>
+</tbody>
+</table>
+<p>&#160; &#160; &#160; &#160;1.add方法在将一个元素插入到队列的队尾时，如果出现队列已经满了，那么就会抛出IllegalStateException，而使用offer方法时，如果队列满了，则添加失败，返回false，但并不会引发异常。<br>&#160; &#160; &#160; &#160;2.remove方法是获取队列的头部元素并且删除，如果当队列为空时，那么就会抛出NoSuchElementException。而poll在队列为空时，则返回一个null。<br>&#160; &#160; &#160; &#160;3.element方法是从队列中获取到队列的第一个元素，但不会删除，但是如果队列为空时，那么它就会抛出NoSuchElementException。peek方法与之类似，只是不会抛出异常，而是返回false。</p>
+<h3 id="2-BlockingQueue接口回顾"><a href="#2-BlockingQueue接口回顾" class="headerlink" title="2.BlockingQueue接口回顾"></a>2.BlockingQueue接口回顾</h3><p>&#160; &#160; &#160; &#160;BlockingQueue是JDK1.5出现的接口，它在原来的Queue接口基础上提供了更多的额外功能：当获取队列中的头部元素时，如果队列为空，那么它将会使执行线程处于等待状态；当添加一个元素到队列的尾部时，如果队列已经满了，那么它同样会使执行的线程处于等待状态。<br>&#160; &#160; &#160; &#160;前面我们在说Queue接口时提到过，它针对于相同的操作提供了2种不同的形式，而BlockingQueue更夸张，针对于相同的操作提供了4种不同的形式：1.抛出异常；2.返回一个特殊值(可能是null或者是false，取决于具体的操作)；3.阻塞当前执行直到其可以继续；4.当线程被挂起后，等待最大的时间，如果一旦超时，即使该操作依旧无法继续执行，线程也不会再继续等待下去。<br><strong>对应的方法说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Throws exception</th>
+<th style="text-align:center">Returns special value</th>
+<th style="text-align:center">Blocks</th>
+<th style="text-align:center">Times out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Insert</td>
+<td style="text-align:center">add(e)</td>
+<td style="text-align:center">offer(e)</td>
+<td style="text-align:center">put(e)</td>
+<td style="text-align:center">offer(e,time,unit)</td>
+</tr>
+<tr>
+<td style="text-align:center">Remove</td>
+<td style="text-align:center">remove()</td>
+<td style="text-align:center">poll()</td>
+<td style="text-align:center">take()</td>
+<td style="text-align:center">poll(time,unit)</td>
+</tr>
+<tr>
+<td style="text-align:center">Examine</td>
+<td style="text-align:center">element()</td>
+<td style="text-align:center">peek()</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">无</td>
+</tr>
+</tbody>
+</table>
+<p>BlockingQueue虽然比起Queue在操作上提供了更多的支持，但是它在使用有如下的几点：<br>&#160; &#160; &#160; &#160;1.BlockingQueue中是不允许添加null的，该接受在声明的时候就要求所有的实现类在接收到一个null的时候，都应该抛出NullPointerException。<br>&#160; &#160; &#160; &#160;2.BlockingQueue是线程安全的，因此它的所有和队列相关的方法都具有原子性。但是对于那么从Collection接口中继承而来的批量操作方法，比如addAll(Collection e)等方法，BlockingQueue的实现通常没有保证其具有原子性，因此我们在使用的BlockingQueue，应该尽可能地不去使用这些方法。<br>&#160; &#160; &#160; &#160;3.BlockingQueue主要应用于生产者与消费者的模型中，其元素的添加和获取都是极具规律性的。但是对于remove(Object o)这样的方法，虽然BlockingQueue可能保证元素正确的删除，但是这样的操作会非常影响性能，因此我们在没有特殊的情况下，也应该避免使用这类方法。</p>
+<h2 id="ArrayBlockingQueue分析"><a href="#ArrayBlockingQueue分析" class="headerlink" title="ArrayBlockingQueue分析"></a>ArrayBlockingQueue分析</h2><p>在JDK版本为1.7中，API对于ArrayBlockingQueue的描述为：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-1e0da7566d89a871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><strong>ArrayBlockingQueue的核心组成如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/** 底层维护队列元素的数组 */</span><br><span class="line">final Object[] items;</span><br><span class="line"></span><br><span class="line">/** 当读取元素时数组的下标(这里称为读下标) */</span><br><span class="line">int takeIndex;</span><br><span class="line"></span><br><span class="line">/** 添加元素时数组的下标(这里称为写小标) */</span><br><span class="line">int putIndex;</span><br><span class="line"></span><br><span class="line">/** 队列中的元素个数 */</span><br><span class="line">int count;</span><br><span class="line"></span><br><span class="line">/** 用于并发控制的工具类 */</span><br><span class="line">final ReentrantLock lock;</span><br><span class="line"></span><br><span class="line">/** 控制take操作时是否让线程等待 */</span><br><span class="line">private final Condition notEmpty;</span><br><span class="line"></span><br><span class="line">/** 控制put操作时是否让线程等待 */</span><br><span class="line">private final Condition notFull;</span><br></pre></td></tr></table></figure></p>
+<p><strong>take方法分析(382-392行)：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public E take() throws InterruptedException &#123;</span><br><span class="line">	final ReentrantLock lock = this.lock;</span><br><span class="line">	/**</span><br><span class="line">	 * 尝试获取锁，如果此时锁被其他线程锁占用，那么当前线程就</span><br><span class="line">	 * 处于Waiting的状态。注意：当方法是支持线程中断响应的如果其他线程</span><br><span class="line">	 *	此时中断当前线程，那么当前线程就会抛出InterruptedException。</span><br><span class="line">	 */</span><br><span class="line">	lock.lockInterruptibly();</span><br><span class="line">	try &#123;</span><br><span class="line">		/**</span><br><span class="line">		 *	如果此时队列中的元素个数为0，那么就让当前线程wait，并且释放锁。</span><br><span class="line">		 * 注意：这里使用while进行重复检查，是为了防止当前线程可能由于其他</span><br><span class="line">		 * 未知的原因被唤醒。(通常这种情况被称为“spurious wakeup”)</span><br><span class="line">		 */</span><br><span class="line">		while (count == 0)</span><br><span class="line">			notEmpty.await();</span><br><span class="line">		// 如果队列不为空，则从队列的头部取元素</span><br><span class="line">		return dequeue();</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">		// 完成锁的释放</span><br><span class="line">		lock.unlock();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>dequeue方法分析(164-177行)：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 根据takeIndex来获取当前的元素，然后通知其他等待的线程。</span><br><span class="line"> * Call only when holding lock.(只有当前线程已经持有了锁之后，它才能</span><br><span class="line"> * 调用该方法)</span><br><span class="line"> */</span><br><span class="line">private E dequeue() &#123;</span><br><span class="line">	final Object[] items = this.items;</span><br><span class="line">	</span><br><span class="line">	// 根据takeIndex获取元素，因为元素是一个Object类型的数组，因此它</span><br><span class="line">	// 通过cast方法将其转换成泛型。</span><br><span class="line">	E x = (E) items[takeIndex];</span><br><span class="line">	</span><br><span class="line">	// 将当前位置的元素设置为null。</span><br><span class="line">	items[takeIndex] = null;</span><br><span class="line">	</span><br><span class="line">	// 并且将takeIndex++，注意：这里因为已经使用了锁，因此下列方法</span><br><span class="line">	// 中没有使用到原子操作。</span><br><span class="line">	if (++takeIndex == items.length) takeIndex = 0;</span><br><span class="line">	</span><br><span class="line">	// 将队列中的总的元素减1</span><br><span class="line">	count--;</span><br><span class="line">	if (itrs != null)</span><br><span class="line">		itrs.elementDequeued();</span><br><span class="line"></span><br><span class="line">	//唤醒其他等待的线程</span><br><span class="line">	notFull.signal();</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>put方法分析(331-342行)：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public void put(E e) throws InterruptedException &#123;</span><br><span class="line">	// 首先检查元素是否为空，否则抛出NullPointerException</span><br><span class="line">	Objects.requireNonNull(e);</span><br><span class="line">	final ReentrantLock lock = this.lock;</span><br><span class="line">	lock.lockInterruptibly();</span><br><span class="line">	try &#123;</span><br><span class="line">		// 当队列的长度等于数组的长度，此时说明队列已经满了，这里同样</span><br><span class="line">		// 使用了while来方便当前线程被“伪唤醒”。</span><br><span class="line">		while (count == items.length)</span><br><span class="line">			// 则让当前线程处于等待状态</span><br><span class="line">			notFull.await();</span><br><span class="line">		// 一旦获取到锁并且队列还未满时，则执行enqueue操作。</span><br><span class="line">		enqueue(e);</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">		// 完成锁的释放</span><br><span class="line">		lock.unlock();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//检查元素是否为空</span><br><span class="line">public static &lt;T&gt; T requireNonNull(T obj) &#123;</span><br><span class="line">	if (obj == null)</span><br><span class="line">		throw new NullPointerException();</span><br><span class="line">	return obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 该方法的逻辑非常简单</span><br><span class="line">private void enqueue(E x) &#123;</span><br><span class="line">	final Object[] items = this.items;</span><br><span class="line">	// 将当前元素设置到putIndex位置</span><br><span class="line">	items[putIndex] = x;</span><br><span class="line">	if (++putIndex == items.length) putIndex = 0;</span><br><span class="line">	// 将队列的大小加1</span><br><span class="line">	count++;</span><br><span class="line">	// 唤醒其他正在处于等待状态的线程</span><br><span class="line">	notEmpty.signal();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注：<strong>ArrayBlockingQueue</strong>其实是一个循环队列。<br><img src="https://upload-images.jianshu.io/upload_images/5462731-14689ec6412b2387.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>当再一次执行put的时候，其结果为：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-0ed1c9543a7e9875.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>此时放入的元素会从头开始置，我们通过其incr方法更加清晰的看出其底层的操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private int incCursor(int index) &#123;</span><br><span class="line">	// 当takeIndex的值等于数组的长度时，就会重新置为0，这个一个循环递增的过程</span><br><span class="line">	if (++index == items.length) index = 0;</span><br><span class="line">	if (index == putIndex) index = NONE;</span><br><span class="line">	return index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/13/死锁/" class="archive-article-date">
-  	<time datetime="2018-08-13T08:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/13/死锁/">死锁</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -213,364 +314,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/18/Java并发集合 --ArrayBlockingQueue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/13/线程池/" class="archive-article-date">
-  	<time datetime="2018-08-13T02:51:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/20/Java并发集合 -- LinkedBlockingQueue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java并发集合 -- LinkedBlockingQueue
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/17/深入理解ReentrantLock/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解ReentrantLock</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/13/线程池/">线程池</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/13/Java创建线程的三种方式/" class="archive-article-date">
-  	<time datetime="2018-08-13T01:28:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/13/Java创建线程的三种方式/">Java创建线程的三种方式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/10/Java 8 新特性/" class="archive-article-date">
-  	<time datetime="2018-08-10T02:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/10/Java 8 新特性/">Java 8 新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/09/finally与return执行顺序/" class="archive-article-date">
-  	<time datetime="2018-08-09T09:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/09/finally与return执行顺序/">finally与return执行顺序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/09/transient关键字/" class="archive-article-date">
-  	<time datetime="2018-08-09T08:32:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/09/transient关键字/">transient关键字</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/09/深拷贝和浅拷贝/" class="archive-article-date">
-  	<time datetime="2018-08-09T05:48:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/09/深拷贝和浅拷贝/">深拷贝和浅拷贝</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/09/抽象类和接口的区别/" class="archive-article-date">
-  	<time datetime="2018-08-09T01:49:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/09/抽象类和接口的区别/">抽象类和接口的区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/08/异常/" class="archive-article-date">
-  	<time datetime="2018-08-08T08:46:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/08/异常/">异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/07/Java NIO/" class="archive-article-date">
-  	<time datetime="2018-08-07T11:17:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/07/Java NIO/">Java NIO</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Java/">&laquo; Prev</a><a class="page-number" href="/tags/Java/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/Java/page/3/">3</a><a class="page-number" href="/tags/Java/page/4/">4</a><a class="extend next" rel="next" href="/tags/Java/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -594,9 +445,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
