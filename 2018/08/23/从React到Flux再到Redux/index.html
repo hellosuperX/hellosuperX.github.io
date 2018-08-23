@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>从React到Flux再到Redux | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/8/index.html">
+  <meta name="description" content="从React到Flux再到Redux的演化史">
+<meta name="keywords" content="ReactNative">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从React到Flux再到Redux">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/从React到Flux再到Redux/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="从React到Flux再到Redux的演化史">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-09d2b12545913e8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-44c29f386c6ac5e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-e4f71a0ede747fdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-b554a67b6abe6f61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-23T11:39:58.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="从React到Flux再到Redux">
+<meta name="twitter:description" content="从React到Flux再到Redux的演化史">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-09d2b12545913e8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,405 +182,222 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-从React到Flux再到Redux" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从React到Flux再到Redux
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/从React到Flux再到Redux/" class="archive-article-date">
+  	<time datetime="2018-08-23T11:34:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从React到Flux再到Redux的演化史<br><a id="more"></a></p>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><p>React是一个View层的框架，用来渲染视图。它主要做几件事情: </p>
+<p>&#160; &#160; &#160; &#160;1.组件化</p>
+<p>&#160; &#160; &#160; &#160;2.利用props形成单项的数据流，</p>
+<p>&#160; &#160; &#160; &#160;3.根据state的变化状态来更新view</p>
+<p>&#160; &#160; &#160; &#160;4.利用虚拟DOM来提升渲染性能</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-09d2b12545913e8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="react_tree"></p>
+<p>&#160; &#160; &#160; &#160;React能够根据state的变化来更新view(render方法)，一般来说引起state变化的动作除了来自外部，大部分都来自于页面上的用户活动，那页面上的用户活动怎样对state产生作用呢？React中每个组件都有setState方法用于改变组件当前的state，所以可以把更改state的逻辑写在各自的组件里，但这样做的问题在于，当项目逻辑变得越来越复杂的时候，将很难理清state跟view之间的对应关系(一个state的变化可能引起多个view的变化，一个view上面触发的事件可能引起多个state的改变)。我们需要对所有引起state变化的情况进行统一管理，于是就有了Flux。</p>
+<h2 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h2><p>&#160; &#160; &#160; &#160;Flux是Facebook用来构建用户端的web应用程序体系架构，或者说是一种思想，他跟React本身没什么关系，他可以用在React上，也可以用在别的框架上。前面说到Flux在React中主要用来统一管理引起state变化的情况。Flux维护着一个或者多个叫做State的变量，就想MVC里面的Model，里面存放着应用得到的所有数据，当一个时间触发时，Flux对事件进行处理，对Store进行更新，当Store发生变化时，通常是由应用的根组件(也叫controller view)去获取最新的store，然后更新state，之后利用React单项数据流的特点一层层的将新的state向下传递实现view的更新。这里的controller view可以有多个也可以不是根组件，但是这样数据流维护起来就比较麻烦。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-44c29f386c6ac5e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="flux_fig"></p>
+<p>&#160; &#160; &#160; &#160;单向的数据流是Flux应用的核心特性，上图应该成为Flux程序员的主要心智模型。Dispatcher，stores和views是拥有清晰的输入输出的独立节点。而actions是包含了新的数据和身份属性的简单对象。</p>
+<p>&#160; &#160; &#160; &#160;Flux主要包括四个部分，Dispatcher、Store、View、Action，其中Dispatcher是Flux的核心枢纽，它相当于一个事件分发器，将那些分散在各个组件里面的逻辑代码收集起来，统一在DIspatcher中进行处理，完整的Flux处理流程是这样的：用户通过与view交互或者外部产生一个Action，Dispatcher接收到Action并执行那些已经注册的回调，向所有Store分发Action。通过注册的回调，Store响应那些与他们保存的状态有关的Action。然后Store会触发一个change事件，来提醒controller-views数据已经发生了变化。controller-views监听这些事件并重新从Store中获取数据，这些controller-views调用他们自己的setState()方法，重新渲染自身以及组件数上的所有后代组件。使用Flux有个好处就是我只需要用action对象向Dispatcher描述当前的事件就可以执行对应的逻辑，因为Dispatcher是所有Action的处理中心，即使没有对应的事件发生，我们也可以“伪造”一个出来，非常利于测试。</p>
+<p>&#160; &#160; &#160; &#160;这种的响应式编程，或者更准确的说数据流编程亦或基于数据流的变化传播的编程，可以使我们很容易去推断我们的应用是如何工作的，因为我们的应用中数据是单项流动的，不存在双向绑定。应用的状态只保存在store中，这就允许应用中的不同部分保持高度的低耦合。虽然依赖在store中也确实存在，但他们之间保持着严格的等级制度，并通过Dispatcher来管理同步更新。Facebook目前在生产环境中使用的flux可以分别在npm, Brower，or Github中获取。</p>
+<h2 id="Redux-可预测状态容器"><a href="#Redux-可预测状态容器" class="headerlink" title="Redux(可预测状态容器)"></a>Redux(可预测状态容器)</h2><h4 id="三个原则"><a href="#三个原则" class="headerlink" title="三个原则"></a>三个原则</h4><p>&#160; &#160; &#160; &#160;1.单一数据源  </p>
+<p>&#160; &#160; &#160; &#160;2.State是只读的  </p>
+<p>&#160; &#160; &#160; &#160;3.纯函数应用状态变更</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">组成</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Action</td>
+<td style="text-align:center">intent用标准化的语言描述用户的意图</td>
+</tr>
+<tr>
+<td style="text-align:center">Reducer</td>
+<td style="text-align:center">Action只是描述了有事情发生了这一事实，并没有指明应用如何更新state，而这正是reducer要做的事情。</td>
+</tr>
+<tr>
+<td style="text-align:center">Stroe</td>
+<td style="text-align:center">Redux应用只有一个单一的store</td>
+</tr>
+<tr>
+<td style="text-align:center">View</td>
+<td style="text-align:center">视图页面</td>
+</tr>
+</tbody>
+</table>
+<p>Redux的作用跟Flux是一样的，他可以看做是Flux的一种实现，但是又有点不同，具体的不同总结起来就是：<br>&#160; &#160; &#160; &#160;1.Redux 只有一个 store，Flux 里面会有多个 store 存储应用数据，并在 store 里面执行更新逻辑，当 store 变化的时候再通知 controller-view 更新自己的数据，Redux 将各个 store 整合成一个完整的 store，并且可以根据这个 store 推导出应用完整的 state。同时 Redux 中更新的逻辑也不在 store 中执行而是放在 reducer 中,Redux 里的 store 已经完全接管了 dispatcher 相关的工作</p>
+<p>&#160; &#160; &#160; &#160;2.没有 Dispatcher，Redux 中没有 Dispatcher 的概念，它使用 reducer 来进行事件的处理，reducer 是一个纯函数，这个函数被表述为(previousState, action) =&gt; newState，它根据应用的状态和当前的 action 推导出新的 state。Redux 中有多个 reducer，每个 reducer 负责维护应用整体 state 树中的某一部分，多个 reducer 可以通过combineReducers方法合成一个根reducer，这个根reducer负责维护完整的 state，当一个 action 被发出，store 会调用 dispatch方法向某个特定的 reducer 传递该 action，reducer 收到 action 之后执行对应的更新逻辑然后返回一个新的 state，state 的更新最终会传递到根reducer处，返回一个全新的完整的 state，然后传递给 view。</p>
+<p>&#160; &#160; &#160; &#160;在我看来，Redux 和 Flux 之间最大的区别就是对 store/reducer 的抽象，Flux 中 store 是各自为战的，每个 store 只对对应的 controller-view 负责，每次更新都只通知对应的 controller-view；而 Redux 中各子 reducer 都是由根reducer统一管理的，每个子reducer的变化都要经过根reducer的整合。</p>
+<p>Flux 中的 store 是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-e4f71a0ede747fdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="flux_store"></p>
+<p>Redux 中的 store（或者叫 reducer）是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-b554a67b6abe6f61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="redux_reducer"></p>
+<p>&#160; &#160; &#160; &#160;redux最终目的就是让状态(state)变化变得可预测；这是 Redux 的核心思想之一。不直接修改整个应用的状态树，而是将状态树的每一部分进行拷贝并修改拷贝后的部分，然后将这些部分重新组合成一颗新的状态树。子 reducers 会把他们创建的副本传回给根 reducer，而根 reducer 会把这些副本组合起来形成一颗新的状态树。最后根 reducer 将新的状态树传回给 store，store 再将新的状态树设为最终的状态。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(16)密封类/" class="archive-article-date">
-  	<time datetime="2018-08-02T05:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(16)密封类/">Kotlin学习笔记(16)密封类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ReactNative</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/23/从React到Flux再到Redux/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(15)数据类/" class="archive-article-date">
-  	<time datetime="2018-08-02T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/23/通用Tab组件react-native-scrollable-tab-view/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          通用Tab组件react-native-scrollable-tab-view
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/23/ReactNative基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ReactNative基础知识</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(15)数据类/">Kotlin学习笔记(15)数据类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(10)类和对象/">Kotlin学习笔记(10)类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(9)循环控制/">Kotlin学习笔记(9)循环控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">Kotlin学习笔记(8)条件控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">Kotlib学习笔记(7)Lambda表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/7/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/6/">6</a><a class="page-number" href="/archives/2018/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2018/page/9/">9</a><a class="page-number" href="/archives/2018/page/10/">10</a><a class="extend next" rel="next" href="/archives/2018/page/9/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -594,8 +421,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>ReactNative基础知识 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/8/index.html">
+  <meta name="description" content="ReactNative基础知识总结。">
+<meta name="keywords" content="ReactNative">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactNative基础知识">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/ReactNative基础知识/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="ReactNative基础知识总结。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-113ee6b1878e74f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-3caf2ea654e389e6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-23T11:33:02.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="ReactNative基础知识">
+<meta name="twitter:description" content="ReactNative基础知识总结。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-113ee6b1878e74f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,405 +180,282 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ReactNative基础知识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ReactNative基础知识
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/ReactNative基础知识/" class="archive-article-date">
+  	<time datetime="2018-08-23T11:18:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ReactNative基础知识总结。<br><a id="more"></a></p>
+<h2 id="React-Native组件"><a href="#React-Native组件" class="headerlink" title="React Native组件"></a>React Native组件</h2><h4 id="什么是React-Native的组件呢？"><a href="#什么是React-Native的组件呢？" class="headerlink" title="什么是React Native的组件呢？"></a>什么是React Native的组件呢？</h4><p>React组件让你将UI分割成独立的、可重用的一些碎片或部分，这些部分都是相互独立的</p>
+<h4 id="创建组件的三种方式"><a href="#创建组件的三种方式" class="headerlink" title="创建组件的三种方式"></a>创建组件的三种方式</h4><p><strong>1.ES6的方式创建组件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export class CustomTabBar extends Component &#123;</span><br><span class="line">	render()&#123;</span><br><span class="line">		return &lt;Text style=&#123;&#123;fontSize:20,backgroundColor:&apos;red&apos;&#125;&#125;&gt;Hello&lt;/Text&gt;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.ES5的方式创建组件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var HelloComponent = React.createClass(&#123;</span><br><span class="line">	render()&#123;</span><br><span class="line">		return &lt;Text style=&#123;&#123;fontSize:20,backgroundColor:&apos;red&apos;&#125;&#125;&gt;Hello&lt;/Text&gt;</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//导出</span><br><span class="line">module exports = HelloComponent;</span><br></pre></td></tr></table></figure>
+<p><strong>3.函数式创建组件(无状态，不能使用this)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function HelloComponent(props)&#123;</span><br><span class="line">	return &lt;Text style=&#123;&#123;fontSize:20,backgroundColor:&apos;red&apos;&#125;&#125;&gt;Hello&#123;props.name&#125;&lt;/Text&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//导出</span><br><span class="line">module exports = HelloComponent;</span><br></pre></td></tr></table></figure>
+<h2 id="React-Native组件生命周期详解"><a href="#React-Native组件生命周期详解" class="headerlink" title="React Native组件生命周期详解"></a>React Native组件生命周期详解</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-113ee6b1878e74f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生命周期图"></p>
+<h4 id="组件的生命周期中都包含哪些方面，各有什么作用？"><a href="#组件的生命周期中都包含哪些方面，各有什么作用？" class="headerlink" title="组件的生命周期中都包含哪些方面，各有什么作用？"></a>组件的生命周期中都包含哪些方面，各有什么作用？</h4><p>组件在不同阶段调用的回调函数。如上图大致可以将组件的生命周期分为三个阶段:<br>&#160; &#160; &#160; &#160;1.第一阶段:是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；<br>&#160; &#160; &#160; &#160;2.第二阶段:是组件在运行和交互阶段，如图中左下角虚线框，这个阶段组件可以处理用户交互，或者接收事件更新界面；<br>&#160; &#160; &#160; &#160;3.第三阶段:是组件卸载消亡的阶段，如图中右下角的虚线框中，这里做一些组件的清理工作。</p>
+<h4 id="生命周期的方法都在什么时候调用？"><a href="#生命周期的方法都在什么时候调用？" class="headerlink" title="生命周期的方法都在什么时候调用？"></a>生命周期的方法都在什么时候调用？</h4><p><strong>1.getDefaultProps</strong></p>
+<p>在组件创建之前，会先调用getDefaultProps(),这是全局调用一次，严格地来说，这不是组件的生命周期的一部分，在组件被创建并加载，首先调用getInitialState()，来初始化组件的状态。</p>
+<p><strong>2.componentWillMount</strong></p>
+<p>然后，准备加载组件，会调用componentWillMount()，其原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void componentWillMount()</span><br></pre></td></tr></table></figure>
+<p>这个函数调用时机是在组件创建，并初始化了状态之后，在第一次绘制render()之前。可以在这里做一些业务初始化操作，也可以设置组件状态。这个函数在整个生命周期中只被调用一次。</p>
+<p><strong>3.componentDidMount</strong></p>
+<p>在组件第一次绘制之后，会调用 componentDidMount()，通知组件已经加载完成。函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void componentDidMount()</span><br></pre></td></tr></table></figure>
+<p>这个函数调用的时候，其虚拟DOM已经构建完成，你可以在这个函数开始获取其中的元素或者子组件了。需要注意的是，RN框架是先调用子组件的componentDidMount()，然后调用父组件的函数。从这个函数开始，就可以和JS其他框架交互了，例如设置计时 setTimeout 或者 setInterval，或者发起网络请求。这个函数也是只被调用一次。这个函数之后，就进入了稳定运行状态，等待事件触发。</p>
+<p><strong>4.componentWillReceiveProps</strong></p>
+<p>如果组件收到新的属性（props），就会调用 componentWillReceiveProps()，其原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void componentWillReceiveProps(  </span><br><span class="line">  object nextProps</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>输入参数nextProps是即将被设置的属性，旧的属性还是可以通过this.prpos来获取。在这个回调函数里面，你可以根据属性的变化，通过调用this.setState()来更新你的组件状态，这里调用更新状态是安全的，并不会触发额外的render(）调用。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">componentWillReceiveProps: function(nextProps) &#123;  </span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    likesIncreasing: nextProps.likeCount &gt; this.props.likeCount</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>5.shouldComponentUpdate</strong></p>
+<p>当组件接收到新的属性和状态改变的话，都会触发调用 shouldComponentUpdate(…)，函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">boolean shouldComponentUpdate(  </span><br><span class="line">  object nextProps, object nextState</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>输入参数 nextProps 和上面的 componentWillReceiveProps 函数一样，nextState 表示组件即将更新的状态值。这个函数的返回值决定是否需要更新组件，如果 true 表示需要更新，继续走后面的更新流程。否者，则不更新，直接进入等待状态。</p>
+<p>默认情况下，这个函数永远返回 true 用来保证数据变化的时候 UI 能够同步更新。在大型项目中，你可以自己重载这个函数，通过检查变化前后属性和状态，来决定 UI 是否需要更新，能有效提高应用性能。</p>
+<p><strong>6.componentWillUpdate</strong></p>
+<p>如果组件状态或者属性改变，并且上面的 shouldComponentUpdate(…) 返回为 true，就会开始准更新组件，并调用 componentWillUpdate()，其函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void componentWillUpdate(  </span><br><span class="line">  object nextProps, object nextState</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>输入参数与 shouldComponentUpdate 一样，在这个回调中，可以做一些在更新界面之前要做的事情。需要特别注意的是，在这个函数里面，你就不能使用 this.setState 来修改状态。这个函数调用之后，就会把 nextProps 和 nextState 分别设置到 this.props 和 this.state 中。紧接着这个函数，就会调用 render() 来更新界面了。</p>
+<p><strong>7.componentDidUpdate</strong></p>
+<p>调用了 render() 更新完成界面之后，会调用 componentDidUpdate() 来得到通知，其函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void componentDidUpdate(  </span><br><span class="line">  object prevProps, object prevState</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>因为到这里已经完成了属性和状态的更新了，此函数的输入参数变成了 prevProps 和 prevState。</p>
+<p><strong>8.componentWillUnmount</strong></p>
+<p>当组件要被从界面上移除的时候，就会调用 componentWillUnmount()，其函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void componentWillUnmount()</span><br></pre></td></tr></table></figure>
+<p>在这个函数中，可以做一些组件相关的清理工作，例如取消计时器、网络请求等。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>到这里，RN 的组件的完整的生命都介绍完了，在回头来看一下前面的图，就比较清晰了，把生命周期的回调函数总结成如下表格：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-3caf2ea654e389e6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="总结"></p>
+<h2 id="React-Native导入与导出"><a href="#React-Native导入与导出" class="headerlink" title="React Native导入与导出"></a>React Native导入与导出</h2><h4 id="如何导出一个组件，如何使用导出的组件？"><a href="#如何导出一个组件，如何使用导出的组件？" class="headerlink" title="如何导出一个组件，如何使用导出的组件？"></a>如何导出一个组件，如何使用导出的组件？</h4><p>导出一个组件可以有两种写法。</p>
+<p><strong>1.直接进行导出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default class MyView extends Component &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.进行组件创建完成之后，在导出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class MyView extends Component &#123;&#125;</span><br><span class="line">export default MyView;</span><br></pre></td></tr></table></figure>
+<p>导出组件之后，通过文件的路径进行导入，导入之后就可以使用<myview> 这个组件（类）了。</myview></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import MyView from &apos;./MyView&apos;;</span><br></pre></td></tr></table></figure>
+<h4 id="如何导出一个变量或常量，如何使用导出的变量和常量？"><a href="#如何导出一个变量或常量，如何使用导出的变量和常量？" class="headerlink" title="如何导出一个变量或常量，如何使用导出的变量和常量？"></a>如何导出一个变量或常量，如何使用导出的变量和常量？</h4><p>比如在我们的文件中，有变量 name 与常量 age，我们可以将它们分别导出，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export var name = &apos;Jack&apos;;</span><br><span class="line">export const age = 12;</span><br><span class="line"></span><br><span class="line">export default class MyView extends Component &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以将它们一起导出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;Jack&apos;;</span><br><span class="line">const age = 12;</span><br><span class="line">export &#123;name, age&#125;;</span><br><span class="line"></span><br><span class="line">export default class MyView extends Component &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>导入与之对应，可以单独导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123;name&#125; from &apos;./MyView&apos;;</span><br><span class="line">import &#123;age&#125; from &apos;./MyView&apos;;</span><br></pre></td></tr></table></figure>
+<p>也可以一起导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123;name, age&#125; from &apos;./MyView&apos;;</span><br></pre></td></tr></table></figure>
+<p>还可以与类一起导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import MyView, &#123;name, age&#125; from &apos;./MyView&apos;;</span><br></pre></td></tr></table></figure>
+<h4 id="如何导出一个方法，如何使用导出的方法？"><a href="#如何导出一个方法，如何使用导出的方法？" class="headerlink" title="如何导出一个方法，如何使用导出的方法？"></a>如何导出一个方法，如何使用导出的方法？</h4><p>导出一个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export function sum(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>导入方法和导入变量是完全一样的，可以单独导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123;sum&#125; from &apos;./MyView&apos;;</span><br></pre></td></tr></table></figure>
+<p>也可以一起导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import MyView, &#123;name, age, sum&#125; from &apos;./MyView&apos;;</span><br></pre></td></tr></table></figure>
+<p>接下来你就可以使用它了。</p>
+<h2 id="Props使用详解"><a href="#Props使用详解" class="headerlink" title="Props使用详解"></a>Props使用详解</h2><h4 id="1-什么是props？"><a href="#1-什么是props？" class="headerlink" title="1.什么是props？"></a>1.什么是props？</h4><p>props就是属性，是为了描述一个组件的特征而存在的。它是父组件传递给子组件的</p>
+<h4 id="2-如何使用props？"><a href="#2-如何使用props？" class="headerlink" title="2.如何使用props？"></a>2.如何使用props？</h4><p>新建一个 PropsTest.js 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exprot default class PropsTest extendes Component&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">        return &lt;Text&gt;&#123;this.props.name&#125;&lt;/Text&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上一个页面中使用PropsTest组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import PropsTest from &apos;./PropsTest&apos;</span><br><span class="line"></span><br><span class="line">&lt;PropsTest  name = &apos;XiaoMing&apos; /&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="3-什么是默认属性以及它的作用？"><a href="#3-什么是默认属性以及它的作用？" class="headerlink" title="3.什么是默认属性以及它的作用？"></a>3.什么是默认属性以及它的作用？</h4><p>由于props的属性都是上个页面传递的，所以无法修改它。但是我们可以在PropsTest文件中，给props定义一些默认的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">exprot default class PropsTest extends Component&#123;</span><br><span class="line">    static defaultProps=&#123;</span><br><span class="line">        name: &apos;XiaoHong&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        return &lt;Text&gt;&#123;this.props.name&#125;&lt;/Text&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-如何对props进行约束和检查？"><a href="#4-如何对props进行约束和检查？" class="headerlink" title="4.如何对props进行约束和检查？"></a>4.如何对props进行约束和检查？</h4><p>注意，defaultProps 需要使用static关键字来做静态修饰。这样，如果上个页面没有传值，则显示的是这个默认的属性。对props进行约束和检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static propTypes=&#123;</span><br><span class="line">       name: PropTypes.string,</span><br><span class="line">       age: PropTypes.number,</span><br><span class="line">       sex: PropTypes.string.isRequired</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对props里面的属性进行类型判断，可以使用propTypes来做到，同样需要使用static关键字来修饰。isRequired 可以指定必填项</p>
+<h4 id="5-props使用小技巧之延展操作符？"><a href="#5-props使用小技巧之延展操作符？" class="headerlink" title="5.props使用小技巧之延展操作符？"></a>5.props使用小技巧之延展操作符？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;name: &apos;XiaoZhang&apos;, age: 18, sex: &apos;男&apos;&#125;</span><br><span class="line"></span><br><span class="line">// 如果需要传递给下一个页面需要：</span><br><span class="line">&lt;PropsTest</span><br><span class="line">    name = &#123;params.name&#125;</span><br><span class="line">    sex = &#123;params.sex&#125;</span><br><span class="line">    age = &#123;params.age&#125;</span><br><span class="line">/&gt;</span><br><span class="line">// 等等，这样如果属性特别多，代码将会变得难以维护。</span><br></pre></td></tr></table></figure>
+<p>在ES6中可以使用最新的延伸操作符特性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;PropsTest</span><br><span class="line">    &#123;...params&#125;  //这里是遍历所有的属性，并且传入</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="React-Native-state使用详解"><a href="#React-Native-state使用详解" class="headerlink" title="React Native state使用详解"></a>React Native state使用详解</h2><h4 id="1-什么是state？"><a href="#1-什么是state？" class="headerlink" title="1.什么是state？"></a>1.什么是state？</h4><p>是RN 专门用来标识是否重新渲染，通过属性的值来更新数据，React 内部会监听 state 的变化，一旦发生变化就会主动触发组件的 render() 方法来更新 Dom 结构，另外state是组件私有的，是没有办法通过其他组件传递过来的。</p>
+<h4 id="2-如何使用state？"><a href="#2-如何使用state？" class="headerlink" title="2.如何使用state？"></a>2.如何使用state？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> // 构造</span><br><span class="line"> constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line"></span><br><span class="line">    //方式二</span><br><span class="line">    this.state = &#123;</span><br><span class="line">       num: 0</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 每1000毫秒对num+1</span><br><span class="line">    setInterval(() =&gt; &#123;</span><br><span class="line">       this.setState(previousState =&gt; &#123;</span><br><span class="line">            return &#123;num: ++this.state.num&#125;;</span><br><span class="line">       &#125;);</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 每1000毫秒对num+1</span><br><span class="line">setInterval(() =&gt; &#123;</span><br><span class="line">    //这种方式修改state是无效的，必须调用setState（）才能起作用</span><br><span class="line">    //this.state= ++this.state.num;</span><br><span class="line"></span><br><span class="line">    //this.setState(previousState =&gt; &#123;</span><br><span class="line">    //return &#123;num: ++this.state.num&#125;;</span><br><span class="line">    //&#125;);</span><br><span class="line">    </span><br><span class="line">    //也可以这样写，这样写也就可以直接拿到props，有可能我们的业务需要用到props</span><br><span class="line">    this.setState((prevState, props) =&gt;&#123;</span><br><span class="line">       return &#123;num: ++this.state.num&#125;;</span><br><span class="line">    &#125; );</span><br><span class="line">&#125;, 1000);</span><br></pre></td></tr></table></figure>
+<h2 id="React-Native-ref使用详解"><a href="#React-Native-ref使用详解" class="headerlink" title="React Native ref使用详解"></a>React Native ref使用详解</h2><h4 id="1-什么是ref？"><a href="#1-什么是ref？" class="headerlink" title="1.什么是ref？"></a>1.什么是ref？</h4><p>在react-native中可以通过 ref属性来获取组件，并设置组件的属性及其方法</p>
+<h4 id="2-如何使用ref？"><a href="#2-如何使用ref？" class="headerlink" title="2.如何使用ref？"></a>2.如何使用ref？</h4><p>组件中定义ref的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;MyComponent ref=&apos;myRef&apos;/&gt;</span><br></pre></td></tr></table></figure>
+<p>获取ref的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.refs.myRef</span><br></pre></td></tr></table></figure>
+<p>注意：这里的this.refs.myRef就是组件实例，可以获取到实例的属性和方法</p>
+<p><strong>例子</strong><br>1：利用ref触发子组件的方法</p>
+<p>子组件中定义一个方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">refFun() &#123;</span><br><span class="line">   console.log(123)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>父组件中调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;View&gt;</span><br><span class="line">   &lt;MyComponent ref=&apos;myRef&apos;/&gt;</span><br><span class="line">      &lt;Text onPress=&#123;() =&gt; &#123;</span><br><span class="line">         this.refs.myRef.refFun()</span><br><span class="line">      &#125;&#125;&gt;点击输出值&lt;/Text&gt;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="React-Native中的类-Class"><a href="#React-Native中的类-Class" class="headerlink" title="React Native中的类(Class)"></a>React Native中的类(Class)</h2><p>1.首先，创建一个类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export default class Student&#123;</span><br><span class="line">	</span><br><span class="line">	constructor(name,sex,age)&#123;</span><br><span class="line">		this.name=name;</span><br><span class="line">		this.sex=sex;</span><br><span class="line">		this.age=age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	getDescription()&#123;</span><br><span class="line">		return &apos;姓名&apos; + this.name + &apos;年龄&apos;+ this.age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.使用类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import Student from &apos;./Student&apos;;//根据路径导入类</span><br><span class="line"></span><br><span class="line">//创建类的实例</span><br><span class="line">this.stu = new Student(&apos;小明&apos;,&apos;男&apos;,16);</span><br><span class="line"></span><br><span class="line">//使用类的方法</span><br><span class="line">this.stu.getDescription();</span><br></pre></td></tr></table></figure>
+<h2 id="React-Native加载图片"><a href="#React-Native加载图片" class="headerlink" title="React Native加载图片"></a>React Native加载图片</h2><h4 id="加载本地图片"><a href="#加载本地图片" class="headerlink" title="加载本地图片"></a>加载本地图片</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;View style=&#123;styles3.container&#125;&gt;</span><br><span class="line">   &lt;Text&gt;加载本地图片&lt;/Text&gt;</span><br><span class="line">   &lt;Image source=&#123;require(&apos;./img/1.jpg&apos;)&#125; style=&#123;styles3.img1&#125; /&gt;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<p>&#160; &#160; &#160; &#160;这时候的图片可以放在根目录，也就是和index.andorid.js或者index.ios.js一个目录。该图片资源文件的查找和JS模块相似，该会根据填写的图片路径相对于当前的js文件路径进行搜索，此外，React Naive的Packager会根据平台选择相应的文件，例如:my_icon.ios.png和my_icon.android.png两个文件(命名方式android或者ios)，会分别根据android或者ios平台选择相应的文件。</p>
+<h4 id="从APP中的图片加载-即android或ios目录里面的图片"><a href="#从APP中的图片加载-即android或ios目录里面的图片" class="headerlink" title="从APP中的图片加载(即android或ios目录里面的图片)"></a>从APP中的图片加载(即android或ios目录里面的图片)</h4><p>&#160; &#160; &#160; &#160;android中，我们在android/app/src/main/res/下创建一个文件夹drawable，然后，我们一定要重新编译一下android后，才能在代码中使用。命名图片的时候必须开头用字母，否则编译不成；<br>ios中，我们在目录ios\Hello\Images.xcassets下创建一个img文件夹<br>两者调用的方法都一样.<br>然后我们在两者的文件夹下面都加入qiu.jpg图片，调用方法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;View style=&#123;styles3.container&#125;&gt;</span><br><span class="line">    &lt;Image source=&#123;&#123;uri:&apos;qiu&apos;&#125;&#125; style=&#123;styles3.img1&#125; /&gt;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="从网络中加载图片"><a href="#从网络中加载图片" class="headerlink" title="从网络中加载图片"></a>从网络中加载图片</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;View style=&#123;styles3.container&#125;&gt;</span><br><span class="line">    &lt;Image source=&#123;&#123;uri:&apos;qiu&apos;&#125;&#125; style=&#123;styles3.img1&#125; /&gt;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="设置图片为背景"><a href="#设置图片为背景" class="headerlink" title="设置图片为背景"></a>设置图片为背景</h4><pre><code>&lt;View style={styles3.container}&gt;
+    &lt;Image source={{uri:'hhttps://www.baidu.com/img/bd_logo1.png'}}style={styles3.baidu2}&gt;
+        &lt;Text&gt;设置图片为背景&lt;/Text&gt;
+    &lt;/Image&gt;
+&lt;/View&gt;
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(16)密封类/" class="archive-article-date">
-  	<time datetime="2018-08-02T05:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(16)密封类/">Kotlin学习笔记(16)密封类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ReactNative</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/23/ReactNative基础知识/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(15)数据类/" class="archive-article-date">
-  	<time datetime="2018-08-02T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/23/从React到Flux再到Redux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          从React到Flux再到Redux
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/23/PanResponder手势识别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PanResponder手势识别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(15)数据类/">Kotlin学习笔记(15)数据类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(10)类和对象/">Kotlin学习笔记(10)类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(9)循环控制/">Kotlin学习笔记(9)循环控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">Kotlin学习笔记(8)条件控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">Kotlib学习笔记(7)Lambda表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/7/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/6/">6</a><a class="page-number" href="/archives/2018/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2018/page/9/">9</a><a class="page-number" href="/archives/2018/page/10/">10</a><a class="extend next" rel="next" href="/archives/2018/page/9/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -594,8 +479,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

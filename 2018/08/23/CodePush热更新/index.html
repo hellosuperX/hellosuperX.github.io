@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>CodePush热更新 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/8/index.html">
+  <meta name="description" content="相对应冷更新(应用市场整体更新包）;实现的更新与部署应用;所谓热更新就是在不重新安装的前提下进行代码和资源的更新。">
+<meta name="keywords" content="ReactNative">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodePush热更新">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/CodePush热更新/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="相对应冷更新(应用市场整体更新包）;实现的更新与部署应用;所谓热更新就是在不重新安装的前提下进行代码和资源的更新。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-23T13:16:35.545Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="CodePush热更新">
+<meta name="twitter:description" content="相对应冷更新(应用市场整体更新包）;实现的更新与部署应用;所谓热更新就是在不重新安装的前提下进行代码和资源的更新。">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,405 +177,233 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CodePush热更新" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CodePush热更新
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/CodePush热更新/" class="archive-article-date">
+  	<time datetime="2018-08-23T11:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>相对应冷更新(应用市场整体更新包）;实现的更新与部署应用;所谓热更新就是在不重新安装的前提下进行代码和资源的更新。<br><a id="more"></a></p>
+<h2 id="热更新"><a href="#热更新" class="headerlink" title="热更新"></a>热更新</h2><h4 id="热更新有什么好处？"><a href="#热更新有什么好处？" class="headerlink" title="热更新有什么好处？"></a>热更新有什么好处？</h4><p>&#160; &#160; &#160; &#160;加快app开发的迭代速度；让app的开发跟传统web开发一样秒上线；方便一些活动的管理与BUG的调试。</p>
+<h4 id="坏处呢？政策风险"><a href="#坏处呢？政策风险" class="headerlink" title="坏处呢？政策风险"></a>坏处呢？政策风险</h4><p>&#160; &#160; &#160; &#160;动态改变应用的运行时代码在谷歌和苹果官方看来是一种危险的行为，因为开发者可能通过这一特性规避某些审核特性，来骗取审核。从用户的角度来说，APP私自改变功能，用户也可能是不之情并且不可控制的，也有安全风险。在iOS的体系中，Apple是明文禁止热更新的，除了以下两种情况：</p>
+<p>&#160; &#160; &#160; &#160;1.应用为游戏，且通过官方允许，</p>
+<p>&#160; &#160; &#160; &#160;2.基于WebView(WebKit内核)实现的功能，可以通过更新js脚本来热更新，react-native现在是否还属于第二种情况，已经不太明确了。</p>
+<h4 id="当前主流的热更新解决方案"><a href="#当前主流的热更新解决方案" class="headerlink" title="当前主流的热更新解决方案"></a>当前主流的热更新解决方案</h4><p>&#160; &#160; &#160; &#160;在动态更新方面React Native只是提供了动态更新的基础，对将应用部署到哪里，如何进行动态更新并没有支持的那么完善。好在微软开发了CodePush，填补了React Native应用在动态更新方面的空白。CodePush是微软提供的一套用于热更新React Native 和 Cordova应用的服务；另外还有国人版RN中文网推出的pushy是一套用于热更新rn的组件，服务器不同，速度也不同，并且有代码泄露风险。</p>
+<p><a href="https://github.com/Microsoft/react-native-code-push" target="_blank" rel="noopener">微软项目地址</a></p>
+<p><a href="https://github.com/reactnativecn/react-native-pushy" target="_blank" rel="noopener">中文网项目地址</a></p>
+<h4 id="自己搭建热更新服务器"><a href="#自己搭建热更新服务器" class="headerlink" title="自己搭建热更新服务器"></a>自己搭建热更新服务器</h4><p>&#160; &#160; &#160; &#160;<a href="https://github.com/lisong/code-push-server" target="_blank" rel="noopener">国人写的开源的CodePushServer项目</a>基于微软CodePush项目, 适配code-push-cli和react-native-code-push 搭建自己的react native热更新服务 或者自己搭建简单的文件服务器</p>
+<h4 id="热更新的基本原理"><a href="#热更新的基本原理" class="headerlink" title="热更新的基本原理"></a>热更新的基本原理</h4><p>&#160; &#160; &#160; &#160;RN是使用脚本语言来编写的，所谓脚本语言就是不需要编译就可以运行的语言，也就是“即读即运行”。我们在“读”之前将之替换成新版本的脚本，运行时执行的便是新的逻辑了，稍微抽象一下，图片资源是不是也是“即读即运行”？所以脚本本质上和图片资源一样，都是可以进行热更新的。RN中js代码最终会打包成一个jsbundle文件，我们只需要更新的时候，在app中从远程服务器上下载这个文件，并重新加载，就可以完成动态更新无需重新发布应用市场。bundle里存放了RN源码。第三方库代码和业务逻辑代码，其中频繁更新的就只有业务逻辑代码，所以我们将RN源码和第三方库代码打包成一个bundle，业务逻辑打包成一个bundle，热更新的时候就只更新业务逻辑的bundle即可。可以实现增量更新的！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8081/index.android.bundle?platform=android</span><br></pre></td></tr></table></figure></p>
+<h2 id="热更新部署-CodePush-适配Android"><a href="#热更新部署-CodePush-适配Android" class="headerlink" title="热更新部署-CodePush-适配Android"></a>热更新部署-CodePush-适配Android</h2><h4 id="CodePush简介"><a href="#CodePush简介" class="headerlink" title="CodePush简介"></a>CodePush简介</h4><p>&#160; &#160; &#160; &#160;CodePush是微软提供的一套用于热更新React Native 和 Cordova应用的服务。CodePush是提供给React Native 和 Cordova开发者直接部署移动应用更新给用户设备的云服务。CodePush作为一个中央仓库，开发者可以推送更新 (JS, HTML, CSS and images)，应用可以从客户端SDK里面查询更新。CodePush可以让应用有更多的可能性，也可以让你直接接触用户群。在修复一些小问题和添加新特性的时候，不需要经过二进制打包，可以直接推送代码进行实时更新。</p>
+<h4 id="安装CodePush客户端与注册账号"><a href="#安装CodePush客户端与注册账号" class="headerlink" title="安装CodePush客户端与注册账号"></a>安装CodePush客户端与注册账号</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm install -g code-push-cli</span><br><span class="line"></span><br><span class="line">code-push -v查看版本</span><br><span class="line"></span><br><span class="line">code-push register 注册账号 授权登陆并得到access key</span><br><span class="line"></span><br><span class="line">code-push login 登陆</span><br><span class="line"></span><br><span class="line">code-push logout 注销</span><br><span class="line"></span><br><span class="line">code-push access-key ls 列出登陆的token</span><br><span class="line"></span><br><span class="line">code-push access-key rm &lt;accessKye&gt; 删除某个 access-key</span><br></pre></td></tr></table></figure>
+<h4 id="往CodePush服务器端添加app"><a href="#往CodePush服务器端添加app" class="headerlink" title="往CodePush服务器端添加app"></a>往CodePush服务器端添加app</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">code-push app add [app名称] android cordova</span><br><span class="line"></span><br><span class="line">code-push app remove [app名称]</span><br><span class="line"></span><br><span class="line">code-push app rename [appName] [newAppName]</span><br><span class="line"></span><br><span class="line">code-push app list 列出账号下的所有app</span><br></pre></td></tr></table></figure>
+<p><strong>注意：一个app名字对应两个部署环境：生产环境Production  模拟或演示环境Staging</strong></p>
+<h4 id="Android集成CodePush、打包、发布更新"><a href="#Android集成CodePush、打包、发布更新" class="headerlink" title="Android集成CodePush、打包、发布更新"></a>Android集成CodePush、打包、发布更新</h4><p><strong>参考：<a href="https://github.com/Microsoft/react-native-code-push" target="_blank" rel="noopener">https://github.com/Microsoft/react-native-code-push</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//安装</span><br><span class="line">npm install --save react-native-code-push@latest</span><br></pre></td></tr></table></figure>
+<p><strong>查询部署环境的key也是一个app对应两个：(Deployment Key)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">code-push deployment ls &lt;appName&gt; -k</span><br><span class="line"></span><br><span class="line">//RN的v0.27+则</span><br><span class="line">react-native link react-native-code-push </span><br><span class="line"></span><br><span class="line">//否则</span><br><span class="line">rnpm link react-native-code-push</span><br></pre></td></tr></table></figure>
+<p><strong>报错</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">：Error executing task com.intellij.execution.impl.ExecutionManagerImpl$5@284c496c: Unsupported method: AndroidArtifact.getInstantRun().</span><br><span class="line">The version of Gradle you connect to does not support that method.</span><br></pre></td></tr></table></figure></p>
+<p>需要修改gradle：classpath ‘com.android.tools.build:gradle:2.1.0+’(最好是gradle最新的版本)</p>
+<p><strong>Plugin Usage（使用CodePush更新策略）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import codePush from &quot;react-native-code-push&quot;;</span><br><span class="line"></span><br><span class="line">MyApp = codePush(MyApp);</span><br><span class="line"></span><br><span class="line">MyApp = codePush(codePushOptions)(MyApp);</span><br></pre></td></tr></table></figure>
+<p>Redux Saga for CodePush：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native-code-push-saga</span><br></pre></td></tr></table></figure>
+<p>Releasing Updates发布更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-push release-react &lt;appName&gt; &lt;platform&gt;</span><br></pre></td></tr></table></figure>
+<p>自动打包你的js和资源文件成bundle并且上传发布到CodePush的服务器，也可以自己打包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle --platform 平台 --entry-file 启动文件 --bundle-output 打包js输出文件 --assets-dest 资源输出目录 --dev 是否调试</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle --platform android --entry-file index.js --bundle-output ./bundles/index.android.bundle --dev false</span><br></pre></td></tr></table></figure>
+<p>也可以自己上传：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-push release &lt;应用名称&gt; &lt;Bundles所在目录&gt; &lt;对应的应用版本&gt; --deploymentName： 更新环境 --description： 更新描述  --mandatory： 是否强制更新</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-push release CodePushDemo ./bundles/index.android.bundle 1.3.0 --deploymentName Staging  --description &quot;1.增加。&quot; --mandatory true</span><br></pre></td></tr></table></figure>
+<h4 id="Multi-Deployment-Testing-多环境部署测试的步骤"><a href="#Multi-Deployment-Testing-多环境部署测试的步骤" class="headerlink" title="Multi-Deployment Testing 多环境部署测试的步骤"></a>Multi-Deployment Testing 多环境部署测试的步骤</h4><p>客户端的回滚机制可以导致服务器端的回滚：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-push rollback</span><br></pre></td></tr></table></figure>
+<p>1.发布更新到Staging环境：code-push release-react <appname> <platform></platform></appname></p>
+<p>2.运行Staging版app，同步更新，验证其是否正常工作</p>
+<p>3.从演示环境推进到生产环境：code-push promote</p>
+<p>4.运行Production版app，同步更新，验证其是否正常工作</p>
+<p>我们注意到第2步与第4步，需要生成两种app，其实是麻烦的，我们可以整合，但是却是分平台的，这节课以Android为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line">            ...</span><br><span class="line">            buildConfigField &quot;String&quot;, &quot;CODEPUSH_KEY&quot;, &apos;&quot;&lt;INSERT_STAGING_KEY&gt;&quot;&apos;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        release &#123;</span><br><span class="line">            ...</span><br><span class="line">            buildConfigField &quot;String&quot;, &quot;CODEPUSH_KEY&quot;, &apos;&quot;&lt;INSERT_PRODUCTION_KEY&gt;&quot;&apos;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>Application配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG);</span><br></pre></td></tr></table></figure>
+<p>配置之后，当你调试的时候更新用到的是Staging的key，当签名发正式包的时候用的就是Production的Key</p>
+<p>默认情况下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native run android</span><br></pre></td></tr></table></figure>
+<p>用到的是Debug，所以是Staging，如果你想测试正式的版本包，则运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android --variant release</span><br></pre></td></tr></table></figure>
+<p>CodePush插件是由两部分组成：1、js模块  2、原生api</p>
+<p>下面列出CodePush一些常用的用法，你可以选择一个或者组合使用：</p>
+<p>1.Silent sync on app start</p>
+<p>2.Silent sync everytime the app resumes</p>
+<p>3.Interactive</p>
+<p>4.Log/display progress</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// Make use of the event hooks to keep track of</span><br><span class="line">// the different stages of the sync process.</span><br><span class="line">class MyApp extends Component &#123;</span><br><span class="line">    codePushStatusDidChange(status) &#123;</span><br><span class="line">        switch(syncStatus) &#123;</span><br><span class="line">            case codePush.SyncStatus.CHECKING_FOR_UPDATE:</span><br><span class="line">                console.log(&quot;Checking for updates.&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case codePush.SyncStatus.DOWNLOADING_PACKAGE:</span><br><span class="line">                console.log(&quot;Downloading package.&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case codePush.SyncStatus.INSTALLING_UPDATE:</span><br><span class="line">                console.log(&quot;Installing update.&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case codePush.SyncStatus.UP_TO_DATE:</span><br><span class="line">                console.log(&quot;Installing update.&quot;);</span><br><span class="line">                break;</span><br><span class="line">            case codePush.SyncStatus.UPDATE_INSTALLED:</span><br><span class="line">                console.log(&quot;Update installed.&quot;);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    codePushDownloadDidProgress(progress) &#123;</span><br><span class="line">        console.log(progess.receivedBytes + &quot; of &quot; + progress.totalBytes + &quot; received.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">MyApp = codePush(MyApp);</span><br></pre></td></tr></table></figure>
+<p>CodePushOptions选项对象可以自定义</p>
+<p>报错：The uploaded package is identical to the contents of the specified deployment’s current release  表示：已经存在与这次上传完全一样的bundle(对应一个版本有两个bundle的md5完全一样)，那么CodePush会拒绝此次更新。</p>
+<p>看调试效果：程序员视角、终端用户视角</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(16)密封类/" class="archive-article-date">
-  	<time datetime="2018-08-02T05:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(16)密封类/">Kotlin学习笔记(16)密封类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ReactNative</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/23/CodePush热更新/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(15)数据类/" class="archive-article-date">
-  	<time datetime="2018-08-02T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/23/API学习之Linking/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          API学习之Linking
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/23/在React中使用Redux数据流/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在React中使用Redux数据流</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(15)数据类/">Kotlin学习笔记(15)数据类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(10)类和对象/">Kotlin学习笔记(10)类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(9)循环控制/">Kotlin学习笔记(9)循环控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">Kotlin学习笔记(8)条件控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">Kotlib学习笔记(7)Lambda表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/7/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/6/">6</a><a class="page-number" href="/archives/2018/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2018/page/9/">9</a><a class="page-number" href="/archives/2018/page/10/">10</a><a class="extend next" rel="next" href="/archives/2018/page/9/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -594,8 +427,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

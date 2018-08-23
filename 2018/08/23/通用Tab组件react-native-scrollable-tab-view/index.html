@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 李鑫的博客</title>
+  <title>通用Tab组件react-native-scrollable-tab-view | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李鑫的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/8/index.html">
+  <meta name="description" content="适配android&amp;amp;IOS的底部导航">
+<meta name="keywords" content="ReactNative">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通用Tab组件react-native-scrollable-tab-view">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/通用Tab组件react-native-scrollable-tab-view/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="适配android&amp;amp;IOS的底部导航">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-23T12:22:08.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李鑫的博客">
+<meta name="twitter:title" content="通用Tab组件react-native-scrollable-tab-view">
+<meta name="twitter:description" content="适配android&amp;amp;IOS的底部导航">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -172,405 +177,247 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-通用Tab组件react-native-scrollable-tab-view" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通用Tab组件react-native-scrollable-tab-view
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/通用Tab组件react-native-scrollable-tab-view/" class="archive-article-date">
+  	<time datetime="2018-08-23T11:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>适配android&amp;IOS的底部导航<br><a id="more"></a></p>
+<p><a href="https://github.com/skv-headless/react-native-scrollable-tab-view" target="_blank" rel="noopener">开源项目地址</a></p>
+<h2 id="属性介绍"><a href="#属性介绍" class="headerlink" title="属性介绍"></a>属性介绍</h2><p><strong>1.renderTabBar renderTabBar={() =&gt; <defaulttabbar>}</defaulttabbar></strong></p>
+<p>&#160; &#160; &#160; &#160;TabBar的样式，系统提供了两种默认的，分别是DefaultTabBar和ScrollableTabBar，也可以自定义。每个被包含的子视图需要使用tabLabel属性，表示对应Tab显示的文字。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">样式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DefaultTabBar</td>
+<td style="text-align:center">Tab会平分在水平方向的空间</td>
+</tr>
+<tr>
+<td style="text-align:center">ScrollableTabBar</td>
+<td style="text-align:center">Tab可以超过屏幕范围，滚动可以显示</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.tabBarPosition 位置默认为’top’</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tabBarPosition=&apos;top&apos; </span><br><span class="line"></span><br><span class="line">//其他的值</span><br><span class="line">[&apos;top&apos;,&apos;bottom&apos;,&apos;overlayTop&apos;,&apos;overlayBottom&apos;]</span><br></pre></td></tr></table></figure>
+<p><strong>3.onChangeTab</strong></p>
+<p>&#160; &#160; &#160; &#160;Tab切换之后会触发此方法，包含一个参数（Object类型），这个对象有两个参数：i：被选中的Tab的下标（从0开始）；ref：被选中的Tab对象（基本用不到）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onChangeTab=&#123; //这里是用来监听下标的事件</span><br><span class="line">	(obj) =&gt; &#123;</span><br><span class="line">		console.log(&apos;被选中的tab下标&apos; + obj.i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.onScroll</strong></p>
+<p>&#160; &#160; &#160; &#160;视图正在滑动的时候触发此方法，包含一个Float类型的数字，范围是[0, tab数量-1]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onScroll=&#123;  //这个是滑动过程中的距离监听</span><br><span class="line">	(position) =&gt; &#123;</span><br><span class="line">		console.log(&apos;滑动时的位置：&apos; + position);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>5.locked</strong></p>
+<p>&#160; &#160; &#160; &#160;表示手指是否能拖动视图，默认为false（表示可以拖动）。设为true的话，我们只能“点击”Tab来切换视图。locked={false}。</p>
+<p><strong>6.initialPage 初始化时被选中的Tab下标，默认是0（即第一页）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initialPage=&#123;3&#125;//默认的显示页面</span><br></pre></td></tr></table></figure>
+<p><strong>7.page(Integer) 设置选中指定的Tab 作者打算废除</strong></p>
+<p><strong>8.children(ReactComponents) 表示所有子视图的数组</strong></p>
+<p><strong>9.tabBarUnderlineStyle()</strong></p>
+<p>设置DefaultTabBar和ScrollableTabBarTab选中时下方横线的颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//修改指示器的颜色</span><br><span class="line">tabBarUnderlineStyle=&#123;&#123;backgroundColor: &apos;red&apos;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>10.tabBarBackgroundColor(String)</strong></p>
+<p>设置整个Tab这一栏的背景颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tabBarBackgroundColor=&#123;&apos;#FFFF00&apos;&#125;//背景颜色</span><br></pre></td></tr></table></figure>
+<p><strong>11.tabBarActiveTextColor(String)</strong></p>
+<p>设置选中Tab的文字颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tabBarActiveTextColor=&#123;&apos;red&apos;&#125;//被选中的颜色</span><br></pre></td></tr></table></figure>
+<p><strong>12.tabBarInactiveTextColor(String)</strong></p>
+<p>设置未选中Tab的文字颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tabBarInactiveTextColor=&#123;&apos;#000000&apos;&#125;//未选中的字体颜色</span><br></pre></td></tr></table></figure>
+<p><strong>13.tabBarTextStyle(Object)</strong></p>
+<p>设置Tab文字的样式，比如字号、字体等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tabBarTextStyle=&#123;&#123;fontSize:18&#125;&#125; //字体的样式</span><br></pre></td></tr></table></figure>
+<p><strong>14.style (View.propTypes.style)</strong></p>
+<p>系统View都拥有的属性</p>
+<p><strong>15.contentProps(Object)</strong></p>
+<p>&#160; &#160; &#160; &#160;react-native-scrollable-tab-view的实现，其实在Android平台底层用的是ViewPagerAndroid，iOS平台用的是ScrollView。这个属性的意义是：比如我们设置了某个属性，最后这个属性会被应用在ScrollView/ViewPagerAndroid，这样会覆盖库里面默认的，通常官方不建议我们去使用。</p>
+<p><strong>16.scrollWithoutAnimation(Bool，默认为false)</strong></p>
+<p>&#160; &#160; &#160; &#160;设置“点击”Tab时，视图切换是否有动画，默认为false（即：有动画效果）这个属性的设置对滑动视图切换的动画效果没有影响，仅仅对“点击”Tab效果有作用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrollWithoutAnimation=&#123;false&#125; //是否有动画</span><br></pre></td></tr></table></figure>
+<p><strong>17.prerenderingSiblingsNumber(Integer，默认为0)</strong></p>
+<p>预渲染附件视图的个数 为0只渲染当前页</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prerenderingSiblingsNumber=&#123;4&#125;  //懒加载</span><br></pre></td></tr></table></figure>
+<h2 id="自定义TabBar"><a href="#自定义TabBar" class="headerlink" title="自定义TabBar"></a>自定义TabBar</h2><p>&#160; &#160; &#160; &#160;既然是通用就适配android&amp;IOS 官方为我们提供了两种基本的Tab控制器样式，DefaultTabBar和ScrollableTabBar。很多情况下，官方的样式并不能满足我们的需求（备注：官方的样式是文字+下划线的风格），那么此时就需要我们自己来实现特定的样式。</p>
+<p><a href="https://github.com/oblador/react-native-vector-icons" target="_blank" rel="noopener">常用的就是：文字+图标（带颜色选择器）</a></p>
+<p>&#160; &#160; &#160; &#160;添加react-native-vector-icons 一个“图标”库，官方描述为‘3000 Customizable Icons for React Native with support for NavBar/TabBar/ToolbarAndroid, image source and full stying.’ 可见，这个库为我们提供了很多图标，如果你不想花费时间去设计一些图标，不妨使用这个库来替代。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add react-native-vector-icons</span><br></pre></td></tr></table></figure>
+<p><a href="http://ionicframework.com/docs/v2/ionicons/" target="_blank" rel="noopener">图标库</a></p>
+<p><strong>用法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import Icon from &apos;react-native-vector-icons/Ionicons&apos;;</span><br><span class="line">import IconFont from &apos;react-native-vector-icons/FontAwesome&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;Icon name=&quot;md-alarm&quot; size=&#123;20&#125;&gt;&lt;/Icon&gt;</span><br><span class="line">&lt;IconFont.Button name=&quot;facebook&quot; backgroundColor=&quot;#3b5998&quot; size=&#123;20&#125; &gt;</span><br><span class="line">	Login with Facebook</span><br><span class="line">&lt;/IconFont.Button&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>自定义TabBar的步骤：</strong></p>
+<p>1.添加必须的属性类型（三个）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static propTypes = &#123;</span><br><span class="line">	goToPage: React.PropTypes.func, // 跳转到对应tab的方法</span><br><span class="line">	activeTab: React.PropTypes.number, // 当前被选中的tab下标</span><br><span class="line">	tabs: React.PropTypes.array, // 所有tabs集合</span><br><span class="line">&#125;;  // 注意这里有分号</span><br></pre></td></tr></table></figure></p>
+<p>2.如果需要在滑动时的动画，则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">	// Animated.Value监听范围 [0, tab数量-1]</span><br><span class="line">	this.props.scrollValue.addListener(this.setAnimationValue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setAnimationValue(&#123;value&#125;) &#123;</span><br><span class="line">	console.log(&apos;动画值：&apos;+value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.render方法需要返回一个组件作为TabBar</p>
+<p><strong>注意：即使我们不使用系统的DefaultTabBar和ScrollableTabBar，但tabLabel这个属性必须使用，且值不能重复。</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(16)密封类/" class="archive-article-date">
-  	<time datetime="2018-08-02T05:49:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(16)密封类/">Kotlin学习笔记(16)密封类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ReactNative</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/23/通用Tab组件react-native-scrollable-tab-view/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(15)数据类/" class="archive-article-date">
-  	<time datetime="2018-08-02T03:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/23/在React中使用Redux数据流/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          在React中使用Redux数据流
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/23/从React到Flux再到Redux/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从React到Flux再到Redux</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(15)数据类/">Kotlin学习笔记(15)数据类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(12)接口/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(12)接口/">Kotlin学习笔记(12)接口</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(13)可见性修饰符/">Kotlin学习笔记(13)可见性修饰符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(11)异常/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(11)异常/">Kotlin学习笔记(11)异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Kotlin学习笔记(14)扩展/" class="archive-article-date">
-  	<time datetime="2018-08-02T01:20:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Kotlin学习笔记(14)扩展/">Kotlin学习笔记(14)扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(10)类和对象/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(10)类和对象/">Kotlin学习笔记(10)类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(9)循环控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(9)循环控制/">Kotlin学习笔记(9)循环控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(8)条件控制/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(8)条件控制/">Kotlin学习笔记(8)条件控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/31/Kotlin学习笔记(7)Lambda表达式/">Kotlib学习笔记(7)Lambda表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/7/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/6/">6</a><a class="page-number" href="/archives/2018/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2018/page/9/">9</a><a class="page-number" href="/archives/2018/page/10/">10</a><a class="extend next" rel="next" href="/archives/2018/page/9/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -594,8 +441,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
