@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-697ef6e6570b1da9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-34b92ded78ebff8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-4a08b5fc1f455f87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-08-28T11:47:32.601Z">
+<meta property="og:updated_time" content="2018-08-28T11:50:27.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并查集">
 <meta name="twitter:description" content="并查集(Union/Find)从名字可以看出，主要涉及两种基本操作：合并和查找。这说明，初始时并查集中的元素是不相交的，经过一系列的基本操作(Union)，最终合并成一个大的集合。而在某次合并之后，有一种合理的需求：某两个元素是否已经处于同一个集合中了？因此就需要Find操作。">
@@ -241,7 +241,6 @@
 <p>&#160; &#160; &#160; &#160;查找路径为4 –&gt; 3 –&gt; 1，find(4)使得查找路径上的所有顶点的父节点指向了根。如，将节点4指向了根。但是没有根节点的高度(没有影响树根的秩)，因为s[1]的值仍为-3。-3表示的高度为2，但是树的高度实际上已经变成了1，执行find(4)之后，树实际上是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-4a08b5fc1f455f87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="并查集的应用"><a href="#并查集的应用" class="headerlink" title="并查集的应用"></a>并查集的应用</h2><p>&#160; &#160; &#160; &#160;并查集数据结构非常简单，基本操作也很简单。但是用途感觉很大。比如，求解无向图中连通分量的个数，生成迷宫…这些应用本质上就是：初始时都是一个个不连通的对象，经过一步步处理，变成连通的了…如迷宫，初始时，起点和终点不连通，随机地打开起点到终点路径上的一个方向，直至起点和终点连通了，就生成了一个迷宫。<br>&#160; &#160; &#160; &#160;如，无向图的连通分量个数，初始时，将无向图中各个顶点视为不通过的子集合，对图中每一条边，相当于union这条边对应的两个顶点分别所在的集合，直至所有的边都处理完后，还剩下的集合的个数即为连通分量的个数。</p>
 <h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">public class DisjSets &#123;</span><br><span class="line">    private int[] s;</span><br><span class="line">    //记录并查集中子集合的个数(子树的个数)</span><br><span class="line">    private int count;</span><br><span class="line"></span><br><span class="line">    public DisjSets(int numElements) &#123;</span><br><span class="line">        //构造函数，负责初始化并查集</span><br><span class="line">        s = new int[numElements];</span><br><span class="line">        count = numElements;</span><br><span class="line">        //初始化并查集，相当于新建了s.length个互不相交的集合</span><br><span class="line">        for (int i = 0; i &lt; s.length; i++) &#123;</span><br><span class="line">            s[i] = -1;//s[i]存储的是高度信息</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param root1 并查集中以root1为代表的某个子集</span><br><span class="line">     * @param root2 并查集中以root2为代表的某个子集</span><br><span class="line">     *              按高度(秩)合并以root1和root2为代表的两个集合</span><br><span class="line">     */</span><br><span class="line">    public void unionByHeight(int root1, int root2) &#123;</span><br><span class="line">        if (find(root1) == find(root2)) &#123;</span><br><span class="line">            // root1与root2已经连通了</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (s[root2] &lt; s[root1]) &#123;//root2 is deeper</span><br><span class="line">            s[root1] = root2;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (s[root1] == s[root2]) &#123;//root1 and root2 is the same deeper</span><br><span class="line">                s[root1]--;// 将root1的高度加1</span><br><span class="line">            &#125;</span><br><span class="line">            s[root2] = root1;//将root2的根(指向)更新为root1</span><br><span class="line">        &#125;</span><br><span class="line">        count--;//每union一次，子树数目减1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void unionBySize(int root1, int root2) &#123;</span><br><span class="line">        if (find(root1) == find(root2)) &#123;</span><br><span class="line">            // root1与root2已经连通了</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (s[root2] &lt; s[root1]) &#123;//root2 is deeper</span><br><span class="line">            s[root1] = root2;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (s[root1] == s[root2]) &#123;//root1 and root2 is the same deeper</span><br><span class="line">                s[root1]--;// 将root1的高度加1</span><br><span class="line">            &#125;</span><br><span class="line">            s[root2] = root1;//将root2的根(指向)更新为root1</span><br><span class="line">        &#125;</span><br><span class="line">        count--;//每union一次，子树数目减1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void union(int root1, int root2) &#123;</span><br><span class="line">        s[root2] = root1;//将root1作为root2的新树根</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int find(int x) &#123;</span><br><span class="line">        //s[x]为负数时，说明x为该子集合的代表(也即树根)，且s[x]的值表示树的高度</span><br><span class="line">        if (s[x] &lt; 0) &#123;</span><br><span class="line">            return x;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // 使用了路径压缩，让查找路径上的所有顶点都指向了树根(代表节点)。</span><br><span class="line">            return s[x] = find(s[x]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int find0(int x) &#123;</span><br><span class="line">        if (s[x] &lt; 0) &#123;</span><br><span class="line">            return x;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return find0(s[x]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int size() &#123;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
       
 
       
@@ -344,6 +343,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/28/B-树，B-树，B-树/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          B-树，B+树，B*树
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/27/其他常见的树/" id="article-nav-older" class="article-nav-link-wrap">
@@ -469,6 +477,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ReactNative</a>
               </li>
              
@@ -482,10 +494,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>
