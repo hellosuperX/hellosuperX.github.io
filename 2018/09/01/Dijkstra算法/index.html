@@ -8,14 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Dijkstra算法 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="迪杰斯特拉(Dijkstra)算法是典型最短路径算法，用于计算一个节点到其他节点的最短路径。它的主要特点是以起始点为中心向外层层扩展(广度优先搜索思想)，知道扩展到终点为止。">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Dijkstra算法">
 <meta property="og:url" content="http://yoursite.com/2018/09/01/Dijkstra算法/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="迪杰斯特拉(Dijkstra)算法是典型最短路径算法，用于计算一个节点到其他节点的最短路径。它的主要特点是以起始点为中心向外层层扩展(广度优先搜索思想)，知道扩展到终点为止。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-01T09:40:52.829Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-d75f2e54c71cc68e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-ee6bce171d2011a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-02T09:46:20.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dijkstra算法">
+<meta name="twitter:description" content="迪杰斯特拉(Dijkstra)算法是典型最短路径算法，用于计算一个节点到其他节点的最短路径。它的主要特点是以起始点为中心向外层层扩展(广度优先搜索思想)，知道扩展到终点为止。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-d75f2e54c71cc68e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -71,6 +78,8 @@
 				<li><a href="/tags/数据结构/">数据结构</a></li>
 	        
 				<li><a href="/tags/算法/">算法</a></li>
+	        
+				<li><a href="/tags/计算机网络/">计算机网络</a></li>
 	        
 			</ul>
 		</nav>
@@ -132,6 +141,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -144,21 +155,23 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 12.5%"><a href="/">主页</a></li>
+					<li style="width: 11.11111111111111%"><a href="/">主页</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Android/">Android</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Android/">Android</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/ReactNative/">ReactNative</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/ReactNative/">ReactNative</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Kotlin/">Kotlin</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Kotlin/">Kotlin</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Gradle/">Gradle</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Gradle/">Gradle</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Java/">Java</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Java/">Java</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/数据结构/">数据结构</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/数据结构/">数据结构</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/算法/">算法</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/算法/">算法</a></li>
+		        
+					<li style="width: 11.11111111111111%"><a href="/tags/计算机网络/">计算机网络</a></li>
 		        
 				</ul>
 			</nav>
@@ -193,7 +206,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>迪杰斯特拉(Dijkstra)算法是典型最短路径算法，用于计算一个节点到其他节点的最短路径。它的主要特点是以起始点为中心向外层层扩展(广度优先搜索思想)，知道扩展到终点为止。<br><a id="more"></a></p>
+<h2 id="迪杰斯特拉算法介绍"><a href="#迪杰斯特拉算法介绍" class="headerlink" title="迪杰斯特拉算法介绍"></a>迪杰斯特拉算法介绍</h2><p>&#160; &#160; &#160; &#160;通过Dijkstra计算图G中的最短路径时，需要指定起点s(即从顶点s开始计算)。此外，引进两个集合S和U。S的作用是记录已求出最短路径的顶点(以及相应的最短路径长度)，而U则是记录还未求出最短路径的顶点(以及该顶点到起点s的距离)。<br>&#160; &#160; &#160; &#160;初始时，S中只有起点s；U中是除s之外的顶点，并且U中顶点的路径是“起点s到该顶点的路径”。然后，从U中找出路径最短的顶点，并将其加入到S中；接着，更新U中的顶点和顶点对应的路径。然后，再从U中找出路径最短的顶点，并将其加入到S中；接着，更新U中的顶点和顶点对应路径。…重复该操作，知道遍历完所有顶点。</p>
+<p><strong>操作步骤</strong><br>(1)初始时，S只包含起点s；U包含除s外的其他顶点，且U中顶点的距离为“起点s”到该顶点的距离“[例如，U中顶点v的距离为(s，v)的长度，然后s和v不相邻，则v的距离为∞]”。<br>(2)从U中选出“距离最短的顶点k”，并将顶点k加入到S中；同时，从U中移除顶点k。<br>(3)更新U中各个顶点到起点s的距离。之所以更新U中顶点的距离，是由于上一步中确定了k是求出最短路径的顶点，从而可以利用k来更新其他顶点的距离；例如，(s，v)的距离可能大于(s，k)+(k，v)的距离<br>(4)重复步骤(2)和(3)，直到遍历完所有顶点。</p>
+<h2 id="迪杰斯特拉算法图解"><a href="#迪杰斯特拉算法图解" class="headerlink" title="迪杰斯特拉算法图解"></a>迪杰斯特拉算法图解</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-d75f2e54c71cc68e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>以上图G4为例，来对迪杰斯特拉进行算法演示(以第4个顶点D为起点)。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-ee6bce171d2011a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>初始状态：S是已计算出最短路径的顶点集合，U是未计算除最短路径的顶点的集合！<br>&#160; &#160; &#160; &#160;<strong>第1步：将顶点D加入到S中</strong>此时，S={D(0)}，U={A(∞),B(∞),C(3),E(4),F(∞),G(∞)}。注：C(3)表示C到起点D的距离是3。<br>&#160; &#160; &#160; &#160;<strong>第2步：将顶点C加入到S中</strong>上一步操作之后，U中顶点C到起点D的距离最短；因此，将C加入到S中，同时更新U中顶点的距离。以顶点F为例，之前F到D的距离为∞；但是将C加入到S之后，F到D的距离为9=(F，C)+(C，D)。此时，S={D(0),C(3)}，U={A(∞),B(23),E(4),F(9),G(∞)}<br>&#160; &#160; &#160; &#160;<strong>第3步：将顶点E加入到S中</strong>上一步操作之后，U中顶点E到起点D的距离最短；因此，将E加入到S中，同时更新U中顶点的距离。以顶点F为例，之前F到D的距离为9；但是将E加入到S之后，F到D的距离为6=(F，E)+(E，D)。此时，S={D(0),C(3),E(4)}<br>U={A(∞),B(23),F(6),G(12)}<br>&#160; &#160; &#160; &#160;<strong>第4步：将顶点F加入到S中</strong>此时，S={D(0),C(3),E(4),F(6)}，U={A(22),B(13),G(12)}<br>&#160; &#160; &#160; &#160;<strong>第5步：将顶点G加入到S中</strong>此时，S={D(0),C(3),E(4),F(6),G(12)}，U={A(22),B(13)}<br>&#160; &#160; &#160; &#160;<strong>第6步：将顶点B加入到S中</strong>此时，S={D(0),C(3),E(4),F(6),G(12),B(13)}，U={A(22)}<br>&#160; &#160; &#160; &#160;<strong>第7步：将顶点A加入到S中</strong>此时，S={D(0),C(3),E(4),F(6),G(12),B(13),A(22)}<br>此时，起点D到各个顶点的最短距离就计算出来了：A(22) B(13) C(3) D(0) E(4) F(6) G(12)。</p>
+<h2 id="迪杰斯特拉算法的代码说明"><a href="#迪杰斯特拉算法的代码说明" class="headerlink" title="迪杰斯特拉算法的代码说明"></a>迪杰斯特拉算法的代码说明</h2><p>以”邻接矩阵“为例对迪杰斯特拉算法进行说明<br><strong>1.基本定义</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class MatrixUDG &#123;</span><br><span class="line">    private int mEdgNum;    //边的数量</span><br><span class="line">    private char[] mVexs; // 顶点集合</span><br><span class="line">    private int[][] mMatrix;// 邻接矩阵</span><br><span class="line">    private static final int INF = Integer.MAX_VALUE;// 最大值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160; MatrixUDG是邻接矩阵对应的结构体。mVexs用于保存顶点，mEdgNum用于保存边数，mMatrix则是用于保存矩阵信息的二维数组。例如，mMatrix[i][j]=1，则表示”顶点i(即mVexs[i])“和”顶点j(即mVexs[j])“是邻接点；mMatrix[i][j]=0，则表示它们不是邻接点。</p>
+<p><strong>2.迪杰斯特拉算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Dijkstra最短路径。即统计图中&quot;顶点vs&quot;到其他各个顶点的最短路径。</span><br><span class="line"> *</span><br><span class="line"> * @param vs   起始顶点。即计算&quot;顶点vs&quot;到其它顶点的最短路径。</span><br><span class="line"> * @param prev 前驱顶点数组，即prev[i]的值是&quot;顶点vs&quot;到&quot;顶点i&quot;的最短路劲</span><br><span class="line"> *             所经历的全部顶点中，位于&quot;顶点i&quot;之前的那个顶点。</span><br><span class="line"> * @param dist 长度数组，即dist[i]是&quot;顶点vs&quot;到&quot;顶点i&quot;的最短路径的长度。</span><br><span class="line"> */</span><br><span class="line">public void dijkstra(int vs, int[] prev, int[] dist) &#123;</span><br><span class="line">    //flag[i]=true表示&quot;顶点vs&quot;到&quot;顶点i&quot;的最短路径已经成功获取</span><br><span class="line">    boolean[] flag = new boolean[mVexs.length];</span><br><span class="line">    //初始化</span><br><span class="line">    for (int i = 0; i &lt; mVexs.length; i++) &#123;</span><br><span class="line">        //顶点i的最短路径还没获取到</span><br><span class="line">        flag[i] = false;</span><br><span class="line">        //顶点i的前驱顶点为0</span><br><span class="line">        prev[i] = 0;</span><br><span class="line">        //顶点i的最短路径为&quot;顶点vs&quot;到&quot;顶点i&quot;的权。</span><br><span class="line">        dist[i] = mMatrix[vs][i];</span><br><span class="line">    &#125;</span><br><span class="line">    //对&quot;顶点vs&quot;自身进行初始化</span><br><span class="line">    flag[vs] = true;</span><br><span class="line">    dist[vs] = 0;</span><br><span class="line"></span><br><span class="line">    //遍历mVexs.length-1次；每次找出一个顶点的最短路径</span><br><span class="line">    int k = 0;</span><br><span class="line">    for (int i = 0; i &lt; mVexs.length; i++) &#123;</span><br><span class="line">        //寻找当前最小的路径</span><br><span class="line">        //即，在未获取最短路径的顶点中，找到离vs最近的顶点(k)</span><br><span class="line">        int min = INF;</span><br><span class="line">        for (int j = 0; j &lt; mVexs.length; j++) &#123;</span><br><span class="line">            if (flag[j] == false &amp;&amp; dist[j] &lt; min) &#123;</span><br><span class="line">                min = dist[j];</span><br><span class="line">                k = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //标记&quot;顶点k&quot;为已经获取到最短路径</span><br><span class="line">        flag[k] = true;</span><br><span class="line"></span><br><span class="line">        //修正当前最短路径和前驱顶点</span><br><span class="line">        //即，当已经&quot;顶点k的最短路径&quot;之后，更新&quot;未获取最短路径的顶点的最短路径和前驱顶点&quot;。</span><br><span class="line">        for (int j = 0; j &lt; mVexs.length; j++) &#123;</span><br><span class="line">            int tmp = (mMatrix[k][j] == INF ? INF : (min + mMatrix[k][k]));</span><br><span class="line">            if (flag[j] == false &amp;&amp; (tmp &lt; dist[j])) &#123;</span><br><span class="line">                dist[j] = tmp;</span><br><span class="line">                prev[j] = k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //打印dijkstra最短路径的结果</span><br><span class="line">    System.out.printf(&quot;dijkstra(%c)：\n&quot;, mVexs[vs]);</span><br><span class="line">    for (int i = 0; i &lt; mVexs.length; i++) &#123;</span><br><span class="line">        System.out.printf(&quot;shortest(%c,%c)=%d\n&quot;, mVexs[vs],</span><br><span class="line">                mVexs[i], dist[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -222,6 +245,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -423,6 +457,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -436,6 +474,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

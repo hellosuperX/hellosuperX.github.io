@@ -8,14 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Prim算法 | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="Prim算法的相关知识">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Prim算法">
 <meta property="og:url" content="http://yoursite.com/2018/09/01/Prim算法/index.html">
 <meta property="og:site_name" content="李鑫的博客">
+<meta property="og:description" content="Prim算法的相关知识">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-01T09:39:22.245Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-8a2de241153cd24b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-fc5e30483ebd761b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-02T09:14:46.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prim算法">
+<meta name="twitter:description" content="Prim算法的相关知识">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-8a2de241153cd24b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -71,6 +78,8 @@
 				<li><a href="/tags/数据结构/">数据结构</a></li>
 	        
 				<li><a href="/tags/算法/">算法</a></li>
+	        
+				<li><a href="/tags/计算机网络/">计算机网络</a></li>
 	        
 			</ul>
 		</nav>
@@ -132,6 +141,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -144,21 +155,23 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 12.5%"><a href="/">主页</a></li>
+					<li style="width: 11.11111111111111%"><a href="/">主页</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Android/">Android</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Android/">Android</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/ReactNative/">ReactNative</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/ReactNative/">ReactNative</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Kotlin/">Kotlin</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Kotlin/">Kotlin</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Gradle/">Gradle</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Gradle/">Gradle</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Java/">Java</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Java/">Java</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/数据结构/">数据结构</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/数据结构/">数据结构</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/算法/">算法</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/算法/">算法</a></li>
+		        
+					<li style="width: 11.11111111111111%"><a href="/tags/计算机网络/">计算机网络</a></li>
 		        
 				</ul>
 			</nav>
@@ -193,7 +206,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Prim算法的相关知识<br><a id="more"></a></p>
+<h2 id="普里姆算法介绍"><a href="#普里姆算法介绍" class="headerlink" title="普里姆算法介绍"></a>普里姆算法介绍</h2><p>&#160; &#160; &#160; &#160;普里姆(Prim)算法，是用来求加权连通图的最小生成树的算法。基本思想，对于图G而言，V是所有顶点的集合；现在，设置两个新的集合U和T，其中U用于存放G的最小生成树中的顶点，T存放G的最小生成树中的边。从所有u属于U，v属于(V-U)(V-U表示除去U的所有顶点)的边中选取权值最小的边(u，v)，将顶点v加入集合U中，将边(u，v)加入集合T中，如此不断重复，直到U=V为止，最小生成树构造完毕，这时集合T中包含了最小生成树中的所有边。</p>
+<h2 id="普里姆算法图解"><a href="#普里姆算法图解" class="headerlink" title="普里姆算法图解"></a>普里姆算法图解</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-8a2de241153cd24b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>以上图G4为例，来对普利姆进行演示(从第一个顶点A开始通过普利姆算法生成最小生成树)。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5462731-fc5e30483ebd761b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>初始状态：V是所有顶点的集合，即V={A，B，C，D，E，F，G}；U和T都是空！<br>&#160; &#160; &#160; &#160;<strong>第1步：将顶点A加入到U中</strong>此时，U={A}。<br>&#160; &#160; &#160; &#160;<strong>第2步：将顶点B加入到U中</strong>上一步操作之后，U={A}，V-U={B，C，D，E，F，G}；因此，边(A，B)的权值最小。将顶点B添加到U中；此时，U={A，B}。<br>&#160; &#160; &#160; &#160;<strong>第3步：将顶点F加入到U中</strong>上一步操作之后，U={A，B}，V-U={C，D，E，F，G}；因此，边(B，F)的权值最小。将顶点F添加到U中；此时，U={A，B，F}。<br>&#160; &#160; &#160; &#160;<strong>第4步：将顶点E加入到U中</strong>上一步操作之后，U={A，B，F}，V-U={C，D，E，G}；因此，边(F，E)的权值最小。将顶点E添加到U中；此时，U={A，B，F，E}。<br>&#160; &#160; &#160; &#160;<strong>第5步：将顶点D加入到U中</strong>上一步操作之后，U={A，B，F，E}，V-U={C，D，G}；因此，边(E，D)的权值最小。将顶点D添加到U中；此时，U={A，B，F，E，D}。<br>&#160; &#160; &#160; &#160;<strong>第6步：将顶点C加入到U中</strong>上一步操作之后，U={A，B，F，E，D}，V-U={C，G}；因此，边(D，C)的权值最小。将顶点C添加到U中；此时，U={A，B，F，E，D，C}。<br>&#160; &#160; &#160; &#160;<strong>第7步：将顶点G加入到U中</strong>上一步操作之后，U={A，B，F，E，D，C}，V-U={G}；因此，边(F，G)的权值最小。将顶点G添加到U中；此时，U=V。<br>此时，最小生成树构造完成！它包括的顶点依次是：A B F E D C G </p>
+<h2 id="普里姆算法的代码说明"><a href="#普里姆算法的代码说明" class="headerlink" title="普里姆算法的代码说明"></a>普里姆算法的代码说明</h2><p>以“邻接矩阵”为例对普里姆算法进行说明。<br><strong>1.基本定义</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class MatrixUDG &#123;</span><br><span class="line"></span><br><span class="line">    private char[] mVexs; // 顶点集合</span><br><span class="line">    private int[][] mMatrix;// 邻接矩阵</span><br><span class="line">    private static final int INF = Integer.MAX_VALUE;// 最大值</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160; MatrixUDG是邻接矩阵对应的结构体。mVexs用于保存顶点，mEdgNum用于保存边数，mMatrix则是用于保存矩阵信息的二位数组。例如，mMatrix[i][j]=1，则表示“顶点i(即mVexs[i])”和“顶点j(即mVexs[j])”是邻接点；mMatrix[i][j]=0，则表示它们不是邻接点。<br><strong>2.普利姆算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * prim最小生成树</span><br><span class="line">     *</span><br><span class="line">     * @param start 从图中的第start个元素开始，生成最小树</span><br><span class="line">     */</span><br><span class="line">    public void prim(int start) &#123;</span><br><span class="line">        int num = mVexs.length;//顶点个数</span><br><span class="line">        int index = 0;//prim最小树的索引，即prims数组的索引</span><br><span class="line">        char[] prims = new char[num];//prim最小树的结果数组</span><br><span class="line">        int[] weights = new int[num];//顶点间边的权值</span><br><span class="line"></span><br><span class="line">        //prim最小生成树中第一个数是&quot;图中第start个顶点&quot;，因为是从start开始的</span><br><span class="line">        prims[index++] = mVexs[start];</span><br><span class="line"></span><br><span class="line">        //初始化&quot;顶点的权限数值&quot;</span><br><span class="line">        //将每个顶点的权限初始化为&quot;第start个顶点&quot;到&quot;该顶点&quot;的权值</span><br><span class="line">        for (int i = 0; i &lt; num; i++) &#123;</span><br><span class="line">            weights[i] = mMatrix[start][i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 将第start个顶点的权值初始化为0</span><br><span class="line">        weights[start] = 0;</span><br><span class="line">        for (int i = 0; i &lt; num; i++) &#123;</span><br><span class="line">            //由于从start开始的，因此不需要再对第start个顶点进行处理</span><br><span class="line">            if (start == i) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            int j = 0;</span><br><span class="line">            int k = 0;</span><br><span class="line">            int min = INF;</span><br><span class="line">            //在未被加入到最小生成树的顶点中，找出权值最小的顶点</span><br><span class="line">            while (j &lt; num) &#123;</span><br><span class="line">                //若weights[j]=0，意味着&quot;第j个节点已经被排序过&quot;</span><br><span class="line">                if (weights[j] != 0 &amp;&amp; weights[j] &lt; min) &#123;</span><br><span class="line">                    min = weights[j];</span><br><span class="line">                    k = j;</span><br><span class="line">                &#125;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            //经过上面的处理后，在未被加入到最小生成树的顶点中，权值最小的顶点是第k个顶点</span><br><span class="line">            //将第k个顶点加入到最小生成树的结果数组中</span><br><span class="line">            prims[index++] = mVexs[k];</span><br><span class="line">            //将&quot;第k个顶点的权值&quot;标记为0，意味着第k个顶点已经排序过了</span><br><span class="line">            weights[k] = 0;</span><br><span class="line">            //当第k个顶点被加入到最小生成树的结果数组中之后，更新其他顶点的权值</span><br><span class="line">            for (int l = 0; l &lt; num; l++) &#123;</span><br><span class="line">                //当第j个节点没有被处理，并且需要更新时才被更新。</span><br><span class="line">                if (weights[l] != 0 &amp;&amp; mMatrix[k][l] &lt; weights[l]) &#123;</span><br><span class="line">                    weights[j] = mMatrix[k][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //计算最小生成树的权值</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 0; i &lt; index; i++) &#123;</span><br><span class="line">            int min = INF;</span><br><span class="line">            //获取prims[i]在mMatrix中的位置</span><br><span class="line">            int n = getPosition(prims[i]);</span><br><span class="line">            //在vexs[0...i]中，找出到j的权值最小的顶点</span><br><span class="line">            for (int j = 0; j &lt; i; j++) &#123;</span><br><span class="line">                int m = getPosition(prims[j]);</span><br><span class="line">                if (mMatrix[m][n] &lt; min) &#123;</span><br><span class="line">                    min = mMatrix[m][n];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            sum += min;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //打印最小生成树</span><br><span class="line">        System.out.printf(&quot;PRIM(%c)=%d &quot;,mVexs[start],sum);</span><br><span class="line">        for (int i = 0; i &lt; index; i++) &#123;</span><br><span class="line">            System.out.printf(&quot;%c &quot;,prims[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -222,6 +243,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -423,6 +455,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -436,6 +472,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kotlin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
