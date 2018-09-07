@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Kotlin学习笔记(18)方法重载与高阶函数 | 李鑫的博客</title>
+  <title>操作系统(2) | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;方法默认是final的，不可被子类重载，若需要被重载，使用关键词 open 进行修饰，子类重载方法使用 override 关键词。高阶函数就是可以接受函数作为参数并返回一个函数的函数。">
-<meta name="keywords" content="Kotlin">
+  <meta name="description" content="操作系统相关整理">
+<meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin学习笔记(18)方法重载与高阶函数">
-<meta property="og:url" content="http://yoursite.com/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/index.html">
+<meta property="og:title" content="操作系统(2)">
+<meta property="og:url" content="http://yoursite.com/2018/09/07/操作系统-2/index.html">
 <meta property="og:site_name" content="李鑫的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;方法默认是final的，不可被子类重载，若需要被重载，使用关键词 open 进行修饰，子类重载方法使用 override 关键词。高阶函数就是可以接受函数作为参数并返回一个函数的函数。">
+<meta property="og:description" content="操作系统相关整理">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-02T07:27:44.126Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-65a147ce76f68996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-07T07:43:56.915Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin学习笔记(18)方法重载与高阶函数">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;方法默认是final的，不可被子类重载，若需要被重载，使用关键词 open 进行修饰，子类重载方法使用 override 关键词。高阶函数就是可以接受函数作为参数并返回一个函数的函数。">
+<meta name="twitter:title" content="操作系统(2)">
+<meta name="twitter:description" content="操作系统相关整理">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5462731-65a147ce76f68996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="李鑫的博客" type="application/atom+xml">
   
@@ -195,35 +197,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Kotlin学习笔记(18)方法重载与高阶函数" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-操作系统-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Kotlin学习笔记(18)方法重载与高阶函数
+      操作系统(2)
     </h1>
   
 
         
-        <a href="/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/" class="archive-article-date">
-  	<time datetime="2018-08-02T07:08:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
+        <a href="/2018/09/07/操作系统-2/" class="archive-article-date">
+  	<time datetime="2018-09-07T06:52:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;方法默认是final的，不可被子类重载，若需要被重载，使用关键词 open 进行修饰，子类重载方法使用 override 关键词。高阶函数就是可以接受函数作为参数并返回一个函数的函数。<br><a id="more"></a></p>
-<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>我们先看一个简单的实例，看一下方法的重载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">open class User&#123;</span><br><span class="line">	open fun study()&#123;&#125;</span><br><span class="line"></span><br><span class="line">	fun run()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student:User&#123;</span><br><span class="line">	override fun study()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>override修饰的方法，默认是可以被继承的。若希望不被继承，可以使用 final 关键词修饰。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final override fun study()&#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="重载规则"><a href="#重载规则" class="headerlink" title="重载规则"></a>重载规则</h2><p>当类同时继承类和实现接口，且有相同方法，且相同方法都有实现时，需要在重载方法中调用所继承的方法，使用关键词 super<t> ，T表示所继承或实现的接口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">open class User&#123;</span><br><span class="line">	open fun study()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Reading&#123;</span><br><span class="line">	fun study()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student:User(),Reading&#123;</span><br><span class="line">	override fun study()&#123;</span><br><span class="line">		super&lt;User&gt;.study() </span><br><span class="line">		super&lt;Reading&gt;.study() //与上者至少二选其一</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></t></p>
-<p>当接口未实现方法时，默认为父类User的study方法,不需要调用所继承的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface Reading&#123;</span><br><span class="line">	fun study()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student:User(),Reading&#123;</span><br><span class="line">	override fun study()&#123;</span><br><span class="line">		//do nothing</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>&#160; &#160; &#160; &#160;高阶函数就是可以接受函数作为参数并返回一个函数的函数。比如 lock() 就是 一个很好的例子，它接收一个 lock 对象和一个函数，运行函数并释放 lock;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fun lock&lt;T&gt;(lock: Lock, body: () -&gt; T ) : T &#123;</span><br><span class="line">	lock.lock()</span><br><span class="line"></span><br><span class="line">	try &#123;</span><br><span class="line">		return body()</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">		lock.unlock()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在解释一下上面的代码吧：body 有一个函数类型，把它设想为没有参数并返回 T 类型的函数。它引发了内部的 try 函数块，并被保护，结果是通过 lock()函数返回的。如果我们想调用 lock()函数，我们可以传给它另一个函数做参数，参看函数参考:其实最方便的办法是传递一个字面函数(通常是 lambda 表达式):字面函数经常描述有更多细节，但为了继续本节，我们看一下更简单的预览吧:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fun toBeSynchroized() = sharedResource.operation()</span><br><span class="line">val result = lock(lock, ::toBeSynchroized)</span><br><span class="line"></span><br><span class="line">val result = lock(lock, &#123;</span><br><span class="line">	sharedResource.operation() </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h4 id="高阶函数和lambda表达式"><a href="#高阶函数和lambda表达式" class="headerlink" title="高阶函数和lambda表达式"></a>高阶函数和lambda表达式</h4><p>字面函数被包在大括号里，参数在 -&gt; 前面声明(参数类型可以省略)函数体在 -&gt; 之后。在 kotlin 中有一个约定，如果最后一个参数是函数，可以省略括号：最后一个高阶函数的例子是 map() (of MapReduce):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lock (lock) &#123;</span><br><span class="line">    sharedResource.operation()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun &lt;T, R&gt; List&lt;T&gt;.map(transform: (T) -&gt; R):</span><br><span class="line">List&lt;R&gt; &#123;</span><br><span class="line">    val result = arrayListOf&lt;R&gt;()</span><br><span class="line">    for (item in this)</span><br><span class="line">		result.add(transform(item))</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果字面函数只有一个参数，则声明可以省略，名字就是 it，这样就可以写LINQ-风格的代码了:</p>
+        <p>操作系统相关整理<br><a id="more"></a></p>
+<h2 id="用户态和核心态"><a href="#用户态和核心态" class="headerlink" title="用户态和核心态"></a>用户态和核心态</h2><p><img src="https://upload-images.jianshu.io/upload_images/5462731-65a147ce76f68996.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>&#160; &#160; &#160; &#160;当程序运行在3级特权级上时，就可以称之为运行在用户态，因为这是最低特权级，是普通的用户进程运行的特权级，大部分用户直接面对的程序都是运行在用户态；反之，当程序运行在级特权级上时，就可以称之为运行在内核态。</p>
+<p>&#160; &#160; &#160; &#160;虽然用户态下和内核态下工作的程序有很多差别，但最重要的差别就在于特权级的不同，即权力的不同。运行在用户态下的程序不能直接访问操作系统内核数据结构和程序。</p>
+<p>&#160; &#160; &#160; &#160;当我们在系统中执行一个程序时，大部分时间是运行在用户态下的，在其需要操作系统帮助完成某些它没有权力和能力完成的工作时就会切换到内核态。用户态切换到内核态的3种方式。</p>
+<p>&#160; &#160; &#160; &#160;1.系统调用：这是用户态进程主动要求切换到内核态的一种方式，用户态进程通过系统调用申请使用操作系统提供的服务程序完成工作。而系统调用的机制其核心还是使用了操作系统为用户特别开放的一个中断来实现，例如Linux的int 80h中断。</p>
+<p>&#160; &#160; &#160; &#160;2.异常：当CPU在执行运行在用户态下的程序时，发生了某些事先不可知的异常，这时会触发由当前运行进程切换到处理此异常的内核相关程序中，也就转到了内核态，比如缺页异常。</p>
+<p>&#160; &#160; &#160; &#160;3.外围设备的中断：当外围设备完成用户请求的操作后，会向CPU发出相应的中断信号，这时CPU会暂停执行下一条即将要执行的指令转而去执行与中断信号对应的处理程序，如果先前执行的指令是用户态下的程序，那么这个转换的过程自然也就发生了由用户态到内核态的切换。比如硬盘读写操作完成，系统会切换到硬盘读写的中断处理程序中执行后续操作等。</p>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>&#160; &#160; &#160; &#160;死锁是指多个进程在运行过程中，因为争夺资源而造成的一种僵局，如果没有外力推进，处于僵局中的进程就无法继续执行。</p>
+<p><strong>死锁原因：</strong><br>1.竞争资源：请求同一有限资源的进程数多于可用资源数<br>2.进程推进顺序非法：进程执行中，请求和释放资源顺序不合理，如资源等待链</p>
+<p><strong>死锁产生的必要条件：</strong><br>1.互斥条件:进程对所分配的资源进行排他性的使用<br>2.请求和保持条件：进程被阻塞的时候并不释放锁申请到的资源<br>3.不可剥夺条件：进程对于已经申请到的资源在使用完成之前不可以被剥夺<br>4.环路等待条件：发生死锁的时候存在的一个进程-资源环形等待链</p>
+<p><strong>死锁处理：</strong><br>预防死锁：破坏产生死锁的4个必要条件中的一个或者多个；实现起来比较简单，    但是如果限制过于严格会降低系统资源利用率以及吞吐量。</p>
+<p>避免死锁：在资源的动态分配中，防止系统进入不安全状态(可能产生死锁的状态)。如银行家算法。</p>
+<p>检测死锁：允许系统运行过程中产生死锁，在死锁发生之后，采用一定的算法进行检测，并确定与死锁相关的资源和进程，采取相关方法清除检测到的死锁。实现难度大。</p>
+<p>解除死锁：与死锁检测配合，将系统从死锁中解脱出来（撤销进程或者剥夺资<br>源）。对检测到的和死锁相关的进程以及资源，通过撤销或者挂起的方式，释放一些资源并将其分配给处于阻塞状态的进程，使其转变为就绪态。实现难度大。</p>
+<h2 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h2><p>&#160; &#160; &#160; &#160;先来先服务调度算法FCFS：既可以作为作业调度算法也可以作为进程调度算法；按作业或者进程到达的先后顺序依次调度；因此对于长作业比较有利；</p>
+<p>&#160; &#160; &#160; &#160;短作业优先调度算法SJF：作业调度算法，算法从就绪队列中选择估计时间最短的作业进行处理，直到得出结果或者无法继续执行；缺点：不利于长作业；未考虑作业的重要性；运行时间是预估的，并不靠谱；</p>
+<p>&#160; &#160; &#160; &#160;高相应比算法HRN：响应比=(等待时间+要求服务时间)/要求服务时间；</p>
+<p>&#160; &#160; &#160; &#160;时间片轮转调度RR：按到达的先后对进程放入队列中，然后给队首进程分配CPU 时间片，时间片用完之后计时器发出中断，暂停当前进程并将其放到队列尾部，循环；</p>
+<p>&#160; &#160; &#160; &#160;多级反馈队列调度算法：目前公认较好的调度算法；设置多个就绪队列并为每个队列设置不同的优先级，第一个队列优先级最高，其余依次递减。优先级越高的队列分配的时间片越短，进程到达之后按FCFS放入第一个队列，如果调度执行后没有完成，那么放到第二个队列尾部等待调度，如果第二次调度仍然没有完成，放入第三队列尾部…。只有当前一个队列为空的时候才会去调度下一个队列的进程。</p>
 
       
 
@@ -258,7 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
       		
 		</ul>
@@ -314,7 +327,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/02/Kotlin学习笔记(18)方法重载与高阶函数/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/07/操作系统-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -328,18 +341,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/02/Kotlin学习笔记(19)代理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/07/内存管理/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Kotlin学习笔记(19)代理
+          内存管理
         
       </div>
     </a>
   
   
-    <a href="/2018/08/02/Kotlin学习笔记(17)对象/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Kotlin学习笔记(17)对象</div>
+    <a href="/2018/09/06/操作系统-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统(1)</div>
       <i class="icon-circle-right"></i>
     </a>
   
