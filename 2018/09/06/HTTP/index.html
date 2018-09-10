@@ -9,7 +9,7 @@
   <title>HTTP | 李鑫的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="HTTP相关知识">
-<meta name="keywords" content="计算机网络">
+<meta name="keywords" content="计算机网络与操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP">
 <meta property="og:url" content="http://yoursite.com/2018/09/06/HTTP/index.html">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-d7a3575768e853c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-ffb367d3ea01bf60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5462731-5b9f2f821aef5871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-06T12:18:27.597Z">
+<meta property="og:updated_time" content="2018-09-10T09:15:03.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP">
 <meta name="twitter:description" content="HTTP相关知识">
@@ -73,8 +73,6 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
-	        
 				<li><a href="/tags/Android/">Android</a></li>
 	        
 				<li><a href="/tags/ReactNative/">ReactNative</a></li>
@@ -85,15 +83,11 @@
 	        
 				<li><a href="/tags/Java/">Java</a></li>
 	        
-				<li><a href="/tags/数据结构/">数据结构</a></li>
+				<li><a href="/tags/数据结构与算法/">数据结构与算法</a></li>
 	        
-				<li><a href="/tags/算法/">算法</a></li>
+				<li><a href="/tags/计算机网络与操作系统/">计算机网络与操作系统</a></li>
 	        
-				<li><a href="/tags/计算机网络/">计算机网络</a></li>
-	        
-				<li><a href="/tags/操作系统/">操作系统</a></li>
-	        
-				<li><a href="/tags/SQL/">SQL</a></li>
+				<li><a href="/tags/设计模式/">设计模式</a></li>
 	        
 			</ul>
 		</nav>
@@ -155,12 +149,6 @@
 			
 				
 			
-				
-			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -173,27 +161,21 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 9.090909090909092%"><a href="/">主页</a></li>
+					<li style="width: 12.5%"><a href="/tags/Android/">Android</a></li>
 		        
-					<li style="width: 9.090909090909092%"><a href="/tags/Android/">Android</a></li>
+					<li style="width: 12.5%"><a href="/tags/ReactNative/">ReactNative</a></li>
 		        
-					<li style="width: 9.090909090909092%"><a href="/tags/ReactNative/">ReactNative</a></li>
+					<li style="width: 12.5%"><a href="/tags/Kotlin/">Kotlin</a></li>
 		        
-					<li style="width: 9.090909090909092%"><a href="/tags/Kotlin/">Kotlin</a></li>
+					<li style="width: 12.5%"><a href="/tags/Gradle/">Gradle</a></li>
 		        
-					<li style="width: 9.090909090909092%"><a href="/tags/Gradle/">Gradle</a></li>
+					<li style="width: 12.5%"><a href="/tags/Java/">Java</a></li>
 		        
-					<li style="width: 9.090909090909092%"><a href="/tags/Java/">Java</a></li>
+					<li style="width: 12.5%"><a href="/tags/数据结构与算法/">数据结构与算法</a></li>
 		        
-					<li style="width: 9.090909090909092%"><a href="/tags/数据结构/">数据结构</a></li>
+					<li style="width: 12.5%"><a href="/tags/计算机网络与操作系统/">计算机网络与操作系统</a></li>
 		        
-					<li style="width: 9.090909090909092%"><a href="/tags/算法/">算法</a></li>
-		        
-					<li style="width: 9.090909090909092%"><a href="/tags/计算机网络/">计算机网络</a></li>
-		        
-					<li style="width: 9.090909090909092%"><a href="/tags/操作系统/">操作系统</a></li>
-		        
-					<li style="width: 9.090909090909092%"><a href="/tags/SQL/">SQL</a></li>
+					<li style="width: 12.5%"><a href="/tags/设计模式/">设计模式</a></li>
 		        
 				</ul>
 			</nav>
@@ -240,8 +222,7 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/5462731-972e853166f1506c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>&#160; &#160; &#160; &#160;当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层直到被当作一串比特流送入网络。其中每一层对收到的数据都要增加一些首部信息（有时还要增加尾部信息），该过程如图所示。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5462731-9f1e1cd1c49299a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>&#160; &#160; &#160; &#160;当目的主机收到一个以太网数据帧时，数据就开始从协议栈中由底向上升，同时去掉各层协议加上的报文首部。每层协议盒都要去检查报文首部中的协议标识，以确定接收数据的上层协议。这个过程称作分用（Demultiplexing）。协议是通过目的端口号、源IP地址和源端口号进行解包的。通过以上步骤我们从TCP/IP模型的角度来理解了一次HTTP请求与响应的过程。下面这张图更清楚明白：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5462731-68eeb5b26282c5eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>&#160; &#160; &#160; &#160;当目的主机收到一个以太网数据帧时，数据就开始从协议栈中由底向上升，同时去掉各层协议加上的报文首部。每层协议盒都要去检查报文首部中的协议标识，以确定接收数据的上层协议。这个过程称作分用（Demultiplexing）。协议是通过目的端口号、源IP地址和源端口号进行解包的。通过以上步骤我们从TCP/IP模型的角度来理解了一次HTTP请求与响应的过程。下面这张图更清楚明白：<br><img src="https://upload-images.jianshu.io/upload_images/5462731-68eeb5b26282c5eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p>&#160; &#160; &#160; &#160;TCP是面向连接的，无论那一方向向另一方向发送数据之前，都必须先在双方之间建立一条连接。在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认号并交换TCP窗口大小信息。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5462731-f3520afeb0fdfa91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>&#160; &#160; &#160; &#160;<strong>第一次握手：</strong>建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认。</p>
@@ -369,11 +350,7 @@
 <p>&#160; &#160; &#160; &#160;通过以上步骤，数据已经传递完毕，HTTP/1.1会维持持久连接，但持续一段时间总会有关闭连接的时候，这时候据需要断开TCP连接。</p>
 <h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p>&#160; &#160; &#160; &#160;当客户端和服务器通过三次握手建立了TCP连接以后，当数据传送完毕，肯定是要断开TCP连接的啊。那对于TCP的断开连接，这里就有了神秘的“四次分手”。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5462731-5b9f2f821aef5871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>&#160; &#160; &#160; &#160;<strong>第一次分手：</strong>主机1（可以使客户端，也可以是服务器端），设置Sequence Number，向主机2发送一个FIN报文段；此时，主机1进入FIN_WAIT_1状态；这表示主机1没有数据要发送给主机2了；</p>
-<p>&#160; &#160; &#160; &#160;<strong>第二次分手：</strong>主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_WAIT_2状态；主机2告诉主机1，我“同意”你的关闭请求；</p>
-<p>&#160; &#160; &#160; &#160;<strong>第三次分手：</strong>主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态；</p>
-<p>&#160; &#160; &#160; &#160;<strong>第四次分手：</strong>主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。</p>
-<p><strong>为什么要四次分手？</strong><br>&#160; &#160; &#160; &#160;TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。TCP是全双工模式，这就意味着，当主机1发出FIN报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了；但是，这个时候主机1还是可以接受来自主机2的数据；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
+<p>&#160; &#160; &#160; &#160;<strong>第一次分手：</strong>主机1（可以使客户端，也可以是服务器端），设置Sequence Number，向主机2发送一个FIN报文段；此时，主机1进入FIN_WAIT_1状态；这表示主机1没有数据要发送给主机2了；<br>&#160; &#160; &#160; &#160;<strong>第二次分手：</strong>主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_WAIT_2状态；主机2告诉主机1，我“同意”你的关闭请求；<br>&#160; &#160; &#160; &#160;<strong>第三次分手：</strong>主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态；<br>&#160; &#160; &#160; &#160;<strong>第四次分手：</strong>主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。<br><strong>为什么要四次分手？</strong><br>&#160; &#160; &#160; &#160;TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。TCP是全双工模式，这就意味着，当主机1发出FIN报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了；但是，这个时候主机1还是可以接受来自主机2的数据；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
 
       
 
@@ -408,7 +385,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络与操作系统</a>
         		</li>
       		
 		</ul>
@@ -482,7 +459,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          HTTPS
+          (no title)
         
       </div>
     </a>
@@ -623,7 +600,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,7 +608,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络与操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,15 +616,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>
