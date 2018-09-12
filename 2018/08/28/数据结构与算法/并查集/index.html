@@ -65,12 +65,12 @@
 		  <h1 class="header-author"><a href="/">Json</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">一切有为法 如梦幻泡影 如露亦如电 应作如是观</p>
-		
 
 		<nav class="header-menu">
 			<ul>
 			
+				<li><a href="/">主页</a></li>
+	        
 				<li><a href="/tags/Android/">Android</a></li>
 	        
 				<li><a href="/tags/ReactNative/">ReactNative</a></li>
@@ -127,9 +127,9 @@
 			  <h1 class="header-author js-header-author">Json</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>一切有为法 如梦幻泡影 如露亦如电 应作如是观<i class="icon icon-quo-right"></i></p>
 			
 			
+				
 			
 				
 			
@@ -159,21 +159,23 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 12.5%"><a href="/tags/Android/">Android</a></li>
+					<li style="width: 11.11111111111111%"><a href="/">主页</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/ReactNative/">ReactNative</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Android/">Android</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Kotlin/">Kotlin</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/ReactNative/">ReactNative</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Gradle/">Gradle</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Kotlin/">Kotlin</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Java/">Java</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Gradle/">Gradle</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/数据结构与算法/">数据结构与算法</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Java/">Java</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/设计模式/">设计模式</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/数据结构与算法/">数据结构与算法</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/其他/">其他</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/设计模式/">设计模式</a></li>
+		        
+					<li style="width: 11.11111111111111%"><a href="/tags/其他/">其他</a></li>
 		        
 				</ul>
 			</nav>
@@ -243,27 +245,6 @@
 <h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">public class DisjSets &#123;</span><br><span class="line">    private int[] s;</span><br><span class="line">    //记录并查集中子集合的个数(子树的个数)</span><br><span class="line">    private int count;</span><br><span class="line"></span><br><span class="line">    public DisjSets(int numElements) &#123;</span><br><span class="line">        //构造函数，负责初始化并查集</span><br><span class="line">        s = new int[numElements];</span><br><span class="line">        count = numElements;</span><br><span class="line">        //初始化并查集，相当于新建了s.length个互不相交的集合</span><br><span class="line">        for (int i = 0; i &lt; s.length; i++) &#123;</span><br><span class="line">            s[i] = -1;//s[i]存储的是高度信息</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param root1 并查集中以root1为代表的某个子集</span><br><span class="line">     * @param root2 并查集中以root2为代表的某个子集</span><br><span class="line">     *              按高度(秩)合并以root1和root2为代表的两个集合</span><br><span class="line">     */</span><br><span class="line">    public void unionByHeight(int root1, int root2) &#123;</span><br><span class="line">        if (find(root1) == find(root2)) &#123;</span><br><span class="line">            // root1与root2已经连通了</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (s[root2] &lt; s[root1]) &#123;//root2 is deeper</span><br><span class="line">            s[root1] = root2;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (s[root1] == s[root2]) &#123;//root1 and root2 is the same deeper</span><br><span class="line">                s[root1]--;// 将root1的高度加1</span><br><span class="line">            &#125;</span><br><span class="line">            s[root2] = root1;//将root2的根(指向)更新为root1</span><br><span class="line">        &#125;</span><br><span class="line">        count--;//每union一次，子树数目减1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void unionBySize(int root1, int root2) &#123;</span><br><span class="line">        if (find(root1) == find(root2)) &#123;</span><br><span class="line">            // root1与root2已经连通了</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (s[root2] &lt; s[root1]) &#123;//root2 is deeper</span><br><span class="line">            s[root1] = root2;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (s[root1] == s[root2]) &#123;//root1 and root2 is the same deeper</span><br><span class="line">                s[root1]--;// 将root1的高度加1</span><br><span class="line">            &#125;</span><br><span class="line">            s[root2] = root1;//将root2的根(指向)更新为root1</span><br><span class="line">        &#125;</span><br><span class="line">        count--;//每union一次，子树数目减1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void union(int root1, int root2) &#123;</span><br><span class="line">        s[root2] = root1;//将root1作为root2的新树根</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int find(int x) &#123;</span><br><span class="line">        //s[x]为负数时，说明x为该子集合的代表(也即树根)，且s[x]的值表示树的高度</span><br><span class="line">        if (s[x] &lt; 0) &#123;</span><br><span class="line">            return x;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // 使用了路径压缩，让查找路径上的所有顶点都指向了树根(代表节点)。</span><br><span class="line">            return s[x] = find(s[x]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int find0(int x) &#123;</span><br><span class="line">        if (s[x] &lt; 0) &#123;</span><br><span class="line">            return x;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return find0(s[x]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int size() &#123;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -477,10 +458,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gradle</a>
               </li>
              
@@ -494,6 +471,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ReactNative</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">

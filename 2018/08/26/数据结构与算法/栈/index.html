@@ -58,12 +58,12 @@
 		  <h1 class="header-author"><a href="/">Json</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">一切有为法 如梦幻泡影 如露亦如电 应作如是观</p>
-		
 
 		<nav class="header-menu">
 			<ul>
 			
+				<li><a href="/">主页</a></li>
+	        
 				<li><a href="/tags/Android/">Android</a></li>
 	        
 				<li><a href="/tags/ReactNative/">ReactNative</a></li>
@@ -120,9 +120,9 @@
 			  <h1 class="header-author js-header-author">Json</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>一切有为法 如梦幻泡影 如露亦如电 应作如是观<i class="icon icon-quo-right"></i></p>
 			
 			
+				
 			
 				
 			
@@ -152,21 +152,23 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 12.5%"><a href="/tags/Android/">Android</a></li>
+					<li style="width: 11.11111111111111%"><a href="/">主页</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/ReactNative/">ReactNative</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Android/">Android</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Kotlin/">Kotlin</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/ReactNative/">ReactNative</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Gradle/">Gradle</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Kotlin/">Kotlin</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/Java/">Java</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Gradle/">Gradle</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/数据结构与算法/">数据结构与算法</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/Java/">Java</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/设计模式/">设计模式</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/数据结构与算法/">数据结构与算法</a></li>
 		        
-					<li style="width: 12.5%"><a href="/tags/其他/">其他</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/设计模式/">设计模式</a></li>
+		        
+					<li style="width: 11.11111111111111%"><a href="/tags/其他/">其他</a></li>
 		        
 				</ul>
 			</nav>
@@ -208,27 +210,6 @@
 <h2 id="4-栈中Java实现"><a href="#4-栈中Java实现" class="headerlink" title="4.栈中Java实现"></a>4.栈中Java实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">//数组实现的栈，能存储任意类型的数据</span><br><span class="line">public class GeneralArrayStack&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private static final int DEFAULT_SIZE = 12;</span><br><span class="line">    private T[] mArray;</span><br><span class="line">    private int count;</span><br><span class="line"></span><br><span class="line">    public GeneralArrayStack(Class&lt;T&gt; type) &#123;</span><br><span class="line">        this(type, DEFAULT_SIZE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public GeneralArrayStack(Class&lt;T&gt; type, int size) &#123;</span><br><span class="line">        //不能直接使用mArray = new T[DEFAULT_SIZE];</span><br><span class="line">        mArray = (T[]) Array.newInstance(type, size);</span><br><span class="line">        count = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 将val添加到栈中</span><br><span class="line">    public void push(T val) &#123;</span><br><span class="line">        mArray[count++] = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回&quot;栈顶元素值&quot;</span><br><span class="line">    public T peek() &#123;</span><br><span class="line">        return mArray[count - 1];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //返回&quot;栈顶元素值&quot;，并删除&quot;栈顶元素&quot;</span><br><span class="line">    public T pop() &#123;</span><br><span class="line">        T ret = mArray[count - 1];</span><br><span class="line">        count--;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回&quot;栈&quot;的大小</span><br><span class="line">    public int size() &#123;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //返回&quot;栈&quot;是否为空</span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return size() == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 打印&quot;栈&quot;</span><br><span class="line">    public void printArrayStack() &#123;</span><br><span class="line">        if (isEmpty()) &#123;</span><br><span class="line">            System.out.printf(&quot;stack is Empty&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.printf(&quot;stack size() =&quot;, size());</span><br><span class="line"></span><br><span class="line">        int i = size() - 1;</span><br><span class="line">        while (i &gt;= 0) &#123;</span><br><span class="line">            System.out.println(mArray[i]);</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -442,10 +423,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gradle</a>
               </li>
              
@@ -459,6 +436,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ReactNative</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
