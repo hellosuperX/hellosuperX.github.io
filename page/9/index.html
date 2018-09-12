@@ -198,8 +198,6 @@
       
         <p>&#160; &#160; &#160; &#160;总结Java创建线程的三种方式的一些知识。<br>
         
-          <a class="article-more-a" href="/2018/08/13/Java/Java创建线程的三种方式/#more">more >></a>
-        
       
 
       
@@ -273,8 +271,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#160; &#160; &#160; &#160;毫无疑问，Java8是Java5发布之后的最重要的版本。这个版本包含语言、编辑器、库、工具和JVM等方面的十多个新特性。<br>
-        
-          <a class="article-more-a" href="/2018/08/10/Java/Java 8 新特性/#more">more >></a>
         
       
 
@@ -350,8 +346,6 @@
       
         <p>&#160; &#160; &#160; &#160;try…catch…finally块中的finally语句是不是一定会被执行？？答案是正确的，但是至少有两种情况finally语句是不会被执行的。<br>
         
-          <a class="article-more-a" href="/2018/08/09/Java/finally与return执行顺序/#more">more >></a>
-        
       
 
       
@@ -425,8 +419,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#160; &#160; &#160; &#160;我们都知道一个对象只要实现了Serilizable接口，这个对象就可以被序列化，Java的这种序列化模式为开发者提供了很多便利，我们可以不必关心具体序列化的过程，只要这个类实现了Serilizable接口，这个类的所有属性和方法都会自动序列化。<br>&#160; &#160; &#160; &#160;然而，在实际开发中我们会经常遇到这样的问题，这个类的有些属性需要序列化，而其他属性不需要被序列化，比如，如果一个用户有一些敏感信息(如密码，银行卡号等)，为了安全起见，不希望在网络操作(主要涉及到序列化操作，本地序列化缓存也适用)中被传输，这些信息对应的变量就可以加上transient关键字。换句话说，这个字段的生命周期仅存于调用者的内存中而不会写到磁盘持久化。<br>
-        
-          <a class="article-more-a" href="/2018/08/09/Java/transient关键字/#more">more >></a>
         
       
 
@@ -502,8 +494,6 @@
       
         <p>&#160; &#160; &#160; &#160;对象拷贝(Object Copy)就是将一个对象的属性拷贝到另一个有着相同类类型的对象中去。在程序中拷贝对象是很常见的，主要是为了在新的上下文环境中复用对象的部分或全部数据。Java中有三种类型的对象拷贝：浅拷贝(Shallow Copy)、深拷贝(Deep Copy)、延迟拷贝(Lazy Copy)。<br>
         
-          <a class="article-more-a" href="/2018/08/09/Java/深拷贝和浅拷贝/#more">more >></a>
-        
       
 
       
@@ -577,8 +567,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#160; &#160; &#160; &#160;abstract class和interface是Java语言中对于抽象类定义进行支持的两种机制，正是由于这两种机制的存在，才赋予了Java强大的面向对象能力。abstract class和interface之间在对于抽象类定义的支持方面具有很大的相似性，甚至可以相互替换，因此很多开发者在进行抽象类定义时对于abstract class和interface的选择显得比较随意。<br>&#160; &#160; &#160; &#160;其实，两者之间还是有很大的区别的，对于它们的选择甚至反映出对于问题领域本质的理解、对于设计意图的理解是否正确、合理。本文将对它们之前的区别进行一番剖析，试图给发开者提供一个在二者之间进行选择的依据。<br>
-        
-          <a class="article-more-a" href="/2018/08/09/Java/抽象类和接口的区别/#more">more >></a>
         
       
 
@@ -654,8 +642,6 @@
       
         <p>&#160; &#160; &#160; &#160;Java异常是Java提供的一种识别及响应错误的一致性机制。Java异常机制可以使程序中异常处理代码和正常业务代码分离，保证程序代码更加优雅，并提高程序健壮性。<br>
         
-          <a class="article-more-a" href="/2018/08/08/Java/异常/#more">more >></a>
-        
       
 
       
@@ -729,8 +715,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#160; &#160; &#160; &#160;Java NIO(New IO)是一个可以替代标准Java IO API的IO API(从Java1.4开始)，Java NIO提供了与标准IO不同的IO工作方式。<br>
-        
-          <a class="article-more-a" href="/2018/08/07/Java/Java NIO/#more">more >></a>
         
       
 
@@ -806,8 +790,6 @@
       
         <p>&#160; &#160; &#160; &#160;RandomAccessFile既可以读取文件内容，也可以向文件输出数据。同时，RandomAccessFile支持“随机访问的方式，程序可以直接跳转到文件的任意地方来读写数据”。由于RandomAccessFile可以自由访问文件的任意位置，所以如果需要访问文件的部分内容，而不是把文件从头读到尾，使用RandomAccessFile将是更好的选择。<br>&#160; &#160; &#160; &#160;与OutputStream、Writer等输出流不同的是，RandomAccessFile允许自由定义文件记录指针，RandomAccessFile可以不从开始的地方开始输出，因此RandomAccessFile可以向已存在的文件后追加内容。如果程序需要向已存在的文件后追加内容，则应该使用RandomAccessFile。RandomAccessFile的方法虽然多，但他有一个最大的局限，就是只能读写文件，不能读写其他IO节点。RandomAccessFile的一个重要使用场景就是网络请求中的多线程下载及断点续传。<br>
         
-          <a class="article-more-a" href="/2018/08/07/Java/RandomAccessFile/#more">more >></a>
-        
       
 
       
@@ -881,8 +863,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#160; &#160; &#160; &#160;Java的IO流是实现输入/输出的基础，它可以方便地实现数据的输入/输出操作，在Java中把不同的输入/输出源抽象表述为”流”。流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，流的本质是数据传输，根据数据传输的特性将流抽象为各种类，方便更直观的进行数据操作。流有输入和输出，输入时是流从数据源流向程序。输出时是流从程序传向数据源，而数据源可以是内存，文件，网络或程序等。<br>
-        
-          <a class="article-more-a" href="/2018/08/06/Java/Java IO(二)/#more">more >></a>
         
       
 
@@ -1029,6 +1009,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gradle</a>
               </li>
              
@@ -1042,10 +1026,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ReactNative</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
